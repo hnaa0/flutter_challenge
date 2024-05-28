@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class ScheduleCard extends StatelessWidget {
   final List<String> attend;
@@ -52,10 +53,16 @@ class ScheduleCard extends StatelessWidget {
                     letterSpacing: -0.5,
                   ),
                 ),
-                Container(
-                  height: 28,
-                  width: 1,
-                  color: Colors.black,
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 8,
+                    bottom: 2,
+                  ),
+                  child: Container(
+                    height: 28,
+                    width: 1,
+                    color: Colors.black,
+                  ),
                 ),
                 Text(
                   endTime.hour.toString(),
