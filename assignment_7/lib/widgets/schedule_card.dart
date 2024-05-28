@@ -39,14 +39,14 @@ class ScheduleCard extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  startTime.hour.toString(),
+                  "${startTime.hour}".padLeft(2, "0"),
                   style: const TextStyle(
                     fontSize: 24,
                     letterSpacing: -0.5,
                   ),
                 ),
                 Text(
-                  startTime.minute.toString(),
+                  "${startTime.minute}".padLeft(2, "0"),
                   style: const TextStyle(
                     fontSize: 16,
                     height: 1,
@@ -65,14 +65,14 @@ class ScheduleCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  endTime.hour.toString(),
+                  "${endTime.hour}".padLeft(2, "0"),
                   style: const TextStyle(
                     fontSize: 24,
                     letterSpacing: -0.5,
                   ),
                 ),
                 Text(
-                  endTime.minute.toString(),
+                  "${endTime.minute}".padLeft(2, "0"),
                   style: const TextStyle(
                     fontSize: 16,
                     height: 1,
