@@ -1,6 +1,7 @@
 import 'package:assignment_10/screens/home_screen.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         swapLegacyOnMaterial3: true,
         appBarElevation: 0,
         appBarStyle: FlexAppBarStyle.scaffoldBackground,
+        fontFamily: GoogleFonts.manrope().fontFamily,
       ),
       darkTheme: FlexThemeData.dark(
         scheme: FlexScheme.gold,
@@ -48,6 +50,7 @@ class MyApp extends StatelessWidget {
         swapLegacyOnMaterial3: true,
         appBarElevation: 0,
         appBarStyle: FlexAppBarStyle.scaffoldBackground,
+        fontFamily: GoogleFonts.manrope().fontFamily,
       ),
 // If you do not have a themeMode switch, uncomment this line
 // to let the device system mode control the theme mode:

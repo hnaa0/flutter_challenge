@@ -7,7 +7,7 @@ class MovieDetailModel {
       releaseDate;
   final List<dynamic> genres;
   final int id, runtime, voteCount;
-  final double voteAverage;
+  final num voteAverage;
 
   MovieDetailModel.fromJson(Map<String, dynamic> json)
       : title = json["title"],
