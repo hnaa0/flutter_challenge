@@ -157,22 +157,55 @@ class _DetailScreenState extends State<DetailScreen> {
                               height: 12,
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  detail.releaseDate,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                    height: 1.2,
-                                  ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      detail.releaseDate,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                        height: 1.2,
+                                      ),
+                                    ),
+                                    Text(
+                                      " | ${detail.runtime}분",
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                        height: 1.2,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  " | ${detail.runtime}분",
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                    height: 1.2,
-                                  ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 4),
+                                      child: Text("🥜"),
+                                    ),
+                                    Text(
+                                      detail.voteAverage.toStringAsFixed(1),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w600,
+                                        height: 1.2,
+                                      ),
+                                    ),
+                                    Text(
+                                      " (${detail.voteCount})",
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                        height: 1.2,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
