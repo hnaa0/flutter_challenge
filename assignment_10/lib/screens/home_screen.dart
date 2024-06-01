@@ -1,6 +1,6 @@
 import 'package:assignment_10/models/movie_model.dart';
 import 'package:assignment_10/services/api_service.dart';
-import 'package:assignment_10/widgets/card_list.dart';
+import 'package:assignment_10/widgets/movie_card_list.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {

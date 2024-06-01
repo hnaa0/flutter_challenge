@@ -1,14 +1,54 @@
 import 'dart:ui';
 import 'package:assignment_10/services/api_service.dart';
+import 'package:assignment_10/widgets/booking_button.dart';
+import 'package:assignment_10/widgets/genre_card.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class DetailScreen extends StatelessWidget {
+class DetailScreen extends StatefulWidget {
   const DetailScreen({
     super.key,
     required this.id,
   });
 
   final int id;
+
+  @override
+  State<DetailScreen> createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
+  bool _isLiked = false;
+  late final SharedPreferences prefs;
+
+  Future<void> _initLikeMovie(int id) async {
+    prefs = await SharedPreferences.getInstance();
+
+    if (prefs.get("$id") != null) {
+      _isLiked = true;
+    } else {
+      _isLiked = false;
+    }
+    setState(() {});
+  }
+
+  void _onLikeTap(int id) {
+    if (_isLiked) {
+      prefs.remove("$id");
+    } else {
+      prefs.setInt("$id", id);
+    }
+
+    setState(() {
+      _isLiked = !_isLiked;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initLikeMovie(widget.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +71,7 @@ class DetailScreen extends StatelessWidget {
       ),
       extendBodyBehindAppBar: true,
       body: FutureBuilder(
-        future: ApiService().getDetail(id),
+        future: ApiService().getDetail(widget.id),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             var detail = snapshot.data!;
@@ -116,18 +156,25 @@ class DetailScreen extends StatelessWidget {
                             const SizedBox(
                               height: 12,
                             ),
-                            DefaultTextStyle(
-                              style: TextStyle(
-                                color: Colors.white.withOpacity(0.8),
-                                fontSize: 12,
-                                height: 1.2,
-                              ),
-                              child: Row(
-                                children: [
-                                  Text(detail.releaseDate),
-                                  Text(" | ${detail.runtime}분"),
-                                ],
-                              ),
+                            Row(
+                              children: [
+                                Text(
+                                  detail.releaseDate,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    height: 1.2,
+                                  ),
+                                ),
+                                Text(
+                                  " | ${detail.runtime}분",
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    height: 1.2,
+                                  ),
+                                ),
+                              ],
                             ),
                             const SizedBox(
                               height: 12,
@@ -138,32 +185,8 @@ class DetailScreen extends StatelessWidget {
                               runSpacing: 8,
                               children: [
                                 for (var item in detail.genres)
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 2,
-                                      horizontal: 4,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .secondary,
-                                      borderRadius: BorderRadius.circular(4),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black.withOpacity(0.3),
-                                          blurRadius: 3.5,
-                                          offset: const Offset(1, 2),
-                                        )
-                                      ],
-                                    ),
-                                    child: Text(
-                                      item["name"],
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
+                                  GenreCard(
+                                    genre: item["name"],
                                   ),
                               ],
                             ),
@@ -189,20 +212,14 @@ class DetailScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Positioned(
+                const Positioned(
                   bottom: 20,
                   left: 0,
                   right: 0,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        width: 180,
-                        child: FilledButton(
-                          onPressed: () {},
-                          child: const Text("Buy"),
-                        ),
-                      ),
+                      BookingButton(),
                     ],
                   ),
                 ),
@@ -210,14 +227,14 @@ class DetailScreen extends StatelessWidget {
                   bottom: 20,
                   right: 12,
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () => _onLikeTap(widget.id),
                     icon: Icon(
                       Icons.favorite,
-                      color: Colors.grey.shade400,
+                      color: _isLiked ? Colors.red : Colors.grey.shade400,
                       size: 32,
                     ),
                   ),
-                )
+                ),
               ],
             );
           }
