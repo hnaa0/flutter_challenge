@@ -29,6 +29,7 @@ class _DetailScreenState extends State<DetailScreen> {
     } else {
       _isLiked = false;
     }
+
     setState(() {});
   }
 
@@ -57,8 +58,7 @@ class _DetailScreenState extends State<DetailScreen> {
         title: const Text(
           "Back to the list",
           style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 18,
+            fontSize: 16,
             color: Colors.white,
           ),
         ),
@@ -68,6 +68,12 @@ class _DetailScreenState extends State<DetailScreen> {
           color: Colors.white,
         ),
         centerTitle: false,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context, true);
+          },
+        ),
       ),
       extendBodyBehindAppBar: true,
       body: FutureBuilder(
@@ -99,7 +105,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   child: Column(
                     children: [
                       const SizedBox(
-                        height: 160,
+                        height: 120,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -118,7 +124,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               ],
                             ),
                             child: AspectRatio(
-                              aspectRatio: 3 / 4,
+                              aspectRatio: 2 / 3,
                               child: Image.network(
                                 "https://image.tmdb.org/t/p/w500/${detail.posterPath}",
                                 fit: BoxFit.cover,

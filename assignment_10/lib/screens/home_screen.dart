@@ -1,7 +1,9 @@
 import 'package:assignment_10/models/movie_model.dart';
+import 'package:assignment_10/screens/favorite_screen.dart';
 import 'package:assignment_10/services/api_service.dart';
 import 'package:assignment_10/widgets/movie_card_list.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -17,17 +19,27 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text(
-          "NUTFLIX 🥜",
+        title: Text(
+          "NUTFLIX🥜",
           style: TextStyle(
+            fontFamily: GoogleFonts.kanit().fontFamily,
             fontWeight: FontWeight.w600,
             fontSize: 20,
+            color: Theme.of(context).colorScheme.primary,
+            letterSpacing: 1.2,
           ),
         ),
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const FavoriteScreen(),
+                ),
+              );
+            },
             icon: const Icon(
               Icons.favorite,
               color: Colors.red,
@@ -93,7 +105,7 @@ class HomeScreen extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: TextButton(
                 onPressed: () {},
-                child: const Text("🥜"),
+                child: const Text("🥜🥜🥜"),
               ),
             )
           ],

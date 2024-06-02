@@ -29,8 +29,7 @@ class BookingButton extends StatelessWidget {
         child: const Text(
           "BOOKING",
           style: TextStyle(
-            fontWeight: FontWeight.w600,
-            letterSpacing: 0.7,
+            letterSpacing: 1,
           ),
         ),
       ),
