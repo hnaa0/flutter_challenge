@@ -11,6 +11,7 @@ class BookingButton extends StatelessWidget {
         onPressed: () {
           showDialog(
             context: context,
+            barrierDismissible: false,
             builder: (context) {
               return AlertDialog.adaptive(
                 content: const Text("Booking completed🎉"),

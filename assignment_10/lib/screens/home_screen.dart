@@ -104,7 +104,25 @@ class HomeScreen extends StatelessWidget {
               ),
               alignment: Alignment.bottomCenter,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (context) {
+                      return AlertDialog.adaptive(
+                        title: const Text("Booyah!"),
+                        actions: [
+                          IconButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            icon: const Icon(Icons.close_rounded),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
                 child: const Text("🥜🥜🥜"),
               ),
             )
