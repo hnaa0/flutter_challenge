@@ -3,6 +3,7 @@ import 'package:assignment_10/services/api_service.dart';
 import 'package:assignment_10/widgets/booking_button.dart';
 import 'package:assignment_10/widgets/genre_card.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -55,11 +56,12 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Back to the list",
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 18,
             color: Colors.white,
+            fontFamily: GoogleFonts.kanit().fontFamily,
           ),
         ),
         surfaceTintColor: Colors.transparent,

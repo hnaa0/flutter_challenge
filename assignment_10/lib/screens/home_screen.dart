@@ -110,7 +110,11 @@ class HomeScreen extends StatelessWidget {
                     barrierDismissible: false,
                     builder: (context) {
                       return AlertDialog.adaptive(
-                        title: const Text("Booyah!"),
+                        title: Text(
+                          "Booyah!",
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary),
+                        ),
                         actions: [
                           IconButton(
                             onPressed: () {

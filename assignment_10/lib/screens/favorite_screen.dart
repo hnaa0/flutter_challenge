@@ -1,6 +1,7 @@
 import 'package:assignment_10/screens/detail_screen.dart';
 import 'package:assignment_10/services/api_service.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FavoriteScreen extends StatefulWidget {
@@ -47,10 +48,11 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Favorites",
           style: TextStyle(
             fontSize: 18,
+            fontFamily: GoogleFonts.kanit().fontFamily,
           ),
         ),
       ),
@@ -59,12 +61,23 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               child: CircularProgressIndicator.adaptive(),
             )
           : _movieList.isEmpty
-              ? const Center(
+              ? Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("It's empty!"),
-                      Text("Add your favorite movies🎬"),
+                      Text(
+                        "It's empty!",
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.tertiary,
+                          fontSize: 20,
+                        ),
+                      ),
+                      const Text(
+                        "Add your favorite movies🎬",
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
                     ],
                   ),
                 )
