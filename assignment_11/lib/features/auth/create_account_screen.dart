@@ -2,6 +2,7 @@ import 'package:assignment_11/constants/colors.dart';
 import 'package:assignment_11/constants/gaps.dart';
 import 'package:assignment_11/constants/sizes.dart';
 import 'package:assignment_11/features/auth/customize_experience_screen.dart';
+import 'package:assignment_11/features/auth/models/user_data.dart';
 import 'package:assignment_11/features/auth/widgets/field_check_mark.dart';
 import 'package:assignment_11/features/auth/widgets/screen_title.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,7 +30,6 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
   final Map<String, String> _formData = {};
 
   bool _isBirthSeleted = false;
-  bool _isValidate = false;
 
   void _onScafoldTap() {
     FocusScope.of(context).unfocus();
@@ -107,26 +107,21 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
 
   void _onNextTap() {
     if (_formKey.currentState!.validate()) {
-      if (!_isValidate) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const CustomizeExperienceScreen(),
-          ),
-        ).then((value) {
-          if (value == true) {
-            setState(() {
-              _isValidate = true;
-            });
-          }
-        });
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CustomizeExperienceScreen(
+              userData: UserData(
+            userName: _nameController.text,
+            userContact: _contactController.text,
+            userBirthday: _birthdayController.text,
+          )),
+        ),
+      );
 
-        setState(() {
-          _isBirthSeleted = false;
-        });
-      } else {
-        _formKey.currentState!.save();
-      }
+      setState(() {
+        _isBirthSeleted = false;
+      });
     }
   }
 
@@ -200,7 +195,6 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                               vertical: Sizes.size6,
                             ),
                             child: TextFormField(
-                              readOnly: _isValidate,
                               controller: _nameController,
                               keyboardType: TextInputType.name,
                               decoration: InputDecoration(
@@ -244,7 +238,6 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                               vertical: Sizes.size6,
                             ),
                             child: TextFormField(
-                              readOnly: _isValidate,
                               controller: _contactController,
                               style: const TextStyle(
                                 color: Color(ThemeColors.black),
@@ -298,7 +291,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                                 TextFormField(
                                   controller: _birthdayController,
                                   readOnly: true,
-                                  onTap: _isValidate ? null : _onBirthTap,
+                                  onTap: _onBirthTap,
                                   decoration: InputDecoration(
                                     label: Text(
                                       "Date of birth",
@@ -354,107 +347,37 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     ),
                   ],
                 ),
-                Column(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Visibility(
-                      visible: _isValidate,
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          bottom: Sizes.size12,
+                    GestureDetector(
+                      onTap: _onNextTap,
+                      child: AnimatedContainer(
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width * 0.2,
+                        height: 40,
+                        duration: const Duration(
+                          milliseconds: 150,
                         ),
-                        child: RichText(
-                          text: TextSpan(
-                            style: TextStyle(
-                              fontFamily: "montserrat",
-                              color: const Color(ThemeColors.black)
-                                  .withOpacity(0.7),
-                              height: 1.5,
-                            ),
-                            children: [
-                              const TextSpan(
-                                  text: "By signning up, you agree to our "),
-                              TextSpan(
-                                text: "Terms",
-                                style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                              ),
-                              const TextSpan(text: ", "),
-                              TextSpan(
-                                text: "Privacy Policy",
-                                style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                              ),
-                              const TextSpan(text: ", and "),
-                              TextSpan(
-                                text: "Cookie Use",
-                                style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                              ),
-                              const TextSpan(
-                                  text:
-                                      ". Twitter may use your contact information, including your email address and phone number for purposes outlined in our Privacy Policy. "),
-                              TextSpan(
-                                text: "Learn more",
-                                style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                              ),
-                              const TextSpan(
-                                  text:
-                                      ". Others will be able to find you by emial or phone number, when provided unless you choose otherwise"),
-                              TextSpan(
-                                text: " here",
-                                style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                              ),
-                            ],
+                        decoration: BoxDecoration(
+                          color: _fieldCheck(type: "name") &&
+                                  _fieldCheck(type: "contact") &&
+                                  _fieldCheck(type: "birthday")
+                              ? const Color(ThemeColors.black)
+                              : const Color(ThemeColors.lightGray),
+                          borderRadius: BorderRadius.circular(
+                            Sizes.size20,
+                          ),
+                        ),
+                        child: const Text(
+                          "Next",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: Sizes.size16,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: _isValidate
-                          ? MainAxisAlignment.center
-                          : MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                          onTap: _onNextTap,
-                          child: AnimatedContainer(
-                            alignment: Alignment.center,
-                            width: _isValidate
-                                ? MediaQuery.of(context).size.width * 0.8
-                                : MediaQuery.of(context).size.width * 0.2,
-                            height: 40,
-                            duration: const Duration(
-                              milliseconds: 150,
-                            ),
-                            decoration: BoxDecoration(
-                              color: !_isValidate
-                                  ? _fieldCheck(type: "name") &&
-                                          _fieldCheck(type: "contact") &&
-                                          _fieldCheck(type: "birthday")
-                                      ? const Color(ThemeColors.black)
-                                      : const Color(ThemeColors.lightGray)
-                                  : const Color(ThemeColors.twitterBlue),
-                              borderRadius: BorderRadius.circular(
-                                Sizes.size20,
-                              ),
-                            ),
-                            child: Text(
-                              _isValidate ? "Sign up" : "Next",
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: Sizes.size16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
                   ],
                 ),

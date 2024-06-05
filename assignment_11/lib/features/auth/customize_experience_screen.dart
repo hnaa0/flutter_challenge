@@ -1,12 +1,16 @@
 import 'package:assignment_11/constants/colors.dart';
 import 'package:assignment_11/constants/gaps.dart';
 import 'package:assignment_11/constants/sizes.dart';
+import 'package:assignment_11/features/auth/create_account_signup_screen.dart';
+import 'package:assignment_11/features/auth/models/user_data.dart';
 import 'package:assignment_11/features/auth/widgets/screen_title.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomizeExperienceScreen extends StatefulWidget {
-  const CustomizeExperienceScreen({super.key});
+  const CustomizeExperienceScreen({super.key, required this.userData});
+
+  final UserData userData;
 
   @override
   State<CustomizeExperienceScreen> createState() =>
@@ -25,7 +29,14 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
   void _onNextTap() {
     if (!_switchValue) return;
 
-    Navigator.pop(context, true);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CreateAccountSignupScreen(
+          userData: widget.userData,
+        ),
+      ),
+    );
   }
 
   @override
