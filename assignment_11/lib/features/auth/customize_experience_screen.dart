@@ -136,33 +136,28 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  bottom: Sizes.size8,
-                ),
-                child: GestureDetector(
-                  onTap: _onNextTap,
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 150),
-                    alignment: Alignment.center,
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    padding: const EdgeInsets.symmetric(
-                      vertical: Sizes.size16,
-                      horizontal: Sizes.size28,
-                    ),
-                    decoration: BoxDecoration(
-                      color: _switchValue
-                          ? const Color(ThemeColors.black)
-                          : const Color(ThemeColors.lightGray),
-                      borderRadius: BorderRadius.circular(Sizes.size28),
-                    ),
-                    child: const Text(
-                      "Next",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: Sizes.size18,
-                      ),
+              GestureDetector(
+                onTap: _onNextTap,
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 150),
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: Sizes.size16,
+                    horizontal: Sizes.size28,
+                  ),
+                  decoration: BoxDecoration(
+                    color: _switchValue
+                        ? const Color(ThemeColors.black)
+                        : const Color(ThemeColors.lightGray),
+                    borderRadius: BorderRadius.circular(Sizes.size28),
+                  ),
+                  child: const Text(
+                    "Next",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: Sizes.size18,
                     ),
                   ),
                 ),
