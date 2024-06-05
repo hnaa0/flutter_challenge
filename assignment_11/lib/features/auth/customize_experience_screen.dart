@@ -1,8 +1,8 @@
+import 'package:assignment_11/constants/colors.dart';
 import 'package:assignment_11/constants/gaps.dart';
 import 'package:assignment_11/constants/sizes.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:assignment_11/features/auth/widgets/screen_title.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomizeExperienceScreen extends StatefulWidget {
@@ -24,18 +24,20 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
 
   void _onNextTap() {
     if (!_switchValue) return;
+
+    Navigator.pop(context, true);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Icon(
           FontAwesomeIcons.twitter,
           color: Theme.of(context).primaryColor,
           size: Sizes.size28,
         ),
-        toolbarHeight: 80,
       ),
       body: SafeArea(
         child: Padding(
@@ -48,13 +50,7 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
             children: [
               Column(
                 children: [
-                  const Text(
-                    "Customize your experience",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w800,
-                      fontSize: Sizes.size28,
-                    ),
-                  ),
+                  const ScreenTitle(title: "Customize your experience"),
                   Gaps.v24,
                   const Text(
                     "Track where you see Twitter content across the web",
@@ -89,7 +85,7 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
                     text: TextSpan(
                       style: TextStyle(
                         fontFamily: "montserrat",
-                        color: const Color(0xff14171A).withOpacity(0.7),
+                        color: const Color(ThemeColors.black).withOpacity(0.7),
                         height: 1.5,
                       ),
                       children: [
@@ -145,8 +141,8 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
                     ),
                     decoration: BoxDecoration(
                       color: _switchValue
-                          ? const Color(0xff14171A)
-                          : const Color(0xffAAB8C2),
+                          ? const Color(ThemeColors.black)
+                          : const Color(ThemeColors.lightGray),
                       borderRadius: BorderRadius.circular(Sizes.size28),
                     ),
                     child: const Text(

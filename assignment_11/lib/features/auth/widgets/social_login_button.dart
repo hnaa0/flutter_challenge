@@ -1,3 +1,4 @@
+import 'package:assignment_11/constants/colors.dart';
 import 'package:assignment_11/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class SocialLoginButton extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: const Color(0xffAAB8C2),
+              color: const Color(ThemeColors.lightGray),
             ),
             borderRadius: BorderRadius.circular(Sizes.size28),
           ),

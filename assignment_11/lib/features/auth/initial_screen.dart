@@ -1,3 +1,4 @@
+import 'package:assignment_11/constants/colors.dart';
 import 'package:assignment_11/constants/gaps.dart';
 import 'package:assignment_11/constants/sizes.dart';
 import 'package:assignment_11/features/auth/create_account_screen.dart';
@@ -19,34 +20,27 @@ class InitialScreen extends StatelessWidget {
         ),
         toolbarHeight: 80,
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: Sizes.size8,
-            horizontal: Sizes.size28,
-          ),
-          child: Column(
-            children: [
-              const Flexible(
-                flex: 3,
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      textAlign: TextAlign.center,
-                      "See what's happening in the world right now.",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w800,
-                        fontSize: Sizes.size32,
-                      ),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: Sizes.size8,
+              horizontal: Sizes.size28,
+            ),
+            child: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: Sizes.size80),
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    "See what's happening in the world right now.",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: Sizes.size32,
                     ),
-                  ],
+                  ),
                 ),
-              ),
-              Flexible(
-                flex: 5,
-                child: Column(
+                Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     const SocialLoginButton(
@@ -61,7 +55,7 @@ class InitialScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Divider(
-                            color: Color(0xffAAB8C2),
+                            color: Color(ThemeColors.lightGray),
                             thickness: 0.5,
                           ),
                         ),
@@ -78,7 +72,7 @@ class InitialScreen extends StatelessWidget {
                         ),
                         Expanded(
                           child: Divider(
-                            color: Color(0xffAAB8C2),
+                            color: Color(ThemeColors.lightGray),
                             thickness: 0.5,
                           ),
                         ),
@@ -101,7 +95,7 @@ class InitialScreen extends StatelessWidget {
                             vertical: Sizes.size16,
                           ),
                           decoration: BoxDecoration(
-                            color: const Color(0xff14171A),
+                            color: const Color(ThemeColors.black),
                             borderRadius: BorderRadius.circular(Sizes.size28),
                           ),
                           child: const Text(
@@ -121,7 +115,8 @@ class InitialScreen extends StatelessWidget {
                       text: TextSpan(
                         style: TextStyle(
                           fontFamily: "montserrat",
-                          color: const Color(0xff14171A).withOpacity(0.7),
+                          color:
+                              const Color(ThemeColors.black).withOpacity(0.7),
                           fontSize: Sizes.size16,
                         ),
                         children: [
@@ -157,7 +152,8 @@ class InitialScreen extends StatelessWidget {
                         Text(
                           "have an account already?",
                           style: TextStyle(
-                            color: const Color(0xff14171A).withOpacity(0.7),
+                            color:
+                                const Color(ThemeColors.black).withOpacity(0.7),
                           ),
                         ),
                         Gaps.h6,
@@ -172,8 +168,8 @@ class InitialScreen extends StatelessWidget {
                     Gaps.v20,
                   ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

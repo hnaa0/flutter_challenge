@@ -1,3 +1,4 @@
+import 'package:assignment_11/constants/colors.dart';
 import 'package:assignment_11/features/auth/initial_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,11 +15,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Tiktok',
       theme: ThemeData(
-        primaryColor: const Color(0xff1DA1F2),
+        primaryColor: const Color(ThemeColors.twitterBlue),
         useMaterial3: true,
-        scaffoldBackgroundColor: const Color(0xffF5F8FA),
+        scaffoldBackgroundColor: const Color(ThemeColors.extraExtraLightGray),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xffF5F8FA),
+          backgroundColor: Color(ThemeColors.extraExtraLightGray),
           scrolledUnderElevation: 0,
           elevation: 0,
           centerTitle: true,
