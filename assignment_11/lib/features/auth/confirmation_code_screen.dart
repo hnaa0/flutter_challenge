@@ -4,7 +4,7 @@ import 'package:assignment_11/constants/sizes.dart';
 import 'package:assignment_11/features/auth/password_screen.dart';
 import 'package:assignment_11/features/auth/widgets/app_bar.dart';
 import 'package:assignment_11/features/auth/widgets/field_check_mark.dart';
-import 'package:assignment_11/features/auth/widgets/screen_title.dart';
+import 'package:assignment_11/features/auth/widgets/main_sub_text_pack.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -75,26 +75,16 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const ScreenTitle(title: "We sent you a code"),
-                Gaps.v20,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Enter it below to vertify",
-                      style: TextStyle(
-                        color: const Color(ThemeColors.black).withOpacity(0.7),
-                        fontSize: Sizes.size16,
-                      ),
-                    ),
-                    Text(
-                      "${widget.userContact}.",
-                      style: TextStyle(
-                        color: const Color(ThemeColors.black).withOpacity(0.7),
-                        fontSize: Sizes.size16,
-                      ),
-                    ),
-                  ],
+                const MainSubTextPack(
+                  main: "We sent you a code",
+                  sub: "Enter it below to vertify",
+                ),
+                Text(
+                  "${widget.userContact}.",
+                  style: TextStyle(
+                    color: const Color(ThemeColors.black).withOpacity(0.7),
+                    fontSize: Sizes.size16,
+                  ),
                 ),
                 Gaps.v32,
                 Flexible(

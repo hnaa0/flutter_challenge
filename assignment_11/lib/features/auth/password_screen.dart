@@ -1,9 +1,10 @@
 import 'package:assignment_11/constants/colors.dart';
 import 'package:assignment_11/constants/gaps.dart';
 import 'package:assignment_11/constants/sizes.dart';
+import 'package:assignment_11/features/auth/interests_screen.dart';
 import 'package:assignment_11/features/auth/widgets/app_bar.dart';
 import 'package:assignment_11/features/auth/widgets/field_check_mark.dart';
-import 'package:assignment_11/features/auth/widgets/screen_title.dart';
+import 'package:assignment_11/features/auth/widgets/main_sub_text_pack.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -29,6 +30,17 @@ class _PasswordScreenState extends State<PasswordScreen> {
     setState(() {
       _isShowed = !_isShowed;
     });
+  }
+
+  void _onNextTap() {
+    if (!_isPasswordValid()) return;
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const InterestsScreen(),
+      ),
+    );
   }
 
   @override
@@ -68,14 +80,9 @@ class _PasswordScreenState extends State<PasswordScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const ScreenTitle(title: "You'll need a password"),
-                Gaps.v20,
-                Text(
-                  "Make sure it's 8 charactrers or more.",
-                  style: TextStyle(
-                    color: const Color(ThemeColors.black).withOpacity(0.7),
-                    fontSize: Sizes.size16,
-                  ),
+                const MainSubTextPack(
+                  main: "You'll need a password",
+                  sub: "Make sure it's 8 charactrers or more.",
                 ),
                 Gaps.v36,
                 TextField(
@@ -141,7 +148,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
             color: const Color(ThemeColors.extraExtraLightGray),
             elevation: 0,
             child: GestureDetector(
-              onTap: () {},
+              onTap: _onNextTap,
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 150),
                 alignment: Alignment.center,
