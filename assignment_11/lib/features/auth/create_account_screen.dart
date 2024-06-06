@@ -3,11 +3,11 @@ import 'package:assignment_11/constants/gaps.dart';
 import 'package:assignment_11/constants/sizes.dart';
 import 'package:assignment_11/features/auth/customize_experience_screen.dart';
 import 'package:assignment_11/features/auth/models/user_data.dart';
+import 'package:assignment_11/features/auth/widgets/app_bar.dart';
 import 'package:assignment_11/features/auth/widgets/field_check_mark.dart';
 import 'package:assignment_11/features/auth/widgets/screen_title.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CreateAccountScreen extends StatefulWidget {
   const CreateAccountScreen({super.key});
@@ -145,30 +145,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
     return GestureDetector(
       onTap: _onScafoldTap,
       child: Scaffold(
-        appBar: AppBar(
-          title: Icon(
-            FontAwesomeIcons.twitter,
-            color: Theme.of(context).primaryColor,
-            size: Sizes.size28,
-          ),
-          leadingWidth: Sizes.size80,
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: const Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Cancel",
-                  style: TextStyle(
-                    fontSize: Sizes.size16,
-                  ),
-                ),
-              ],
-            ),
-          ),
+        appBar: const AppBarWidget(
+          leadingType: LeadingType.cancel,
         ),
         body: SafeArea(
           child: Padding(

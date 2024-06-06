@@ -3,9 +3,9 @@ import 'package:assignment_11/constants/gaps.dart';
 import 'package:assignment_11/constants/sizes.dart';
 import 'package:assignment_11/features/auth/create_account_signup_screen.dart';
 import 'package:assignment_11/features/auth/models/user_data.dart';
+import 'package:assignment_11/features/auth/widgets/app_bar.dart';
 import 'package:assignment_11/features/auth/widgets/screen_title.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomizeExperienceScreen extends StatefulWidget {
   const CustomizeExperienceScreen({super.key, required this.userData});
@@ -43,12 +43,8 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: Icon(
-          FontAwesomeIcons.twitter,
-          color: Theme.of(context).primaryColor,
-          size: Sizes.size28,
-        ),
+      appBar: const AppBarWidget(
+        leadingType: LeadingType.back,
       ),
       body: SafeArea(
         child: Padding(

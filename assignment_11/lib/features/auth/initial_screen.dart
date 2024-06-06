@@ -2,6 +2,7 @@ import 'package:assignment_11/constants/colors.dart';
 import 'package:assignment_11/constants/gaps.dart';
 import 'package:assignment_11/constants/sizes.dart';
 import 'package:assignment_11/features/auth/create_account_screen.dart';
+import 'package:assignment_11/features/auth/widgets/app_bar.dart';
 import 'package:assignment_11/features/auth/widgets/social_login_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,13 +13,8 @@ class InitialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Icon(
-          FontAwesomeIcons.twitter,
-          color: Theme.of(context).primaryColor,
-          size: Sizes.size28,
-        ),
-        toolbarHeight: 80,
+      appBar: const AppBarWidget(
+        leadingType: LeadingType.none,
       ),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -50,7 +46,7 @@ class InitialScreen extends StatelessWidget {
                     const SocialLoginButton(
                       icon: Icon(FontAwesomeIcons.github),
                     ),
-                    Gaps.v16,
+                    Gaps.v20,
                     const Row(
                       children: [
                         Expanded(
@@ -78,7 +74,7 @@ class InitialScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Gaps.v12,
+                    Gaps.v20,
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -146,7 +142,7 @@ class InitialScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Gaps.v44,
+                    Gaps.v56,
                     Row(
                       children: [
                         Text(
