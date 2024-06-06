@@ -1,6 +1,7 @@
 import 'package:assignment_11/constants/colors.dart';
 import 'package:assignment_11/constants/gaps.dart';
 import 'package:assignment_11/constants/sizes.dart';
+import 'package:assignment_11/features/auth/password_screen.dart';
 import 'package:assignment_11/features/auth/widgets/app_bar.dart';
 import 'package:assignment_11/features/auth/widgets/field_check_mark.dart';
 import 'package:assignment_11/features/auth/widgets/screen_title.dart';
@@ -25,6 +26,17 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
 
   bool _isPinValid() {
     return _pinController.length == 6 ? true : false;
+  }
+
+  void _onNextTap() {
+    if (!_isPinValid()) return;
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const PasswordScreen(),
+      ),
+    );
   }
 
   @override
@@ -162,7 +174,7 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
             color: const Color(ThemeColors.extraExtraLightGray),
             elevation: 0,
             child: GestureDetector(
-              onTap: () {},
+              onTap: _onNextTap,
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 150),
                 alignment: Alignment.center,
