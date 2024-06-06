@@ -1,12 +1,12 @@
 import 'package:assignment_11/constants/colors.dart';
 import 'package:assignment_11/constants/gaps.dart';
 import 'package:assignment_11/constants/sizes.dart';
+import 'package:assignment_11/features/auth/confirmation_code_screen.dart';
 import 'package:assignment_11/features/auth/models/user_data.dart';
 import 'package:assignment_11/features/auth/widgets/app_bar.dart';
 import 'package:assignment_11/features/auth/widgets/field_check_mark.dart';
 import 'package:assignment_11/features/auth/widgets/screen_title.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CreateAccountSignupScreen extends StatelessWidget {
   const CreateAccountSignupScreen({
@@ -15,6 +15,17 @@ class CreateAccountSignupScreen extends StatelessWidget {
   });
 
   final UserData userData;
+
+  void _onSignUpTap(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ConfirmationCodeScreen(
+          userContact: userData.userContact,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -219,7 +230,7 @@ class CreateAccountSignupScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () => _onSignUpTap(context),
                         child: Container(
                           alignment: Alignment.center,
                           width: MediaQuery.of(context).size.width * 0.8,

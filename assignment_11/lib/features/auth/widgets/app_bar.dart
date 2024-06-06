@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 enum LeadingType {
   cancel,
   back,
-  none;
+  none,
 }
 
 extension LeadingTypeExtenstion on LeadingType {
