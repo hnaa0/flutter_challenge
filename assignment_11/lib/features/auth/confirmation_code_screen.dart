@@ -25,6 +25,7 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
   final FocusNode _focusNode = FocusNode();
 
   bool _isPinValid() {
+    // return false;
     return _pinController.length == 6 ? true : false;
   }
 
