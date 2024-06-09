@@ -24,21 +24,29 @@ class ConfirmationCodeScreen extends StatefulWidget {
 class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
   final TextEditingController _pinController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
+  bool _isLoading = false;
 
   bool _isPinValid() {
-    // return false;
     return _pinController.length == 6 ? true : false;
   }
 
-  void _onNextTap() {
+  Future<void> _onNextTap() async {
     if (!_isPinValid()) return;
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const PasswordScreen(),
-      ),
-    );
+    setState(() {
+      _isLoading = true;
+    });
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    if (mounted) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const PasswordScreen(),
+        ),
+      );
+    }
   }
 
   @override
@@ -169,6 +177,7 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
               onTap: _onNextTap,
               child: WideNextButton(
                 isValid: _isPinValid(),
+                isLoading: _isLoading,
               ),
             ),
           ),

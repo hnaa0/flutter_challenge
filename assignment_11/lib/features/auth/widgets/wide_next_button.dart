@@ -6,9 +6,11 @@ class WideNextButton extends StatelessWidget {
   const WideNextButton({
     super.key,
     required this.isValid,
+    this.isLoading = false,
   });
 
   final bool isValid;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +28,24 @@ class WideNextButton extends StatelessWidget {
             : const Color(ThemeColors.lightGray),
         borderRadius: BorderRadius.circular(Sizes.size28),
       ),
-      child: const Text(
-        "Next",
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w600,
-          fontSize: Sizes.size18,
-        ),
-      ),
+      child: isLoading
+          ? const SizedBox(
+              width: Sizes.size20,
+              height: Sizes.size20,
+              child: CircularProgressIndicator(
+                color: Color(
+                  ThemeColors.twitterBlue,
+                ),
+              ),
+            )
+          : const Text(
+              "Next",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: Sizes.size18,
+              ),
+            ),
     );
   }
 }
