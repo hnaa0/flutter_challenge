@@ -1,5 +1,5 @@
 import 'package:assignment_11/constants/sizes.dart';
-import 'package:assignment_11/features/auth/initial_screen.dart';
+import 'package:assignment_11/features/auth/screens/initial_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

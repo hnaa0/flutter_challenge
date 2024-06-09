@@ -1,7 +1,7 @@
 import 'package:assignment_11/constants/colors.dart';
 import 'package:assignment_11/constants/gaps.dart';
 import 'package:assignment_11/constants/sizes.dart';
-import 'package:assignment_11/features/auth/create_account_screen.dart';
+import 'package:assignment_11/features/auth/screens/create_account_screen.dart';
 import 'package:assignment_11/features/auth/widgets/app_bar.dart';
 import 'package:assignment_11/features/auth/widgets/social_login_button.dart';
 import 'package:flutter/material.dart';

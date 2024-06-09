@@ -3,8 +3,8 @@ import 'package:assignment_11/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class InterestCard extends StatelessWidget {
-  const InterestCard({
+class VerticalScrollCard extends StatelessWidget {
+  const VerticalScrollCard({
     super.key,
     required this.text,
     required this.isSelected,

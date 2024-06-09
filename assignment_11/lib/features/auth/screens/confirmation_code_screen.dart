@@ -1,7 +1,7 @@
 import 'package:assignment_11/constants/colors.dart';
 import 'package:assignment_11/constants/gaps.dart';
 import 'package:assignment_11/constants/sizes.dart';
-import 'package:assignment_11/features/auth/password_screen.dart';
+import 'package:assignment_11/features/auth/screens/password_screen.dart';
 import 'package:assignment_11/features/auth/widgets/app_bar.dart';
 import 'package:assignment_11/features/auth/widgets/field_check_mark.dart';
 import 'package:assignment_11/features/auth/widgets/main_sub_text_pack.dart';

@@ -1,28 +1,15 @@
 import 'package:assignment_11/constants/colors.dart';
 import 'package:assignment_11/constants/gaps.dart';
+import 'package:assignment_11/constants/interests.dart';
 import 'package:assignment_11/constants/sizes.dart';
+import 'package:assignment_11/features/auth/screens/interests_part2_screen.dart';
 import 'package:assignment_11/features/auth/widgets/app_bar.dart';
-import 'package:assignment_11/features/auth/widgets/interest_card.dart';
+import 'package:assignment_11/features/auth/widgets/vertical_scroll_card.dart';
 import 'package:assignment_11/features/auth/widgets/main_sub_text_pack.dart';
 import 'package:flutter/material.dart';
 
 class InterestsScreen extends StatefulWidget {
   const InterestsScreen({super.key});
-
-  static List<String> interestList = [
-    "Fashion & beauty",
-    "Outdoor",
-    "Arts & culture",
-    "Animation & comics",
-    "Business & finance",
-    "Food",
-    "Animal",
-    "Travel",
-    "Entertainment",
-    "Music",
-    "Gaming",
-    "Politics"
-  ];
 
   @override
   State<InterestsScreen> createState() => _InterestsScreenState();
@@ -30,23 +17,27 @@ class InterestsScreen extends StatefulWidget {
 
 class _InterestsScreenState extends State<InterestsScreen> {
   final List<String> _selectedItemList = [];
-  final List<bool> _isSelectedList =
-      List.filled(InterestsScreen.interestList.length, false);
 
-  void onInterestTap({required String item, required int index}) {
+  void onInterestTap({required String item}) {
     setState(() {
       if (!_selectedItemList.contains(item)) {
         _selectedItemList.add(item);
       } else {
         _selectedItemList.remove(item);
       }
-
-      _isSelectedList[index] = !_isSelectedList[index];
     });
   }
 
   void _onNextTap() {
     if (_selectedItemList.length < 3) return;
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) =>
+            InterestsPart2Screen(selectedMain: _selectedItemList),
+      ),
+    );
   }
 
   @override
@@ -86,30 +77,30 @@ class _InterestsScreenState extends State<InterestsScreen> {
                     vertical: Sizes.size32,
                     horizontal: Sizes.size16,
                   ),
-                  itemCount: InterestsScreen.interestList.length,
+                  itemCount: interests.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: Sizes.size10,
                     crossAxisSpacing: Sizes.size10,
                     childAspectRatio: 2 / 1,
                   ),
-                  itemBuilder: (context, index) => Column(
-                    children: [
-                      AspectRatio(
-                        aspectRatio: 2 / 1,
-                        child: GestureDetector(
-                          onTap: () => onInterestTap(
-                            item: InterestsScreen.interestList[index],
-                            index: index,
+                  itemBuilder: (context, index) {
+                    var main = interests[index].main;
+                    return Column(
+                      children: [
+                        AspectRatio(
+                          aspectRatio: 2 / 1,
+                          child: GestureDetector(
+                            onTap: () => onInterestTap(item: main),
+                            child: VerticalScrollCard(
+                              isSelected: _selectedItemList.contains(main),
+                              text: main,
+                            ),
                           ),
-                          child: InterestCard(
-                            isSelected: _isSelectedList[index],
-                            text: InterestsScreen.interestList[index],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
+                        )
+                      ],
+                    );
+                  },
                 ),
               ),
             ],

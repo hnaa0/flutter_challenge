@@ -1,5 +1,5 @@
 import 'package:assignment_11/constants/colors.dart';
-import 'package:assignment_11/features/auth/initial_screen.dart';
+import 'package:assignment_11/features/auth/screens/interests_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         ),
         fontFamily: "Montserrat",
       ),
-      home: const InitialScreen(),
+      home: const InterestsScreen(),
     );
   }
 }
