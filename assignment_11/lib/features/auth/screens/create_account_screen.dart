@@ -5,6 +5,7 @@ import 'package:assignment_11/features/auth/screens/customize_experience_screen.
 import 'package:assignment_11/features/auth/models/user_data.dart';
 import 'package:assignment_11/features/auth/widgets/app_bar.dart';
 import 'package:assignment_11/features/auth/widgets/field_check_mark.dart';
+import 'package:assignment_11/features/auth/widgets/next_button.dart';
 import 'package:assignment_11/features/auth/widgets/screen_title.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -329,34 +330,9 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     GestureDetector(
-                      onTap: _onNextTap,
-                      child: AnimatedContainer(
-                        alignment: Alignment.center,
-                        width: MediaQuery.of(context).size.width * 0.2,
-                        height: 40,
-                        duration: const Duration(
-                          milliseconds: 150,
-                        ),
-                        decoration: BoxDecoration(
-                          color: _fieldCheck(type: "name") &&
-                                  _fieldCheck(type: "contact") &&
-                                  _fieldCheck(type: "birthday")
-                              ? const Color(ThemeColors.black)
-                              : const Color(ThemeColors.lightGray),
-                          borderRadius: BorderRadius.circular(
-                            Sizes.size20,
-                          ),
-                        ),
-                        child: const Text(
-                          "Next",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: Sizes.size16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ),
+                        onTap: _onNextTap,
+                        child: const SizedBox(
+                            height: 55, child: NextButton(isValid: true))),
                   ],
                 ),
               ],
