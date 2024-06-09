@@ -5,6 +5,7 @@ import 'package:assignment_11/features/auth/screens/create_account_signup_screen
 import 'package:assignment_11/features/auth/models/user_data.dart';
 import 'package:assignment_11/features/auth/widgets/app_bar.dart';
 import 'package:assignment_11/features/auth/widgets/screen_title.dart';
+import 'package:assignment_11/features/auth/widgets/wide_next_button.dart';
 import 'package:flutter/material.dart';
 
 class CustomizeExperienceScreen extends StatefulWidget {
@@ -132,33 +133,18 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
                   ),
                 ],
               ),
-              GestureDetector(
-                onTap: _onNextTap,
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 150),
-                  alignment: Alignment.center,
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: Sizes.size16,
-                    horizontal: Sizes.size28,
-                  ),
-                  decoration: BoxDecoration(
-                    color: _switchValue
-                        ? const Color(ThemeColors.black)
-                        : const Color(ThemeColors.lightGray),
-                    borderRadius: BorderRadius.circular(Sizes.size28),
-                  ),
-                  child: const Text(
-                    "Next",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: Sizes.size18,
-                    ),
-                  ),
-                ),
-              ),
             ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        height: 80,
+        color: const Color(ThemeColors.extraExtraLightGray),
+        elevation: 0,
+        child: GestureDetector(
+          onTap: _onNextTap,
+          child: WideNextButton(
+            isValid: _switchValue,
           ),
         ),
       ),

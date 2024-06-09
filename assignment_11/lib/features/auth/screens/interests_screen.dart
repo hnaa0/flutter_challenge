@@ -4,6 +4,7 @@ import 'package:assignment_11/constants/interests.dart';
 import 'package:assignment_11/constants/sizes.dart';
 import 'package:assignment_11/features/auth/screens/interests_part2_screen.dart';
 import 'package:assignment_11/features/auth/widgets/app_bar.dart';
+import 'package:assignment_11/features/auth/widgets/next_button.dart';
 import 'package:assignment_11/features/auth/widgets/vertical_scroll_card.dart';
 import 'package:assignment_11/features/auth/widgets/main_sub_text_pack.dart';
 import 'package:flutter/material.dart';
@@ -126,31 +127,8 @@ class _InterestsScreenState extends State<InterestsScreen> {
                 ),
               ),
               const Spacer(),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: Sizes.size6),
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 150),
-                  alignment: Alignment.center,
-                  width: MediaQuery.of(context).size.width * 0.2,
-                  padding: const EdgeInsets.symmetric(
-                      // vertical: Sizes.size16,
-                      // horizontal: Sizes.size28,
-                      ),
-                  decoration: BoxDecoration(
-                    color: _selectedItemList.length > 2
-                        ? const Color(ThemeColors.black)
-                        : const Color(ThemeColors.lightGray),
-                    borderRadius: BorderRadius.circular(Sizes.size28),
-                  ),
-                  child: const Text(
-                    "Next",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: Sizes.size16,
-                    ),
-                  ),
-                ),
+              NextButton(
+                isValid: _selectedItemList.length > 2,
               ),
             ],
           ),

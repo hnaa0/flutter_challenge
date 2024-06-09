@@ -226,37 +226,66 @@ class CreateAccountSignupScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      GestureDetector(
-                        onTap: () => _onSignUpTap(context),
-                        child: Container(
-                          alignment: Alignment.center,
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          padding: const EdgeInsets.symmetric(
-                            vertical: Sizes.size16,
-                            horizontal: Sizes.size28,
-                          ),
-                          decoration: BoxDecoration(
-                            color: const Color(ThemeColors.twitterBlue),
-                            borderRadius: BorderRadius.circular(Sizes.size28),
-                          ),
-                          child: const Text(
-                            "Sign up",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                              fontSize: Sizes.size18,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     GestureDetector(
+                  //       onTap: () => _onSignUpTap(context),
+                  //       child: Container(
+                  //         alignment: Alignment.center,
+                  //         width: MediaQuery.of(context).size.width * 0.8,
+                  //         padding: const EdgeInsets.symmetric(
+                  //           vertical: Sizes.size16,
+                  //           horizontal: Sizes.size28,
+                  //         ),
+                  //         decoration: BoxDecoration(
+                  //           color: const Color(ThemeColors.twitterBlue),
+                  //           borderRadius: BorderRadius.circular(Sizes.size28),
+                  //         ),
+                  //         child: const Text(
+                  //           "Sign up",
+                  //           style: TextStyle(
+                  //             color: Colors.white,
+                  //             fontWeight: FontWeight.w600,
+                  //             fontSize: Sizes.size18,
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                 ],
               ),
             ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        height: 80,
+        color: const Color(ThemeColors.extraExtraLightGray),
+        elevation: 0,
+        child: GestureDetector(
+          onTap: () => _onSignUpTap(context),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 150),
+            alignment: Alignment.center,
+            width: MediaQuery.of(context).size.width * 0.8,
+            padding: const EdgeInsets.symmetric(
+              vertical: Sizes.size16,
+              horizontal: Sizes.size28,
+            ),
+            decoration: BoxDecoration(
+              color: const Color(ThemeColors.twitterBlue),
+              borderRadius: BorderRadius.circular(Sizes.size28),
+            ),
+            child: const Text(
+              "Next",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: Sizes.size18,
+              ),
+            ),
           ),
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:assignment_11/constants/colors.dart';
-import 'package:assignment_11/features/auth/screens/interests_screen.dart';
+import 'package:assignment_11/features/auth/screens/initial_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Tiktok',
+      title: 'Twitter',
       theme: ThemeData(
         primaryColor: const Color(ThemeColors.twitterBlue),
         useMaterial3: true,
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         ),
         fontFamily: "Montserrat",
       ),
-      home: const InterestsScreen(),
+      home: const InitialScreen(),
     );
   }
 }
