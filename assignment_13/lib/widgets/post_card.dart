@@ -1,6 +1,7 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/widgets/certification_mark.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -172,24 +173,7 @@ class _PostCardState extends State<PostCard> {
                     Gaps.h4,
                     Opacity(
                       opacity: widget.isCertified ? 1 : 0,
-                      child: Container(
-                        alignment: Alignment.center,
-                        width: Sizes.size14,
-                        height: Sizes.size14,
-                        decoration: BoxDecoration(
-                          color: const Color(
-                            ThemeColors.twitterBlue,
-                          ),
-                          borderRadius: BorderRadius.circular(
-                            Sizes.size20,
-                          ),
-                        ),
-                        child: const FaIcon(
-                          FontAwesomeIcons.check,
-                          size: Sizes.size8,
-                          color: Colors.white,
-                        ),
-                      ),
+                      child: const CertificationMark(),
                     ),
                     const Spacer(),
                     Text(
