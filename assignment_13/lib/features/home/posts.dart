@@ -164,4 +164,15 @@ final posts = [
       "https://scontent-lhr8-2.cdninstagram.com/v/t51.29350-15/421030496_448637841057198_1295652494835693548_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMTIxeDE1NzYuc2RyLmYyOTM1MCJ9&_nc_ht=scontent-lhr8-2.cdninstagram.com&_nc_cat=106&_nc_ohc=MhTXQbgDYw8Q7kNvgHaRSFG&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzMzMDk4MjIzMTE4MjY1MzIxOA%3D%3D.2-ccb7-5&oh=00_AYCBVkmDn_H_oYszyaHP7MIq6ojAGs3DQeWCGYmOdvhyhg&oe=666BDA95&_nc_sid=10d13b",
     ],
   ),
+  Post(
+    userName: "gnar",
+    avatarImg:
+        "https://images.pexels.com/photos/681118/pexels-photo-681118.jpeg?auto=compress&cs=tinysrgb&w=600",
+    isCertified: false,
+    postTime: "2h",
+    likes: 3,
+    replies: 0,
+    replyUsersImg: [],
+    text: "SEND ME HOME",
+  ),
 ];

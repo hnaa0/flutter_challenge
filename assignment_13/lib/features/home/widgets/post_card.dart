@@ -3,6 +3,7 @@ import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/home/widgets/certification_mark.dart';
 import 'package:assignment_13/features/home/widgets/post_card_img_slider.dart';
+import 'package:assignment_13/features/home/widgets/post_card_reply_users.dart';
 import 'package:assignment_13/features/home/widgets/post_card_user_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -86,7 +87,9 @@ class _PostCardState extends State<PostCard> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.max,
               children: [
-                PostCardUserAvatar(avatarImg: widget.avatarImg),
+                PostCardUserAvatar(
+                  avatarImg: widget.avatarImg,
+                ),
                 Gaps.v10,
                 const Expanded(
                   child: VerticalDivider(
@@ -97,70 +100,8 @@ class _PostCardState extends State<PostCard> {
                   ),
                 ),
                 Gaps.v10,
-                Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    const SizedBox(
-                      width: Sizes.size48,
-                      height: Sizes.size48,
-                    ),
-                    if (widget.replyUsersImg.length == 2) ...[
-                      Positioned(
-                        top: Sizes.size4,
-                        left: Sizes.size4,
-                        child: CircleAvatar(
-                          radius: Sizes.size10,
-                          backgroundImage:
-                              NetworkImage(widget.replyUsersImg[0]),
-                        ),
-                      ),
-                      Positioned(
-                        right: Sizes.size2,
-                        child: CircleAvatar(
-                          radius: Sizes.size14,
-                          backgroundColor: Colors.white,
-                          child: CircleAvatar(
-                            radius: Sizes.size10,
-                            backgroundImage:
-                                NetworkImage(widget.replyUsersImg[1]),
-                          ),
-                        ),
-                      ),
-                    ] else ...[
-                      Positioned(
-                        right: 0,
-                        child: widget.replyUsersImg.isNotEmpty
-                            ? CircleAvatar(
-                                radius: Sizes.size12,
-                                backgroundImage:
-                                    NetworkImage(widget.replyUsersImg[0]),
-                              )
-                            : const SizedBox(),
-                      ),
-                      Positioned(
-                        top: Sizes.size14,
-                        left: 0,
-                        child: widget.replyUsersImg.length > 1
-                            ? CircleAvatar(
-                                radius: Sizes.size10,
-                                backgroundImage:
-                                    NetworkImage(widget.replyUsersImg[1]),
-                              )
-                            : const SizedBox(),
-                      ),
-                      Positioned(
-                        left: Sizes.size20,
-                        bottom: 0,
-                        child: widget.replyUsersImg.length > 2
-                            ? CircleAvatar(
-                                radius: Sizes.size8,
-                                backgroundImage:
-                                    NetworkImage(widget.replyUsersImg[2]),
-                              )
-                            : const SizedBox(),
-                      ),
-                    ]
-                  ],
+                PostCardReplyUsers(
+                  replyUsers: widget.replyUsersImg,
                 ),
               ],
             ),
