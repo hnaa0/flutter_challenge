@@ -1,9 +1,9 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
-import 'package:assignment_13/widgets/certification_mark.dart';
-import 'package:assignment_13/widgets/post_card_img_slider.dart';
-import 'package:assignment_13/widgets/post_card_user_avatar.dart';
+import 'package:assignment_13/features/home/widgets/certification_mark.dart';
+import 'package:assignment_13/features/home/widgets/post_card_img_slider.dart';
+import 'package:assignment_13/features/home/widgets/post_card_user_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

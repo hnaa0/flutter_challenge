@@ -1,9 +1,9 @@
 import 'package:assignment_13/constants/sizes.dart';
-import 'package:assignment_13/home_screen.dart';
-import 'package:assignment_13/notifications_screen.dart';
-import 'package:assignment_13/profile_screen.dart';
-import 'package:assignment_13/search_screen.dart';
-import 'package:assignment_13/write_thread_screen.dart';
+import 'package:assignment_13/features/home/home_screen.dart';
+import 'package:assignment_13/features/notification/notifications_screen.dart';
+import 'package:assignment_13/features/profile/profile_screen.dart';
+import 'package:assignment_13/features/search/search_screen.dart';
+import 'package:assignment_13/features/write_thread/write_thread_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:assignment_13/common/widgets/nav_tab.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
