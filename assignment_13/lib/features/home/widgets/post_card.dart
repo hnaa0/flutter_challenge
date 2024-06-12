@@ -2,6 +2,7 @@ import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/home/widgets/certification_mark.dart';
+import 'package:assignment_13/features/home/widgets/ellipsis_bottom_sheet.dart';
 import 'package:assignment_13/features/home/widgets/post_card_img_slider.dart';
 import 'package:assignment_13/features/home/widgets/post_card_reply_users.dart';
 import 'package:assignment_13/features/home/widgets/post_card_user_avatar.dart';
@@ -59,6 +60,14 @@ class _PostCardState extends State<PostCard> {
     setState(() {
       _isRetweet = !_isRetweet;
     });
+  }
+
+  void _onEllipsisTap(BuildContext context) {
+    showModalBottomSheet(
+      elevation: 0,
+      context: context,
+      builder: (context) => const EllipsisBottomSheet(),
+    );
   }
 
   @override
@@ -134,9 +143,12 @@ class _PostCardState extends State<PostCard> {
                         ),
                       ),
                       Gaps.h14,
-                      const FaIcon(
-                        FontAwesomeIcons.ellipsis,
-                        size: Sizes.size18,
+                      GestureDetector(
+                        onTap: () => _onEllipsisTap(context),
+                        child: const FaIcon(
+                          FontAwesomeIcons.ellipsis,
+                          size: Sizes.size18,
+                        ),
                       ),
                       Gaps.h6,
                     ],
