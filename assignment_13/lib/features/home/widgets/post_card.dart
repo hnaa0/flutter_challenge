@@ -67,6 +67,7 @@ class _PostCardState extends State<PostCard> {
       elevation: 0,
       context: context,
       builder: (context) => const EllipsisBottomSheet(),
+      showDragHandle: true,
     );
   }
 

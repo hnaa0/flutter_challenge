@@ -24,6 +24,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     });
   }
 
+  void _onWriteTap(BuildContext context) {
+    showModalBottomSheet(
+        context: context, builder: (context) => const WriteThreadScreen());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,10 +42,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             offstage: _selectedIdx != 1,
             child: const SearchScreen(),
           ),
-          Offstage(
-            offstage: _selectedIdx != 2,
-            child: const WriteThreadScreen(),
-          ),
+          // Offstage(
+          //   offstage: _selectedIdx != 2,
+          //   child: const WriteThreadScreen(),
+          // ),
           Offstage(
             offstage: _selectedIdx != 3,
             child: const NotificationsScreen(),
@@ -68,7 +73,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             NavTab(
               icon: FontAwesomeIcons.pen,
               isSelected: _selectedIdx == 2 ? true : false,
-              onTap: () => _onNavTap(2),
+              onTap: () => _onWriteTap(context),
             ),
             NavTab(
               icon: FontAwesomeIcons.solidHeart,

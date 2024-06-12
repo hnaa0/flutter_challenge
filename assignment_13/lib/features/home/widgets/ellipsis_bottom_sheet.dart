@@ -18,16 +18,16 @@ class _EllipsisBottomSheetState extends State<EllipsisBottomSheet> {
   void _onReportTap() {
     _pageController.animateToPage(
       1,
-      duration: const Duration(milliseconds: 100),
-      curve: Curves.easeInOut,
+      duration: const Duration(milliseconds: 350),
+      curve: Curves.easeOut,
     );
   }
 
   void _onBackTap() {
     _pageController.animateToPage(
       0,
-      duration: const Duration(milliseconds: 100),
-      curve: Curves.easeInOut,
+      duration: const Duration(milliseconds: 350),
+      curve: Curves.easeOut,
     );
   }
 
@@ -46,87 +46,90 @@ class _EllipsisBottomSheetState extends State<EllipsisBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         left: Sizes.size20,
         right: Sizes.size20,
-        top: _currentPage == 0 ? Sizes.size32 : Sizes.size16,
         bottom: Sizes.size16,
       ),
-      child: SizedBox(
-        height: _currentPage == 0
-            ? MediaQuery.of(context).size.height * 0.335
-            : null,
+      child: AnimatedContainer(
+        duration: const Duration(
+          milliseconds: 200,
+        ),
+        height: _currentPage == 0 ? 270 : 400,
         child: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,
           onPageChanged: (value) => _onPageChanged(value),
           children: [
-            ListView(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xffF2F2F2),
-                    borderRadius: BorderRadius.circular(Sizes.size20),
-                  ),
-                  child: const Column(
-                    children: [
-                      ListTile(
-                        title: Text(
-                          "Unfollow",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
+            Visibility(
+              visible: _currentPage == 0,
+              child: ListView(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xffF2F2F2),
+                      borderRadius: BorderRadius.circular(Sizes.size20),
+                    ),
+                    child: const Column(
+                      children: [
+                        ListTile(
+                          title: Text(
+                            "Unfollow",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                      ),
-                      Divider(
-                        thickness: Sizes.size1,
-                        color: Color(ThemeColors.extraLightGray),
-                      ),
-                      ListTile(
-                        title: Text(
-                          "Mute",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
+                        Divider(
+                          thickness: Sizes.size1,
+                          color: Color(ThemeColors.extraLightGray),
+                        ),
+                        ListTile(
+                          title: Text(
+                            "Mute",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Gaps.v16,
-                Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xffF2F2F2),
-                    borderRadius: BorderRadius.circular(Sizes.size20),
-                  ),
-                  child: Column(
-                    children: [
-                      const ListTile(
-                        title: Text(
-                          "Hide",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
+                  Gaps.v16,
+                  Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xffF2F2F2),
+                      borderRadius: BorderRadius.circular(Sizes.size20),
+                    ),
+                    child: Column(
+                      children: [
+                        const ListTile(
+                          title: Text(
+                            "Hide",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                      ),
-                      const Divider(
-                        thickness: Sizes.size1,
-                        color: Color(ThemeColors.extraLightGray),
-                      ),
-                      ListTile(
-                        onTap: _onReportTap,
-                        title: const Text(
-                          "Report",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.red,
+                        const Divider(
+                          thickness: Sizes.size1,
+                          color: Color(ThemeColors.extraLightGray),
+                        ),
+                        ListTile(
+                          onTap: _onReportTap,
+                          title: const Text(
+                            "Report",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.red,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Visibility(
               visible: _currentPage != 0,
