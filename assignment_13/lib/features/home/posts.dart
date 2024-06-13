@@ -39,7 +39,7 @@ final posts = [
     text:
         "Good morning Thriends ☀️ Let’s share some pictures and fun facts about our pets below 😍",
     postImg: [
-      "https://scontent.cdninstagram.com/v/t51.29350-15/447310197_990965042244403_5405111307856853142_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMjkweDEyNzkuc2RyLmYyOTM1MCJ9&_nc_ht=scontent.cdninstagram.com&_nc_cat=107&_nc_ohc=9RDTepMlW48Q7kNvgFwFBDP&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzM4MDg4NjQ0MTQyMzkwMTc1NQ%3D%3D.2-ccb7-5&oh=00_AYCdgJWQhF9OCpSUxJfqiqRWFLoQVoY6fsQDbZAkx0UpZA&oe=666A7D59&_nc_sid=10d13b",
+      "https://images.pexels.com/photos/20613883/pexels-photo-20613883.jpeg?auto=compress&cs=tinysrgb&w=400",
     ],
   ),
   Post(
