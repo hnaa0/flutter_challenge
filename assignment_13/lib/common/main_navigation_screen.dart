@@ -26,7 +26,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   void _onWriteTap(BuildContext context) {
     showModalBottomSheet(
-        context: context, builder: (context) => const WriteThreadScreen());
+        isScrollControlled: true,
+        context: context,
+        builder: (context) => const WriteThreadScreen());
   }
 
   @override
@@ -71,7 +73,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
               onTap: () => _onNavTap(1),
             ),
             NavTab(
-              icon: FontAwesomeIcons.pen,
+              icon: FontAwesomeIcons.penToSquare,
               isSelected: _selectedIdx == 2 ? true : false,
               onTap: () => _onWriteTap(context),
             ),
