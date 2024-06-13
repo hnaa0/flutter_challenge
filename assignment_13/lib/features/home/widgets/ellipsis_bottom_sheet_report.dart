@@ -29,6 +29,18 @@ const List<Map<String, String>> reports = [
     "title": "Nudity or sexual activity",
     "subTitle": "",
   },
+  {
+    "title": "Violence or dangerous organizations",
+    "subTitle": "",
+  },
+  {
+    "title": "Sale of illegal or regulated goods",
+    "subTitle": "",
+  },
+  {
+    "title": "Bullying or harassment",
+    "subTitle": "",
+  },
 ];
 
 class EllipsisBottomSheetReport extends StatelessWidget {
