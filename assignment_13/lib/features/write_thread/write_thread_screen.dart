@@ -14,10 +14,16 @@ class WriteThreadScreen extends StatefulWidget {
 class _WriteThreadScreenState extends State<WriteThreadScreen> {
   final TextEditingController _textController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
+  String _text = "";
 
   @override
   void initState() {
     super.initState();
+    _textController.addListener(() {
+      setState(() {
+        _text = _textController.text;
+      });
+    });
   }
 
   @override
@@ -84,107 +90,138 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
               horizontal: Sizes.size20,
               vertical: Sizes.size16,
             ),
-            child: IntrinsicHeight(
-              child: Row(
-                children: [
-                  Column(
+            child: Column(
+              children: [
+                IntrinsicHeight(
+                  child: Row(
                     children: [
-                      Container(
-                        padding: const EdgeInsets.all(
-                          Sizes.size1,
-                        ),
-                        width: Sizes.size48,
-                        height: Sizes.size48,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(
-                            ThemeColors.lightGray,
-                          ),
-                        ),
-                        child: const CircleAvatar(
-                          backgroundImage:
-                              AssetImage("assets/images/avatar.jpg"),
-                        ),
-                      ),
-                      const Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: Sizes.size6,
-                          ),
-                          child: VerticalDivider(
-                            thickness: Sizes.size2,
-                            color: Color(
-                              ThemeColors.extraLightGray,
+                      Column(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(
+                              Sizes.size1,
+                            ),
+                            width: Sizes.size48,
+                            height: Sizes.size48,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color(
+                                ThemeColors.lightGray,
+                              ),
+                            ),
+                            child: const CircleAvatar(
+                              backgroundImage:
+                                  AssetImage("assets/images/avatar.jpg"),
                             ),
                           ),
-                        ),
-                      ),
-                      Opacity(
-                        opacity: 0.6,
-                        child: Container(
-                          padding: const EdgeInsets.all(
-                            Sizes.size1,
-                          ),
-                          width: Sizes.size20,
-                          height: Sizes.size20,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(
-                              ThemeColors.lightGray,
+                          const Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: Sizes.size6,
+                              ),
+                              child: VerticalDivider(
+                                thickness: Sizes.size2,
+                                color: Color(
+                                  ThemeColors.extraLightGray,
+                                ),
+                              ),
                             ),
                           ),
-                          child: const CircleAvatar(
-                            backgroundImage:
-                                AssetImage("assets/images/avatar.jpg"),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Gaps.h12,
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "gnar_",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: Sizes.size16,
-                          ),
-                        ),
-                        Expanded(
-                          child: TextField(
-                            expands: true,
-                            minLines: null,
-                            maxLines: null,
-                            focusNode: _focusNode,
-                            controller: _textController,
-                            decoration: const InputDecoration(
-                              hintText: "Start a thread...",
-                              hintStyle: TextStyle(
+                          Opacity(
+                            opacity: 0.6,
+                            child: Container(
+                              padding: const EdgeInsets.all(
+                                Sizes.size1,
+                              ),
+                              width: Sizes.size20,
+                              height: Sizes.size20,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
                                 color: Color(
                                   ThemeColors.lightGray,
                                 ),
                               ),
-                              border: UnderlineInputBorder(
-                                borderSide: BorderSide.none,
+                              child: const CircleAvatar(
+                                backgroundImage:
+                                    AssetImage("assets/images/avatar.jpg"),
                               ),
                             ),
                           ),
+                        ],
+                      ),
+                      Gaps.h12,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "gnar_",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: Sizes.size16,
+                              ),
+                            ),
+                            Expanded(
+                              child: TextField(
+                                expands: true,
+                                minLines: null,
+                                maxLines: null,
+                                focusNode: _focusNode,
+                                controller: _textController,
+                                decoration: const InputDecoration(
+                                  hintText: "Start a thread...",
+                                  hintStyle: TextStyle(
+                                    color: Color(
+                                      ThemeColors.lightGray,
+                                    ),
+                                  ),
+                                  border: UnderlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const FaIcon(
+                              FontAwesomeIcons.paperclip,
+                              color: Color(
+                                ThemeColors.lightGray,
+                              ),
+                              size: Sizes.size20,
+                            ),
+                          ],
                         ),
-                        const FaIcon(
-                          FontAwesomeIcons.paperclip,
-                          color: Color(
-                            ThemeColors.lightGray,
-                          ),
-                          size: Sizes.size20,
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                const Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "Anyone can reply",
+                      style: TextStyle(
+                        color: Color(
+                          ThemeColors.lightGray,
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Text(
+                        "Post",
+                        style: TextStyle(
+                          color: const Color(
+                            ThemeColors.twitterBlue,
+                          ).withOpacity(_text != "" ? 1 : 0.5),
+                          fontSize: Sizes.size18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
