@@ -56,7 +56,7 @@ class _EllipsisBottomSheetState extends State<EllipsisBottomSheet> {
           milliseconds: 200,
         ),
         height:
-            _currentPage == 0 ? 270 : MediaQuery.of(context).size.height * 0.6,
+            _currentPage == 0 ? 270 : MediaQuery.of(context).size.height * 0.7,
         child: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,

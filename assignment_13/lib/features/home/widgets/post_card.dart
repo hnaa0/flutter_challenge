@@ -65,6 +65,7 @@ class _PostCardState extends State<PostCard> {
   void _onEllipsisTap(BuildContext context) {
     showModalBottomSheet(
       elevation: 0,
+      isScrollControlled: true,
       context: context,
       builder: (context) => const EllipsisBottomSheet(),
       showDragHandle: true,
