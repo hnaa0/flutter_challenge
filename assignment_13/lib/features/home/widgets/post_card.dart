@@ -1,7 +1,7 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
-import 'package:assignment_13/features/home/widgets/certification_mark.dart';
+import 'package:assignment_13/common/widgets/certification_mark.dart';
 import 'package:assignment_13/features/home/widgets/ellipsis_bottom_sheet.dart';
 import 'package:assignment_13/features/home/widgets/post_card_img_slider.dart';
 import 'package:assignment_13/features/home/widgets/post_card_reply_users.dart';
