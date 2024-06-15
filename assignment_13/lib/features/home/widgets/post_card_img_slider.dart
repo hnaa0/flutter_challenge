@@ -1,3 +1,4 @@
+import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -35,6 +36,13 @@ class PostCardImgSlider extends StatelessWidget {
               image: NetworkImage(
                 img,
               ),
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  color: const Color(
+                    ThemeColors.extraLightGray,
+                  ),
+                );
+              },
               fit: BoxFit.cover,
             ),
           );

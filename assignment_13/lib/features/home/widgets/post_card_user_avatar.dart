@@ -20,6 +20,9 @@ class PostCardUserAvatar extends StatelessWidget {
           backgroundImage: NetworkImage(
             avatarImg,
           ),
+          backgroundColor: const Color(
+            ThemeColors.black,
+          ),
           radius: Sizes.size24,
         ),
         Positioned(

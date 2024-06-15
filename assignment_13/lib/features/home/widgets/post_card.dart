@@ -8,6 +8,7 @@ import 'package:assignment_13/features/home/widgets/post_card_reply_users.dart';
 import 'package:assignment_13/features/home/widgets/post_card_user_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 
 class PostCard extends StatefulWidget {
   const PostCard({
@@ -211,7 +212,7 @@ class _PostCardState extends State<PostCard> {
                       vertical: Sizes.size6,
                     ),
                     child: Text(
-                      "${_isRetweet ? widget.replies + 1 : widget.replies} replies · ${_isLiked ? widget.likes + 1 : widget.likes} likes",
+                      "${NumberFormat.compact().format(_isRetweet ? widget.replies + 1 : widget.replies)} replies · ${NumberFormat.compact().format(_isLiked ? widget.likes + 1 : widget.likes)} likes",
                       style: const TextStyle(
                         color: Color(
                           ThemeColors.darkGray,

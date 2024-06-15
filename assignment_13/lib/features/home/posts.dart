@@ -84,7 +84,7 @@ final posts = [
   Post(
     userName: "tropicalseductions",
     avatarImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/358022736_309497898183761_4389722831439468003_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=105&_nc_ohc=je6Y78Zl3_gQ7kNvgGkayFI&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYBiQ69lS3jzpa4O5By3DRdZG97Wlhs9YdTUwCzFrVtESA&oe=666CA152&_nc_sid=10d13b",
+        "https://images.pexels.com/photos/25810556/pexels-photo-25810556.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
     isCertified: false,
     postTime: "17m",
     likes: 4,
@@ -98,7 +98,7 @@ final posts = [
   Post(
       userName: "nala_cat",
       avatarImg:
-          "https://scontent.cdninstagram.com/v/t51.2885-19/358017564_619125516679487_2823203487940479365_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent.cdninstagram.com&_nc_cat=111&_nc_ohc=bSHscrTl8ukQ7kNvgHzUVfK&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYAlOL1gEvWrlCS04UDhVwYTGIebqR3bP5BGeyyMRHW2OQ&oe=666DAF1B&_nc_sid=10d13b",
+          "https://scontent.cdninstagram.com/v/t51.2885-19/358017564_619125516679487_2823203487940479365_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent.cdninstagram.com&_nc_cat=111&_nc_ohc=F3oGGNgbIdMQ7kNvgE4CsFg&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYC2s_UXDIpG2u4mLui-AXyc0b6IXDs8Jw2Uwt0hvin_3A&oe=66732D5B&_nc_sid=10d13b",
       isCertified: true,
       postTime: "38m",
       likes: 631,
@@ -111,12 +111,12 @@ final posts = [
       text:
           "I had to say goodbye to my sister Stella earlier this week. I miss you so much Stella Bella. Rest in paradise my sister ❤️🌈",
       postImg: [
-        "https://scontent.cdninstagram.com/v/t51.29350-15/375884146_1463558161135763_2484874533823325265_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMTcweDEzNjkuc2RyLmYyOTM1MCJ9&_nc_ht=scontent.cdninstagram.com&_nc_cat=111&_nc_ohc=pvYUGpsxX9EQ7kNvgHfTHHE&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzE4NjkyNjU5ODgzMzk4MTg3Mg%3D%3D.2-ccb7-5&oh=00_AYD1BWd-kSD63oKtc1oCSJlfJz33jAa1d70RODz0dRHlNA&oe=666BBDAF&_nc_sid=10d13b",
+        "https://scontent.cdninstagram.com/v/t51.29350-15/375884146_1463558161135763_2484874533823325265_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMTcweDEzNjkuc2RyLmYyOTM1MCJ9&_nc_ht=scontent.cdninstagram.com&_nc_cat=111&_nc_ohc=PoK99YB5QfkQ7kNvgFja141&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzE4NjkyNjU5ODgzMzk4MTg3Mg%3D%3D.2-ccb7-5&oh=00_AYDQuN_Cqsf1dFj6vIUz_gDVwqNcFP-lAvpVHz9p_BMsIg&oe=66713BEF&_nc_sid=10d13b",
       ]),
   Post(
     userName: "_plantswithkrystal_",
     avatarImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/343564605_626154996028024_3429561118814250608_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=1&_nc_ohc=t7r5Bq45q4UQ7kNvgGJ6Hpt&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYDSCboBiz_i0HjdKxTrD-MCCgYBPyhsD2RyFNzznRjdKA&oe=666CD541&_nc_sid=10d13b",
+        "https://scontent.cdninstagram.com/v/t51.2885-19/343564605_626154996028024_3429561118814250608_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=1&_nc_ohc=pRkiuu2fztMQ7kNvgGNEz50&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYAzil5ZMlGJoFlwsO-2mMNGWDRtZdqyclrGluwdDY0u-g&oe=66733481&_nc_sid=10d13b",
     isCertified: true,
     postTime: "1h",
     likes: 74,
@@ -132,7 +132,7 @@ final posts = [
   Post(
     userName: "terracottacoco",
     avatarImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/241723143_267876151820815_7763756124386005590_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=107&_nc_ohc=32n4br9GqJQQ7kNvgEsnzed&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYCYxj5a64A7USb6aG7HPd0PDIaa9W5RIFrTK1Y1YnPU0A&oe=666CDC76&_nc_sid=10d13b",
+        "https://scontent.cdninstagram.com/v/t51.2885-19/241723143_267876151820815_7763756124386005590_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=107&_nc_ohc=KnuyK5kKi1sQ7kNvgHSTFva&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYBNcOcRhwYJ0lbCVjI50YZZqgf8rhQAEjIn9dg9MT9Q9A&oe=66733BB6&_nc_sid=10d13b",
     isCertified: true,
     postTime: "1h",
     likes: 158,
@@ -149,19 +149,19 @@ final posts = [
   Post(
     userName: "tuckerbudzyn",
     avatarImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/357811053_1735941866864717_4969013561182587066_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=105&_nc_ohc=izIWFyW8qHMQ7kNvgGo7otK&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYAH8A1qvtQ03ndzBoDWLB4DzJ5BJsRIbdyrQq6E_MBweA&oe=666DCE45&_nc_sid=10d13b",
+        "https://scontent.cdninstagram.com/v/t51.2885-19/357811053_1735941866864717_4969013561182587066_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=105&_nc_ohc=FvAyGj3bYJ8Q7kNvgG_G5Bp&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYC1D_ruZJzHa3Cwygws4sMlpX11n0DSNT7GadyMQF_WkA&oe=66731445&_nc_sid=10d13b",
     isCertified: true,
     postTime: "2h",
     likes: 8410,
     replies: 239,
     replyUsersImg: [
-      "https://scontent.cdninstagram.com/v/t51.2885-19/343564605_626154996028024_3429561118814250608_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=1&_nc_ohc=t7r5Bq45q4UQ7kNvgGJ6Hpt&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYDSCboBiz_i0HjdKxTrD-MCCgYBPyhsD2RyFNzznRjdKA&oe=666CD541&_nc_sid=10d13b",
+      "https://images.pexels.com/photos/25810556/pexels-photo-25810556.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
       "https://images.pexels.com/photos/25810556/pexels-photo-25810556.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
       "https://images.pexels.com/photos/25372314/pexels-photo-25372314.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
     ],
     text: "Please boop before you proceed your scroll",
     postImg: [
-      "https://scontent-lhr8-2.cdninstagram.com/v/t51.29350-15/421030496_448637841057198_1295652494835693548_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMTIxeDE1NzYuc2RyLmYyOTM1MCJ9&_nc_ht=scontent-lhr8-2.cdninstagram.com&_nc_cat=106&_nc_ohc=MhTXQbgDYw8Q7kNvgHaRSFG&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzMzMDk4MjIzMTE4MjY1MzIxOA%3D%3D.2-ccb7-5&oh=00_AYCBVkmDn_H_oYszyaHP7MIq6ojAGs3DQeWCGYmOdvhyhg&oe=666BDA95&_nc_sid=10d13b",
+      "https://scontent.cdninstagram.com/v/t51.29350-15/421030496_448637841057198_1295652494835693548_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMTIxeDE1NzYuc2RyLmYyOTM1MCJ9&_nc_ht=scontent.cdninstagram.com&_nc_cat=106&_nc_ohc=BSDfrEkJexEQ7kNvgEGLTwy&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzMzMDk4MjIzMTE4MjY1MzIxOA%3D%3D.2-ccb7-5&oh=00_AYDV2YVDCqsGRC_rPUzyO4QRTF2XXp1ZdPKMLhWpm5N8pg&oe=66712095&_nc_sid=10d13b",
     ],
   ),
   Post(
