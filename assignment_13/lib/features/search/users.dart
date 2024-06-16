@@ -20,7 +20,7 @@ final users = [
     userName: "Pubity",
     followerCount: 5121049,
     profileImg:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWmnioGbd44aQvqZ5bYmfiuIgn3QfPIvidTg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-sO3KxO0kP-gBJqq3q-OGiJzf5-zT3vYiNA&s",
     isCertified: true,
   ),
   SearchUsers(
@@ -28,7 +28,7 @@ final users = [
     userName: "SelenaGomez",
     followerCount: 15239105,
     profileImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/368086617_547068480861202_4257620770302587062_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=110&_nc_ohc=WYLwigwXd1sQ7kNvgGLWeTI&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYCxIsFhnse5gye1kmVCOfMiYBTWgihRYS-9asDIeqAdWw&oe=666DC44D&_nc_sid=10d13b",
+        "https://m.media-amazon.com/images/M/MV5BMjAwNTE2MDMyMl5BMl5BanBnXkFtZTgwMjAyODM3MTI@._V1_FMjpg_UX1000_.jpg",
     isCertified: true,
   ),
   SearchUsers(
@@ -36,7 +36,7 @@ final users = [
     userName: "VOGUE KOREA",
     followerCount: 412589,
     profileImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/358011261_1881170945598396_4618577334024754682_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=100&_nc_ohc=foZkxNq-QpoQ7kNvgEHr0v_&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYD26PTmyxaC5R1wKMEKgvNOhY_-YYfHD1P6gL-R_brHbw&oe=66722C19&_nc_sid=10d13b",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDJwnrAx4Jb41p9UEqEpnu4YsEtDczKGrHVA&s",
     isCertified: true,
   ),
   SearchUsers(
@@ -44,7 +44,7 @@ final users = [
     userName: "W Korea",
     followerCount: 294112,
     profileImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/357818568_3366463463664745_4915695447155602530_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=101&_nc_ohc=tvLOIwagbHUQ7kNvgHcCJzl&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYCq6yaw_UHmNEHhCkuhCfMYbzltzlgWZKiw7MFbHU_i5w&oe=66720FD5&_nc_sid=10d13b",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv9bUQEr7tSDyMjE768IiBadnUWEDEd27cqQ&s",
     isCertified: true,
   ),
   SearchUsers(
@@ -52,7 +52,7 @@ final users = [
     userName: "Doodledogsclub",
     followerCount: 60141,
     profileImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/358000832_1326230164673992_9136630141483537456_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=104&_nc_ohc=sOPFvml5yZgQ7kNvgFLum3w&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYBtEZ62zCMBiyw4KR6trLFwa5bhKqJmj1aYDShZwGgvJA&oe=666DBAAA&_nc_sid=10d13b",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeWA49bjXAil_QY4MPNL9_2NVIXC-df0jUBQ&s",
     isCertified: false,
   ),
   SearchUsers(
@@ -60,7 +60,7 @@ final users = [
     userName: "Nala Cat ™",
     followerCount: 281597,
     profileImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/358017564_619125516679487_2823203487940479365_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent.cdninstagram.com&_nc_cat=111&_nc_ohc=bSHscrTl8ukQ7kNvgHzUVfK&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYAlOL1gEvWrlCS04UDhVwYTGIebqR3bP5BGeyyMRHW2OQ&oe=666DAF1B&_nc_sid=10d13b",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJtW8tzQWu03lBeLTMtPolwI4Z4E_BfLZtZg&s",
     isCertified: false,
   ),
   SearchUsers(
@@ -68,7 +68,7 @@ final users = [
     userName: "Megan Murphy",
     followerCount: 17002,
     profileImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/378057975_599849812334577_3633610699187617107_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=109&_nc_ohc=4soGl5K3JTIQ7kNvgGPFUVy&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYD7juL4mAUni6vg5h4WePau25nVLw2ngI5tlAde3f565g&oe=667216DF&_nc_sid=10d13b",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBT4LLGB7-gmdarePkD4SaIBX71BjSp41ZnA&s",
     isCertified: true,
   ),
   SearchUsers(
@@ -76,7 +76,7 @@ final users = [
     userName: "COSMOPOLITAN KOREA 코스모폴리탄 코리아",
     followerCount: 86244,
     profileImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/437944960_734419192187579_3474527543582786478_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=111&_nc_ohc=ENqeY-Jes9cQ7kNvgE9dkyX&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYBQnMn0gRFuJytikve6ZIV3TjbZCmgGoPlRxhRAvb7_gA&oe=667212A9&_nc_sid=10d13b",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJtGi9TwXX-9QqaWq-E6zIgflVZV8qzsZYPg&s",
     isCertified: true,
   ),
   SearchUsers(
@@ -84,7 +84,7 @@ final users = [
     userName: "SportsNet LA",
     followerCount: 60152,
     profileImg:
-        "https://scontent-lhr8-2.cdninstagram.com/v/t51.2885-19/358353858_2246964972170450_3861804099682597187_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-lhr8-2.cdninstagram.com&_nc_cat=1&_nc_ohc=nIqlesZtITkQ7kNvgELtT2u&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYDKcayCelQR0H_L5J8f21To1pp58YHw7wgju-abSimB7Q&oe=6671FA13&_nc_sid=10d13b",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjFiLXQs9u17FRWLJaFx3vlj6Jn2YTEcTIFQ&s",
     isCertified: true,
   ),
   SearchUsers(
@@ -92,7 +92,7 @@ final users = [
     userName: "Balmain",
     followerCount: 1177211,
     profileImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/357781950_980549636623734_5653063751608560815_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=106&_nc_ohc=sNdWBGUK064Q7kNvgFvHYDJ&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYCp9VJJwn79dYhu4jb-zKLpPH1B_ph38lj8dOzQEHMk5w&oe=667229E0&_nc_sid=10d13b",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Balmain_logo.svg/300px-Balmain_logo.svg.png",
     isCertified: true,
   ),
   SearchUsers(
@@ -100,7 +100,7 @@ final users = [
     userName: "Tiny House Panthers",
     followerCount: 2224,
     profileImg:
-        "https://scontent-lhr6-2.cdninstagram.com/v/t51.2885-19/358272127_643883371057968_1774169408115210833_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent-lhr6-2.cdninstagram.com&_nc_cat=100&_nc_ohc=aqaInY1uJQ8Q7kNvgGSO5hY&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYB6jS_Lam6O1TVk-BBI-115sAkFsqPgrWacY_22npnvFg&oe=6672097B&_nc_sid=10d13b",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvDmB-lG_a41bS7c_iHhiECzZoQMwyMIYt4Q&s",
     isCertified: false,
   ),
   SearchUsers(
@@ -108,7 +108,7 @@ final users = [
     userName: "The Wall Street Journal",
     followerCount: 1031024,
     profileImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/358109301_794614545391171_4343190715359841217_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=1&_nc_ohc=LhopP2LUjYoQ7kNvgFPI3Ls&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYB0sZ5Ny6e8Bf-YD-sJj68sG1iMv8ScpORWuj9UBAdfiQ&oe=66721299&_nc_sid=10d13b",
+        "https://1000logos.net/wp-content/uploads/2019/11/The-Wall-Street-Journal-emblem.png",
     isCertified: true,
   ),
   SearchUsers(
@@ -116,7 +116,7 @@ final users = [
     userName: "Too Faced Cosmetics",
     followerCount: 992116,
     profileImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/357995436_674617664509166_6654784865505898608_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent.cdninstagram.com&_nc_cat=102&_nc_ohc=mxsfGkN7sKwQ7kNvgFdR47k&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYBgspLWuJKbyLhyVRhNwd-tGAhdf55qytGL-7s-869LNg&oe=6672338D&_nc_sid=10d13b",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ygdTrggGZEJ78SAeNe_UdYjj_p39Ky05Cg&s",
     isCertified: true,
   ),
   SearchUsers(
@@ -124,7 +124,7 @@ final users = [
     userName: "MLB ⚾",
     followerCount: 1492108,
     profileImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/358340123_1002944987808436_1492010193243631185_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=104&_nc_ohc=iYba3J3ZvNwQ7kNvgHqiqJm&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYAkttAkHbG08LOf75kKgWy9sHasK7E__ymyXxjfZAhLoQ&oe=6671F3BC&_nc_sid=10d13b",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Major_League_Baseball_logo.svg/1200px-Major_League_Baseball_logo.svg.png",
     isCertified: true,
   ),
   SearchUsers(
@@ -132,7 +132,7 @@ final users = [
     userName: "Tottenham Hotspur",
     followerCount: 1861028,
     profileImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/358344406_1325489168040897_7198738866920069610_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=1&_nc_ohc=RorsGuA2U0gQ7kNvgE4XBjo&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYAzusOMHixjoXs5CfN6VQA_iXZ7Ypk3XutahkWYY46Bpg&oe=6671F668&_nc_sid=10d13b",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlpg8UI2VlIkL9v4DJ_K8hKggP8PHyexsSsw&s",
     isCertified: true,
   ),
   SearchUsers(
@@ -140,7 +140,7 @@ final users = [
     userName: "Bryant Park",
     followerCount: 57124,
     profileImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/357999418_110672718734666_3875421529071260633_n.jpg?_nc_ht=scontent.cdninstagram.com&_nc_cat=102&_nc_ohc=XOv8bQMVagsQ7kNvgFGcKoD&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYD8TVPdnKC6yLU-0w4RoYj20aKPTtG3SKOxPrL72VgX5Q&oe=6671E910&_nc_sid=10d13b",
+        "https://images.pexels.com/photos/325521/pexels-photo-325521.jpeg?auto=compress&cs=tinysrgb&w=600",
     isCertified: true,
   ),
 ];

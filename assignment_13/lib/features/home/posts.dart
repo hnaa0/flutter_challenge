@@ -42,30 +42,30 @@ final posts = [
       "https://images.pexels.com/photos/20613883/pexels-photo-20613883.jpeg?auto=compress&cs=tinysrgb&w=400",
     ],
   ),
-  Post(
-    userName: "selenagomez",
-    avatarImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/368086617_547068480861202_4257620770302587062_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=110&_nc_ohc=WYLwigwXd1sQ7kNvgGLWeTI&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYCxIsFhnse5gye1kmVCOfMiYBTWgihRYS-9asDIeqAdWw&oe=666DC44D&_nc_sid=10d13b",
-    isCertified: true,
-    postTime: "3m",
-    likes: 80000,
-    replies: 21685,
-    replyUsersImg: [
-      "https://images.pexels.com/photos/25384540/pexels-photo-25384540.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
-      "https://images.pexels.com/photos/18244144/pexels-photo-18244144.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
-      "https://images.pexels.com/photos/25713558/pexels-photo-25713558.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
-    ],
-    text:
-        "Y’all have been asking for new music for a while. Since I’m not quite done with SG3, I wanted to put out a fun little song I wrote a while back that’s perfect for the end of summer. SINGLE SOON. August 25th. Presave it now. 😘",
-    postImg: [
-      "https://scontent.cdninstagram.com/v/t51.29350-15/368454397_622190843103048_2213562557136672654_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE0NDAuc2RyLmYyOTM1MCJ9&_nc_ht=scontent.cdninstagram.com&_nc_cat=100&_nc_ohc=bFtjKViKhqwQ7kNvgEno4GQ&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzE3MTQ0MTM0NTIyNTg5ODA5Mg%3D%3D.2-ccb7-5&oh=00_AYCTZQ7zWTC-jlNIbpe23Eb8k49Wvk2mxByRkHPY2zX56w&oe=666DD5A2&_nc_sid=10d13b",
-      "https://scontent.cdninstagram.com/v/t51.29350-15/367998090_2515935295236746_7733992586787933195_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDEwODAuc2RyLmYyOTM1MCJ9&_nc_ht=scontent.cdninstagram.com&_nc_cat=102&_nc_ohc=AUYwpwfeUoYQ7kNvgG0oIXD&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzE3MTQ0MTM0NTIzNDI2NDUxNw%3D%3D.2-ccb7-5&oh=00_AYD9GB4VOpIZfObbL4VWSUEzPpo0ezqYiHgejaygHYdHVQ&oe=666DDAAB&_nc_sid=10d13b",
-    ],
-  ),
+  // Post(
+  //   userName: "selenagomez",
+  //   avatarImg:
+  //       "https://scontent.cdninstagram.com/v/t51.2885-19/368086617_547068480861202_4257620770302587062_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=110&_nc_ohc=WYLwigwXd1sQ7kNvgGLWeTI&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYCxIsFhnse5gye1kmVCOfMiYBTWgihRYS-9asDIeqAdWw&oe=666DC44D&_nc_sid=10d13b",
+  //   isCertified: true,
+  //   postTime: "3m",
+  //   likes: 80000,
+  //   replies: 21685,
+  //   replyUsersImg: [
+  //     "https://images.pexels.com/photos/25384540/pexels-photo-25384540.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
+  //     "https://images.pexels.com/photos/18244144/pexels-photo-18244144.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
+  //     "https://images.pexels.com/photos/25713558/pexels-photo-25713558.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
+  //   ],
+  //   text:
+  //       "Y’all have been asking for new music for a while. Since I’m not quite done with SG3, I wanted to put out a fun little song I wrote a while back that’s perfect for the end of summer. SINGLE SOON. August 25th. Presave it now. 😘",
+  //   postImg: [
+  //     "https://scontent.cdninstagram.com/v/t51.29350-15/368454397_622190843103048_2213562557136672654_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE0NDAuc2RyLmYyOTM1MCJ9&_nc_ht=scontent.cdninstagram.com&_nc_cat=100&_nc_ohc=bFtjKViKhqwQ7kNvgEno4GQ&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzE3MTQ0MTM0NTIyNTg5ODA5Mg%3D%3D.2-ccb7-5&oh=00_AYCTZQ7zWTC-jlNIbpe23Eb8k49Wvk2mxByRkHPY2zX56w&oe=666DD5A2&_nc_sid=10d13b",
+  //     "https://scontent.cdninstagram.com/v/t51.29350-15/367998090_2515935295236746_7733992586787933195_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDEwODAuc2RyLmYyOTM1MCJ9&_nc_ht=scontent.cdninstagram.com&_nc_cat=102&_nc_ohc=AUYwpwfeUoYQ7kNvgG0oIXD&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzE3MTQ0MTM0NTIzNDI2NDUxNw%3D%3D.2-ccb7-5&oh=00_AYD9GB4VOpIZfObbL4VWSUEzPpo0ezqYiHgejaygHYdHVQ&oe=666DDAAB&_nc_sid=10d13b",
+  //   ],
+  // ),
   Post(
     userName: "doodledogsclub",
     avatarImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/358000832_1326230164673992_9136630141483537456_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=104&_nc_ohc=sOPFvml5yZgQ7kNvgFLum3w&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYBtEZ62zCMBiyw4KR6trLFwa5bhKqJmj1aYDShZwGgvJA&oe=666DBAAA&_nc_sid=10d13b",
+        "https://images.pexels.com/photos/25713558/pexels-photo-25713558.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
     isCertified: true,
     postTime: "5m",
     likes: 451,
@@ -77,8 +77,8 @@ final posts = [
     ],
     text: "Barbie or Oppenheimer? 🏩💣",
     postImg: [
-      "https://scontent.cdninstagram.com/v/t51.29350-15/361927032_219565837720084_2057763865247157443_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDEzNTAuc2RyLmYyOTM1MCJ9&_nc_ht=scontent.cdninstagram.com&_nc_cat=104&_nc_ohc=B-DAt_pQrCcQ7kNvgEyZE3C&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzE1MjYyMjg0OTE1NDYxMzY2Ng%3D%3D.2-ccb7-5&oh=00_AYAalPpBIcineuAP_eHlS8zO-NduJz-cqiWnp5CzJ_HcWw&oe=666DA4E4&_nc_sid=10d13b",
-      "https://scontent.cdninstagram.com/v/t51.29350-15/361953501_1071425513830352_1289584875157414045_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDEzNTAuc2RyLmYyOTM1MCJ9&_nc_ht=scontent.cdninstagram.com&_nc_cat=108&_nc_ohc=XiLFH0k_-48Q7kNvgHBXbpX&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzE1MjYyMjg0OTA0NTc5Nzg0OQ%3D%3D.2-ccb7-5&oh=00_AYDktSR7gJg8Qr-4i5IILLVA81Nr56ejH5ehb_ZJVrOWEA&oe=666DB9E9&_nc_sid=10d13b",
+      "https://media-be.chewy.com/wp-content/uploads/2022/08/12164017/barbiecore-dog-pink-couch-1024x615.jpg",
+      "https://i.pinimg.com/236x/4c/ba/48/4cba488194e837de15215644330ca8c8.jpg",
     ],
   ),
   Post(

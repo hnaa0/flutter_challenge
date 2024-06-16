@@ -1,6 +1,6 @@
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/home/home_screen.dart';
-import 'package:assignment_13/features/notification/notifications_screen.dart';
+import 'package:assignment_13/features/activity/activity_screen.dart';
 import 'package:assignment_13/features/profile/profile_screen.dart';
 import 'package:assignment_13/features/search/search_screen.dart';
 import 'package:assignment_13/features/write_thread/write_thread_screen.dart';

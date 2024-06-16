@@ -27,9 +27,10 @@ class SearchUser extends StatelessWidget {
       leading: Column(
         children: [
           CircleAvatar(
-            backgroundImage: NetworkImage(
+            foregroundImage: NetworkImage(
               avatar,
             ),
+            backgroundColor: Colors.white,
           ),
         ],
       ),
