@@ -1,8 +1,7 @@
-import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/activity/activities.dart';
 import 'package:assignment_13/features/activity/activity_type.dart';
-import 'package:assignment_13/features/activity/widgets/activity_user_list_tile.dart';
+import 'package:assignment_13/features/activity/widgets/activity_list_view.dart';
 import 'package:assignment_13/features/activity/widgets/persistent_tab_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -84,71 +83,11 @@ class _NotificationsScreenState extends State<NotificationsScreen>
           body: TabBarView(
             controller: _tabController,
             children: [
-              ListView.separated(
-                itemCount: activities.length,
-                itemBuilder: (context, index) {
-                  return ActivityUserListTile(
-                    userInfo: activities[index],
-                  );
-                },
-                separatorBuilder: (context, index) => const Divider(
-                  color: Color(
-                    ThemeColors.extraLightGray,
-                  ),
-                ),
-              ),
-              ListView.separated(
-                itemCount: replies.length,
-                itemBuilder: (context, index) {
-                  return ActivityUserListTile(
-                    userInfo: replies[index],
-                  );
-                },
-                separatorBuilder: (context, index) => const Divider(
-                  color: Color(
-                    ThemeColors.extraLightGray,
-                  ),
-                ),
-              ),
-              ListView.separated(
-                itemCount: mentions.length,
-                itemBuilder: (context, index) {
-                  return ActivityUserListTile(
-                    userInfo: mentions[index],
-                  );
-                },
-                separatorBuilder: (context, index) => const Divider(
-                  color: Color(
-                    ThemeColors.extraLightGray,
-                  ),
-                ),
-              ),
-              ListView.separated(
-                itemCount: follows.length,
-                itemBuilder: (context, index) {
-                  return ActivityUserListTile(
-                    userInfo: follows[index],
-                  );
-                },
-                separatorBuilder: (context, index) => const Divider(
-                  color: Color(
-                    ThemeColors.extraLightGray,
-                  ),
-                ),
-              ),
-              ListView.separated(
-                itemCount: likes.length,
-                itemBuilder: (context, index) {
-                  return ActivityUserListTile(
-                    userInfo: likes[index],
-                  );
-                },
-                separatorBuilder: (context, index) => const Divider(
-                  color: Color(
-                    ThemeColors.extraLightGray,
-                  ),
-                ),
-              ),
+              ActivityListView(list: activities),
+              ActivityListView(list: replies),
+              ActivityListView(list: mentions),
+              ActivityListView(list: follows),
+              ActivityListView(list: likes),
             ],
           ),
         ),

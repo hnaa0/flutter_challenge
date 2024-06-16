@@ -15,9 +15,9 @@ enum ActivityType {
       };
 
   Color get color => switch (this) {
-        ActivityType.mention => Colors.green,
-        ActivityType.reply => Colors.cyan,
-        ActivityType.follow => Colors.purple,
+        ActivityType.mention => Colors.green.shade400,
+        ActivityType.reply => Colors.blue.shade300,
+        ActivityType.follow => Colors.deepPurple,
         ActivityType.like => Colors.pink,
       };
 }

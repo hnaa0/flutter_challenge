@@ -18,7 +18,7 @@ class ActivityUserListTile extends StatelessWidget {
     if (type == ActivityType.mention) {
       return "Mentioned you";
     } else if (type == ActivityType.follow) {
-      return "Follow you";
+      return "Followed you";
     } else {
       return userInfo.post;
     }
