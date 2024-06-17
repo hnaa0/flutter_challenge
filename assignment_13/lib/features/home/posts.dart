@@ -7,6 +7,7 @@ class Post {
     required this.likes,
     required this.replies,
     required this.replyUsersImg,
+    this.quote,
     this.postImg,
     this.text,
   });
@@ -20,6 +21,7 @@ class Post {
   final int replies;
   final int likes;
   final bool isCertified;
+  final Map<String, String>? quote;
 }
 
 final posts = [
