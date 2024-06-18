@@ -4,7 +4,6 @@ import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/settings/privacy_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -128,10 +127,10 @@ class SettingsScreen extends StatelessWidget {
             ),
             ListTile(
               onTap: () {
-                showDialog(
+                showAdaptiveDialog(
                   context: context,
                   builder: (context) {
-                    return AlertDialog(
+                    return AlertDialog.adaptive(
                       elevation: 0,
                       backgroundColor: const Color(
                         ThemeColors.extraExtraLightGray,
@@ -184,6 +183,57 @@ class SettingsScreen extends StatelessWidget {
               },
               title: const Text(
                 "Log out",
+                style: TextStyle(
+                  color: Color(
+                    ThemeColors.twitterBlue,
+                  ),
+                ),
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                showCupertinoDialog(
+                  context: context,
+                  builder: (context) {
+                    return CupertinoAlertDialog(
+                      title: const Text(
+                        "Would you like to log out of the Threads?",
+                        style: TextStyle(
+                          fontSize: Sizes.size18,
+                        ),
+                      ),
+                      actions: [
+                        CupertinoDialogAction(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text(
+                            "Log out",
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: Sizes.size16,
+                            ),
+                          ),
+                        ),
+                        CupertinoDialogAction(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text(
+                            "Cancel",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: Sizes.size16,
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              title: const Text(
+                "Log out (IOS)",
                 style: TextStyle(
                   color: Color(
                     ThemeColors.twitterBlue,
