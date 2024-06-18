@@ -30,48 +30,43 @@ class ActivityUserListTile extends StatelessWidget {
       contentPadding: const EdgeInsets.only(
         right: Sizes.size10,
       ),
-      leading: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+      leading: Stack(
+        clipBehavior: Clip.none,
         children: [
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(1),
-                decoration: const BoxDecoration(
-                  color: Color(
-                    ThemeColors.lightGray,
-                  ),
-                  shape: BoxShape.circle,
-                ),
-                child: CircleAvatar(
-                  backgroundImage: NetworkImage(userInfo.profileImg),
-                  backgroundColor: Colors.amber,
-                ),
+          Container(
+            padding: const EdgeInsets.all(1),
+            decoration: const BoxDecoration(
+              color: Color(
+                ThemeColors.lightGray,
               ),
-              Positioned(
-                bottom: -2,
-                right: -2,
-                child: Container(
-                  padding: const EdgeInsets.all(
-                    Sizes.size4,
-                  ),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: Colors.white,
-                    ),
-                    color: userInfo.type.color,
-                  ),
-                  child: FaIcon(
-                    userInfo.type.iconData,
-                    size: Sizes.size10,
-                    color: Colors.white,
-                  ),
-                ),
+              shape: BoxShape.circle,
+            ),
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(userInfo.profileImg),
+              backgroundColor: Colors.amber,
+            ),
+          ),
+          Positioned(
+            bottom: -2,
+            right: -2,
+            child: Container(
+              padding: const EdgeInsets.all(
+                Sizes.size4,
               ),
-            ],
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: Colors.white,
+                ),
+                color: userInfo.type.color,
+              ),
+              child: FaIcon(
+                userInfo.type.iconData,
+                size: Sizes.size10,
+                color: Colors.white,
+              ),
+            ),
           ),
         ],
       ),
