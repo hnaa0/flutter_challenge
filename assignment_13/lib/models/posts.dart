@@ -10,6 +10,7 @@ class Post {
     this.quote,
     this.postImg,
     this.text,
+    this.reply,
   });
 
   final String avatarImg;
@@ -21,7 +22,8 @@ class Post {
   final int replies;
   final int likes;
   final bool isCertified;
-  final Map<String, String>? quote;
+  final Map<String, dynamic>? quote;
+  final Map<String, dynamic>? reply;
 }
 
 final posts = [

@@ -1,10 +1,11 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
-import 'package:assignment_13/features/profile/profiles.dart';
+import 'package:assignment_13/common/widgets/post_card.dart';
+import 'package:assignment_13/features/profile/widgets/profile_replies.dart';
+import 'package:assignment_13/models/profiles.dart';
 import 'package:assignment_13/features/profile/widgets/profile_persistent_tab_bar.dart';
 import 'package:assignment_13/features/profile/widgets/profile_button.dart';
-import 'package:assignment_13/features/profile/widgets/profile_post.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -30,7 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               pinned: true,
               leading: Container(
                 padding: const EdgeInsets.only(
-                  left: Sizes.size18,
+                  left: Sizes.size16,
                 ),
                 alignment: Alignment.centerLeft,
                 child: const FaIcon(
@@ -54,7 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                       onTap: () {},
                       child: Container(
                         padding: const EdgeInsets.only(
-                          right: Sizes.size18,
+                          right: Sizes.size16,
                         ),
                         height: Sizes.size28,
                         child: Column(
@@ -84,7 +85,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: Sizes.size10,
-                  horizontal: Sizes.size18,
+                  horizontal: Sizes.size12,
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -250,15 +251,22 @@ class _ProfileScreenState extends State<ProfileScreen>
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: Sizes.size18,
+                horizontal: Sizes.size12,
               ),
-              child: ListView.builder(
+              child: ListView.separated(
                 itemCount: profilesThreads.length,
                 itemBuilder: (context, index) {
-                  return ProfilePost(
-                    post: profilesThreads[index],
+                  return PostCard(
+                    item: profilesThreads[index],
+                    isMine: true,
                   );
                 },
+                separatorBuilder: (context, index) => const Divider(
+                  thickness: Sizes.size1,
+                  color: Color(
+                    ThemeColors.extraLightGray,
+                  ),
+                ),
               ),
             ),
             Padding(
@@ -266,9 +274,67 @@ class _ProfileScreenState extends State<ProfileScreen>
                 horizontal: Sizes.size18,
               ),
               child: ListView.builder(
-                itemCount: 5,
+                itemCount: profilesReplies.length,
                 itemBuilder: (context, index) {
-                  return Container();
+                  return Column(
+                    children: [
+                      PostCard(
+                        item: profilesReplies[index],
+                        isMine: false,
+                      ),
+                      ProfileReplies(replyInfo: profilesReplies[index].reply!),
+                      // Row(
+                      //   children: [
+                      //     PostCardUserAvatar(
+                      //       avatarImg:
+                      //           profilesReplies[index].reply!["avatarImg"]!,
+                      //       isMine: true,
+                      //     ),
+                      //     Gaps.h18,
+                      //     Expanded(
+                      //       child: Column(
+                      //         crossAxisAlignment: CrossAxisAlignment.start,
+                      //         children: [
+                      //           Row(
+                      //             children: [
+                      //               Text(
+                      //                 profilesReplies[index].reply!["account"]!,
+                      //                 style: const TextStyle(
+                      //                   fontSize: Sizes.size16,
+                      //                   fontWeight: FontWeight.w600,
+                      //                 ),
+                      //               ),
+                      //               const Spacer(),
+                      //               Text(
+                      //                 profilesReplies[index].reply!["time"]!,
+                      //                 style: const TextStyle(
+                      //                   color: Color(
+                      //                     ThemeColors.darkGray,
+                      //                   ),
+                      //                 ),
+                      //               ),
+                      //               Gaps.h14,
+                      //               const FaIcon(
+                      //                 FontAwesomeIcons.ellipsis,
+                      //                 size: Sizes.size18,
+                      //               ),
+                      //               Gaps.h6,
+                      //             ],
+                      //           ),
+                      //           Gaps.v6,
+                      //           Text(
+                      //             profilesReplies[index].reply!["text"]!,
+                      //             style: const TextStyle(
+                      //               fontSize: Sizes.size16,
+                      //             ),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                    ],
+                  );
                 },
               ),
             ),

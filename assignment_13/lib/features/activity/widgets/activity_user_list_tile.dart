@@ -1,7 +1,7 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
-import 'package:assignment_13/features/activity/activities.dart';
+import 'package:assignment_13/models/activities.dart';
 import 'package:assignment_13/features/activity/activity_type.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

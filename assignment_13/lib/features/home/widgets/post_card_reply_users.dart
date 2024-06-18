@@ -17,9 +17,9 @@ class PostCardReplyUsers extends StatelessWidget {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        const SizedBox(
+        SizedBox(
           width: Sizes.size48,
-          height: Sizes.size48,
+          height: replyUsers.length < 3 ? Sizes.size28 : Sizes.size48,
         ),
         if (replyUsers.length == 1) ...[
           Positioned(

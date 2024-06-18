@@ -1,5 +1,5 @@
 import 'package:assignment_13/constants/colors.dart';
-import 'package:assignment_13/features/activity/activities.dart';
+import 'package:assignment_13/models/activities.dart';
 import 'package:assignment_13/features/activity/widgets/activity_user_list_tile.dart';
 import 'package:flutter/material.dart';
 

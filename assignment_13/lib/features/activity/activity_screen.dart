@@ -1,5 +1,5 @@
 import 'package:assignment_13/constants/sizes.dart';
-import 'package:assignment_13/features/activity/activities.dart';
+import 'package:assignment_13/models/activities.dart';
 import 'package:assignment_13/features/activity/activity_type.dart';
 import 'package:assignment_13/features/activity/widgets/activity_list_view.dart';
 import 'package:assignment_13/features/activity/widgets/persistent_tab_bar.dart';

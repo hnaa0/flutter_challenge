@@ -3,9 +3,10 @@ import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/common/widgets/certification_mark.dart';
 import 'package:assignment_13/features/home/widgets/ellipsis_bottom_sheet.dart';
-import 'package:assignment_13/features/home/widgets/post_card_img_slider.dart';
+import 'package:assignment_13/common/widgets/post_card_img_slider.dart';
 import 'package:assignment_13/features/home/widgets/post_card_reply_users.dart';
-import 'package:assignment_13/features/home/widgets/post_card_user_avatar.dart';
+import 'package:assignment_13/common/widgets/post_card_user_avatar.dart';
+import 'package:assignment_13/models/posts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
@@ -13,26 +14,12 @@ import 'package:intl/intl.dart';
 class PostCard extends StatefulWidget {
   const PostCard({
     super.key,
-    required this.avatarImg,
-    required this.userName,
-    required this.replyUsersImg,
-    required this.replies,
-    required this.likes,
-    required this.postTime,
-    required this.isCertified,
-    this.text,
-    this.postImg,
+    required this.item,
+    required this.isMine,
   });
 
-  final String avatarImg;
-  final String userName;
-  final List<String> replyUsersImg;
-  final String postTime;
-  final String? text;
-  final List<String>? postImg;
-  final int replies;
-  final int likes;
-  final bool isCertified;
+  final Post item;
+  final bool isMine;
 
   @override
   State<PostCard> createState() => _PostCardState();
@@ -47,7 +34,9 @@ class _PostCardState extends State<PostCard> {
     _pageController = PageController(
       initialPage: 0,
       viewportFraction:
-          widget.postImg != null && widget.postImg!.length > 1 ? 0.9 : 1,
+          widget.item.postImg != null && widget.item.postImg!.length > 1
+              ? 0.9
+              : 1,
     );
   }
 
@@ -88,8 +77,8 @@ class _PostCardState extends State<PostCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(
-        Sizes.size16,
+      padding: const EdgeInsets.symmetric(
+        vertical: Sizes.size12,
       ),
       child: IntrinsicHeight(
         child: Row(
@@ -100,21 +89,26 @@ class _PostCardState extends State<PostCard> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 PostCardUserAvatar(
-                  avatarImg: widget.avatarImg,
+                  avatarImg: widget.item.avatarImg,
+                  isMine: widget.isMine,
                 ),
                 Gaps.v10,
-                const Expanded(
-                  child: VerticalDivider(
-                    thickness: Sizes.size2,
-                    color: Color(
-                      ThemeColors.extraLightGray,
+                if (!widget.isMine) ...[
+                  const Expanded(
+                    child: VerticalDivider(
+                      thickness: Sizes.size2,
+                      color: Color(
+                        ThemeColors.extraLightGray,
+                      ),
                     ),
                   ),
-                ),
-                Gaps.v10,
-                PostCardReplyUsers(
-                  replyUsers: widget.replyUsersImg,
-                ),
+                  if (widget.item.replyUsersImg.isNotEmpty) ...[
+                    Gaps.v10,
+                    PostCardReplyUsers(
+                      replyUsers: widget.item.replyUsersImg,
+                    ),
+                  ]
+                ]
               ],
             ),
             Gaps.h18,
@@ -125,7 +119,7 @@ class _PostCardState extends State<PostCard> {
                   Row(
                     children: [
                       Text(
-                        widget.userName,
+                        widget.item.userName,
                         style: const TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: Sizes.size16,
@@ -133,12 +127,12 @@ class _PostCardState extends State<PostCard> {
                       ),
                       Gaps.h4,
                       Opacity(
-                        opacity: widget.isCertified ? 1 : 0,
+                        opacity: widget.item.isCertified ? 1 : 0,
                         child: const CertificationMark(),
                       ),
                       const Spacer(),
                       Text(
-                        widget.postTime,
+                        widget.item.postTime,
                         style: const TextStyle(
                           color: Color(
                             ThemeColors.darkGray,
@@ -147,7 +141,9 @@ class _PostCardState extends State<PostCard> {
                       ),
                       Gaps.h14,
                       GestureDetector(
-                        onTap: () => _onEllipsisTap(context),
+                        onTap: widget.isMine
+                            ? () {}
+                            : () => _onEllipsisTap(context),
                         child: const FaIcon(
                           FontAwesomeIcons.ellipsis,
                           size: Sizes.size18,
@@ -158,16 +154,92 @@ class _PostCardState extends State<PostCard> {
                   ),
                   Gaps.v6,
                   Text(
-                    widget.text ?? "",
+                    widget.item.text ?? "",
                     style: const TextStyle(
                       fontSize: Sizes.size16,
                     ),
                   ),
                   Gaps.v10,
-                  if (widget.postImg != null)
+                  if (widget.item.postImg != null)
                     PostCardImgSlider(
-                      postImg: widget.postImg!,
+                      postImg: widget.item.postImg!,
                       controller: _pageController,
+                    ),
+                  if (widget.item.quote != null)
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: Sizes.size18,
+                        vertical: Sizes.size14,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: const Color(
+                            ThemeColors.lightGray,
+                          ).withOpacity(0.6),
+                        ),
+                        borderRadius: BorderRadius.circular(
+                          Sizes.size14,
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              CircleAvatar(
+                                radius: Sizes.size12,
+                                foregroundImage: NetworkImage(
+                                    widget.item.quote!["avatarImg"]!),
+                              ),
+                              Gaps.h10,
+                              Text(
+                                widget.item.quote!["account"]!,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: Sizes.size16,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Gaps.v6,
+                          if (widget.item.quote!["text"] != null)
+                            Text(
+                              widget.item.quote!["text"]!,
+                              style: const TextStyle(
+                                fontSize: Sizes.size16,
+                              ),
+                            ),
+                          if (widget.item.quote!["postImg"] != null) ...[
+                            Gaps.v10,
+                            Container(
+                              clipBehavior: Clip.hardEdge,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                  Sizes.size14,
+                                ),
+                              ),
+                              child: AspectRatio(
+                                aspectRatio: 3 / 2,
+                                child: Image(
+                                  image: NetworkImage(
+                                      widget.item.quote!["postImg"]!),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            Gaps.v10,
+                          ],
+                          Text(
+                            "${widget.item.quote!["replies"]!} replies",
+                            style: const TextStyle(
+                              fontSize: Sizes.size16,
+                              color: Color(
+                                ThemeColors.lightGray,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -212,7 +284,7 @@ class _PostCardState extends State<PostCard> {
                       vertical: Sizes.size6,
                     ),
                     child: Text(
-                      "${NumberFormat.compact().format(_isRetweet ? widget.replies + 1 : widget.replies)} replies · ${NumberFormat.compact().format(_isLiked ? widget.likes + 1 : widget.likes)} likes",
+                      "${NumberFormat.compact().format(_isRetweet ? widget.item.replies + 1 : widget.item.replies)} replies · ${NumberFormat.compact().format(_isLiked ? widget.item.likes + 1 : widget.item.likes)} likes",
                       style: const TextStyle(
                         color: Color(
                           ThemeColors.darkGray,
