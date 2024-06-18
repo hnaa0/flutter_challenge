@@ -4,8 +4,21 @@ import 'package:assignment_13/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class PrivacyScreen extends StatelessWidget {
+class PrivacyScreen extends StatefulWidget {
   const PrivacyScreen({super.key});
+
+  @override
+  State<PrivacyScreen> createState() => _PrivacyScreenState();
+}
+
+class _PrivacyScreenState extends State<PrivacyScreen> {
+  bool _isPrivacy = false;
+
+  void _onPrivacyTap(bool value) {
+    setState(() {
+      _isPrivacy = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,18 +64,27 @@ class PrivacyScreen extends StatelessWidget {
         ),
       ),
       body: ListView(
-        children: const [
-          ListTile(
-            leading: FaIcon(
-              FontAwesomeIcons.lock,
-              size: Sizes.size20,
-              color: Color(ThemeColors.black),
-            ),
-            title: Text(
-              "Privacy",
+        children: [
+          SwitchListTile.adaptive(
+            splashRadius: 0,
+            value: _isPrivacy,
+            onChanged: (value) => _onPrivacyTap(value),
+            title: const Row(
+              children: [
+                FaIcon(
+                  FontAwesomeIcons.lock,
+                  size: Sizes.size20,
+                  color: Color(ThemeColors.black),
+                ),
+                Gaps.h24,
+                Text(
+                  "Privacy",
+                ),
+              ],
             ),
           ),
-          ListTile(
+          const ListTile(
+            minLeadingWidth: 25,
             leading: FaIcon(
               FontAwesomeIcons.threads,
               size: Sizes.size20,
@@ -95,7 +117,7 @@ class PrivacyScreen extends StatelessWidget {
               ],
             ),
           ),
-          ListTile(
+          const ListTile(
             leading: FaIcon(
               FontAwesomeIcons.bellSlash,
               size: Sizes.size20,
@@ -112,7 +134,7 @@ class PrivacyScreen extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
+          const ListTile(
             leading: FaIcon(
               FontAwesomeIcons.eyeSlash,
               size: Sizes.size20,
@@ -129,7 +151,7 @@ class PrivacyScreen extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
+          const ListTile(
             leading: FaIcon(
               FontAwesomeIcons.userGroup,
               size: Sizes.size20,
@@ -146,7 +168,7 @@ class PrivacyScreen extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
+          const ListTile(
             title: Text(
               "Other privacy settings",
               style: TextStyle(
@@ -173,7 +195,7 @@ class PrivacyScreen extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
+          const ListTile(
             leading: FaIcon(
               FontAwesomeIcons.circleXmark,
               size: Sizes.size20,
@@ -190,7 +212,7 @@ class PrivacyScreen extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
+          const ListTile(
             leading: FaIcon(
               FontAwesomeIcons.heartCircleXmark,
               size: Sizes.size20,
