@@ -19,6 +19,7 @@ class PrivacyScreen extends StatelessWidget {
         ),
         centerTitle: true,
         leading: GestureDetector(
+          behavior: HitTestBehavior.translucent,
           onTap: () {
             Navigator.pop(context);
           },
