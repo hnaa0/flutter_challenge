@@ -3,6 +3,7 @@ import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/common/widgets/post_card.dart';
 import 'package:assignment_13/features/profile/widgets/profile_replies.dart';
+import 'package:assignment_13/features/settings/settings_screen.dart';
 import 'package:assignment_13/models/profiles.dart';
 import 'package:assignment_13/features/profile/widgets/profile_persistent_tab_bar.dart';
 import 'package:assignment_13/features/profile/widgets/profile_button.dart';
@@ -20,6 +21,15 @@ class _ProfileScreenState extends State<ProfileScreen>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController =
       TabController(length: 2, vsync: this);
+
+  void _onMenuTap() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SettingsScreen(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +62,8 @@ class _ProfileScreenState extends State<ProfileScreen>
                     ),
                     Gaps.h14,
                     GestureDetector(
-                      onTap: () {},
+                      behavior: HitTestBehavior.translucent,
+                      onTap: _onMenuTap,
                       child: Container(
                         padding: const EdgeInsets.only(
                           right: Sizes.size16,
