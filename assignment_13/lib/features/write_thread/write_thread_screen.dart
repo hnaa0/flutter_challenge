@@ -1,6 +1,7 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/features/write_thread/camera_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -15,6 +16,15 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
   final TextEditingController _textController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   String _text = "";
+
+  void _onCameraTap() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const CameraScreen(),
+      ),
+    );
+  }
 
   @override
   void initState() {
@@ -181,12 +191,15 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
                                 ),
                               ),
                             ),
-                            const FaIcon(
-                              FontAwesomeIcons.paperclip,
-                              color: Color(
-                                ThemeColors.lightGray,
+                            GestureDetector(
+                              onTap: _onCameraTap,
+                              child: const FaIcon(
+                                FontAwesomeIcons.paperclip,
+                                color: Color(
+                                  ThemeColors.lightGray,
+                                ),
+                                size: Sizes.size20,
                               ),
-                              size: Sizes.size20,
                             ),
                           ],
                         ),
