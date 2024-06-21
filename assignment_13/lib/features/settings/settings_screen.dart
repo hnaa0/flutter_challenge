@@ -21,7 +21,9 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: const Text(
           "Settings",
           style: TextStyle(
@@ -45,7 +47,7 @@ class SettingsScreen extends StatelessWidget {
               Text(
                 "Back",
                 style: TextStyle(
-                  fontSize: Sizes.size18,
+                  fontSize: Sizes.size16,
                 ),
               ),
             ],

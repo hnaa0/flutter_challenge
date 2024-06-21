@@ -18,6 +18,7 @@ class SearchScreen extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             const SliverAppBar(
+              backgroundColor: Colors.white,
               pinned: true,
               title: Text(
                 "Search",

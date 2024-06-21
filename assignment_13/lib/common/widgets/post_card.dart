@@ -54,6 +54,7 @@ class _PostCardState extends State<PostCard> {
 
   void _onEllipsisTap(BuildContext context) {
     showModalBottomSheet(
+      backgroundColor: Colors.white,
       elevation: 0,
       isScrollControlled: true,
       context: context,

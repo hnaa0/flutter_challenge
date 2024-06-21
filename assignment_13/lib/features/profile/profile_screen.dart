@@ -38,6 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen>
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverAppBar(
+              backgroundColor: Colors.white,
               pinned: true,
               leading: Container(
                 padding: const EdgeInsets.only(

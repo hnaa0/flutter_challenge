@@ -23,7 +23,9 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: const Text(
           "Privacy",
           style: TextStyle(
@@ -47,7 +49,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
               Text(
                 "Back",
                 style: TextStyle(
-                  fontSize: Sizes.size18,
+                  fontSize: Sizes.size16,
                 ),
               ),
             ],

@@ -62,6 +62,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
               const SliverAppBar(
+                backgroundColor: Colors.white,
                 title: Text(
                   "Activity",
                   style: TextStyle(
