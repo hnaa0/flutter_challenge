@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
@@ -14,16 +17,34 @@ class WriteThreadScreen extends StatefulWidget {
 
 class _WriteThreadScreenState extends State<WriteThreadScreen> {
   final TextEditingController _textController = TextEditingController();
+
   final FocusNode _focusNode = FocusNode();
   String _text = "";
+  final List<String> _selectedList = [];
 
-  void _onCameraTap() {
+  Future<void> _onCameraTap() async {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => const CameraScreen(),
       ),
+    ).then(
+      (value) {
+        if (value != null && mounted) {
+          for (var item in value) {
+            _selectedList.add(item.path);
+          }
+
+          setState(() {});
+        }
+      },
     );
+  }
+
+  void _onDeletePhotoTap(String file) {
+    setState(() {
+      _selectedList.remove(file);
+    });
   }
 
   @override
@@ -59,6 +80,8 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
         ),
         child: Scaffold(
           appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.white,
             title: const Text(
               "New thread",
               style: TextStyle(
@@ -95,56 +118,27 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
               ),
             ),
           ),
-          body: Padding(
+          body: Container(
+            height: MediaQuery.of(context).size.height,
             padding: const EdgeInsets.symmetric(
               horizontal: Sizes.size20,
               vertical: Sizes.size16,
             ),
-            child: Column(
-              children: [
-                IntrinsicHeight(
-                  child: Row(
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(
-                              Sizes.size1,
-                            ),
-                            width: Sizes.size48,
-                            height: Sizes.size48,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Color(
-                                ThemeColors.lightGray,
-                              ),
-                            ),
-                            child: const CircleAvatar(
-                              backgroundImage:
-                                  AssetImage("assets/images/avatar.jpg"),
-                            ),
-                          ),
-                          const Expanded(
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                vertical: Sizes.size6,
-                              ),
-                              child: VerticalDivider(
-                                thickness: Sizes.size2,
-                                color: Color(
-                                  ThemeColors.extraLightGray,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Opacity(
-                            opacity: 0.6,
-                            child: Container(
+            color: Colors.white,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  IntrinsicHeight(
+                    child: Row(
+                      children: [
+                        Column(
+                          children: [
+                            Container(
                               padding: const EdgeInsets.all(
                                 Sizes.size1,
                               ),
-                              width: Sizes.size20,
-                              height: Sizes.size20,
+                              width: Sizes.size48,
+                              height: Sizes.size48,
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Color(
@@ -156,83 +150,182 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
                                     AssetImage("assets/images/avatar.jpg"),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Gaps.h12,
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "gnar_",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: Sizes.size16,
-                              ),
-                            ),
-                            Expanded(
-                              child: TextField(
-                                expands: true,
-                                minLines: null,
-                                maxLines: null,
-                                focusNode: _focusNode,
-                                controller: _textController,
-                                decoration: const InputDecoration(
-                                  hintText: "Start a thread...",
-                                  hintStyle: TextStyle(
-                                    color: Color(
-                                      ThemeColors.lightGray,
-                                    ),
-                                  ),
-                                  border: UnderlineInputBorder(
-                                    borderSide: BorderSide.none,
+                            const Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: Sizes.size6,
+                                ),
+                                child: VerticalDivider(
+                                  thickness: Sizes.size2,
+                                  color: Color(
+                                    ThemeColors.extraLightGray,
                                   ),
                                 ),
                               ),
                             ),
-                            GestureDetector(
-                              onTap: _onCameraTap,
-                              child: const FaIcon(
-                                FontAwesomeIcons.paperclip,
-                                color: Color(
-                                  ThemeColors.lightGray,
+                            Opacity(
+                              opacity: 0.6,
+                              child: Container(
+                                padding: const EdgeInsets.all(
+                                  Sizes.size1,
                                 ),
-                                size: Sizes.size20,
+                                width: Sizes.size20,
+                                height: Sizes.size20,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(
+                                    ThemeColors.lightGray,
+                                  ),
+                                ),
+                                child: const CircleAvatar(
+                                  backgroundImage:
+                                      AssetImage("assets/images/avatar.jpg"),
+                                ),
                               ),
                             ),
                           ],
                         ),
-                      ),
-                    ],
+                        Gaps.h12,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "gnar_",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: Sizes.size16,
+                                ),
+                              ),
+                              Expanded(
+                                child: TextField(
+                                  expands: true,
+                                  minLines: null,
+                                  maxLines: null,
+                                  focusNode: _focusNode,
+                                  controller: _textController,
+                                  decoration: const InputDecoration(
+                                    hintText: "Start a thread...",
+                                    hintStyle: TextStyle(
+                                      color: Color(
+                                        ThemeColors.lightGray,
+                                      ),
+                                    ),
+                                    border: UnderlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              if (_selectedList.isNotEmpty) ...[
+                                SizedBox(
+                                  height: 200,
+                                  child: ListView.separated(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: _selectedList.length,
+                                    itemBuilder: (context, index) {
+                                      return Stack(
+                                        children: [
+                                          Container(
+                                            clipBehavior: Clip.hardEdge,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                Sizes.size12,
+                                              ),
+                                            ),
+                                            child: Image.file(
+                                              File(
+                                                _selectedList[index],
+                                              ),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Positioned(
+                                            right: 8,
+                                            top: 6,
+                                            child: GestureDetector(
+                                              onTap: () => _onDeletePhotoTap(
+                                                  _selectedList[index]),
+                                              child: Container(
+                                                alignment: Alignment.center,
+                                                padding: const EdgeInsets.all(
+                                                  Sizes.size6,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: const Color(
+                                                          ThemeColors.darkGray)
+                                                      .withOpacity(0.5),
+                                                ),
+                                                child: const FaIcon(
+                                                  FontAwesomeIcons.xmark,
+                                                  color: Colors.white,
+                                                  size: Sizes.size16,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                    separatorBuilder: (context, index) =>
+                                        Gaps.h8,
+                                  ),
+                                ),
+                                Gaps.v8,
+                              ],
+                              GestureDetector(
+                                behavior: HitTestBehavior.translucent,
+                                onTap: _onCameraTap,
+                                child: const Padding(
+                                  padding: EdgeInsets.all(2),
+                                  child: FaIcon(
+                                    FontAwesomeIcons.paperclip,
+                                    color: Color(
+                                      ThemeColors.lightGray,
+                                    ),
+                                    size: Sizes.size20,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          bottomSheet: BottomAppBar(
+            height: 50,
+            elevation: 0,
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Anyone can reply",
+                  style: TextStyle(
+                    color: Color(
+                      ThemeColors.lightGray,
+                    ),
                   ),
                 ),
-                const Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "Anyone can reply",
-                      style: TextStyle(
-                        color: Color(
-                          ThemeColors.lightGray,
-                        ),
-                      ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    "Post",
+                    style: TextStyle(
+                      color: const Color(
+                        ThemeColors.twitterBlue,
+                      ).withOpacity(_text != "" ? 1 : 0.5),
+                      fontSize: Sizes.size18,
+                      fontWeight: FontWeight.w600,
                     ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Text(
-                        "Post",
-                        style: TextStyle(
-                          color: const Color(
-                            ThemeColors.twitterBlue,
-                          ).withOpacity(_text != "" ? 1 : 0.5),
-                          fontSize: Sizes.size18,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),
