@@ -2,6 +2,7 @@ import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/home/widgets/ellipsis_bottom_sheet_report.dart';
+import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 
 class EllipsisBottomSheet extends StatefulWidget {
@@ -56,7 +57,7 @@ class _EllipsisBottomSheetState extends State<EllipsisBottomSheet> {
           milliseconds: 200,
         ),
         height:
-            _currentPage == 0 ? 270 : MediaQuery.of(context).size.height * 0.7,
+            _currentPage == 0 ? 275 : MediaQuery.of(context).size.height * 0.7,
         child: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,
@@ -68,7 +69,9 @@ class _EllipsisBottomSheetState extends State<EllipsisBottomSheet> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: const Color(0xffF2F2F2),
+                      color: isDarkMode(context)
+                          ? const Color(0xFF2F363D)
+                          : const Color(0xffF2F2F2),
                       borderRadius: BorderRadius.circular(Sizes.size20),
                     ),
                     child: const Column(
@@ -99,7 +102,9 @@ class _EllipsisBottomSheetState extends State<EllipsisBottomSheet> {
                   Gaps.v16,
                   Container(
                     decoration: BoxDecoration(
-                      color: const Color(0xffF2F2F2),
+                      color: isDarkMode(context)
+                          ? const Color(0xFF2F363D)
+                          : const Color(0xffF2F2F2),
                       borderRadius: BorderRadius.circular(Sizes.size20),
                     ),
                     child: Column(

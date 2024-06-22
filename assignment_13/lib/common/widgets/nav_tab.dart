@@ -1,3 +1,5 @@
+import 'package:assignment_13/constants/colors.dart';
+import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -29,7 +31,9 @@ class NavTab extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 4),
                 child: FaIcon(
                   icon,
-                  color: Colors.black,
+                  color: isDarkMode(context)
+                      ? const Color(ThemeColors.extraLightGray)
+                      : Colors.black,
                   size: 26,
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -47,13 +48,19 @@ class PostCardUserAvatar extends StatelessWidget {
               height: Sizes.size24,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(width: Sizes.size2, color: Colors.white),
-                color: const Color(ThemeColors.black),
+                border: Border.all(
+                    width: Sizes.size2,
+                    color: isDarkMode(context)
+                        ? const Color(ThemeColors.black)
+                        : Colors.white),
+                color: isDarkMode(context)
+                    ? const Color(ThemeColors.extraLightGray)
+                    : const Color(ThemeColors.black),
               ),
-              child: const FaIcon(
+              child: FaIcon(
                 FontAwesomeIcons.plus,
                 size: Sizes.size10,
-                color: Colors.white,
+                color: isDarkMode(context) ? Colors.black : Colors.white,
               ),
             ),
           ),

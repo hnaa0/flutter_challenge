@@ -7,6 +7,7 @@ import 'package:assignment_13/features/settings/settings_screen.dart';
 import 'package:assignment_13/models/profiles.dart';
 import 'package:assignment_13/features/profile/widgets/profile_persistent_tab_bar.dart';
 import 'package:assignment_13/features/profile/widgets/profile_button.dart';
+import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -38,7 +39,6 @@ class _ProfileScreenState extends State<ProfileScreen>
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              backgroundColor: Colors.white,
               pinned: true,
               leading: Container(
                 padding: const EdgeInsets.only(
@@ -77,13 +77,17 @@ class _ProfileScreenState extends State<ProfileScreen>
                             Container(
                               height: Sizes.size2,
                               width: Sizes.size24,
-                              color: Colors.black,
+                              color: isDarkMode(context)
+                                  ? Colors.white
+                                  : Colors.black,
                             ),
                             Gaps.v8,
                             Container(
                               height: Sizes.size2,
                               width: Sizes.size14,
-                              color: Colors.black,
+                              color: isDarkMode(context)
+                                  ? Colors.white
+                                  : Colors.black,
                             ),
                           ],
                         ),
@@ -121,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                             Row(
                               children: [
                                 const Text(
-                                  "gnar",
+                                  "gnar_",
                                   style: TextStyle(
                                     fontSize: Sizes.size16,
                                   ),
@@ -146,7 +150,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                                       color: Color(
                                         ThemeColors.lightGray,
                                       ),
-                                      fontSize: Sizes.size12,
+                                      fontSize: Sizes.size10,
                                     ),
                                   ),
                                 ),
@@ -273,11 +277,13 @@ class _ProfileScreenState extends State<ProfileScreen>
                     isMine: true,
                   );
                 },
-                separatorBuilder: (context, index) => const Divider(
+                separatorBuilder: (context, index) => Divider(
                   thickness: Sizes.size1,
-                  color: Color(
-                    ThemeColors.extraLightGray,
-                  ),
+                  color: isDarkMode(context)
+                      ? const Color(ThemeColors.darkGray)
+                      : const Color(
+                          ThemeColors.extraLightGray,
+                        ),
                 ),
               ),
             ),
@@ -295,56 +301,6 @@ class _ProfileScreenState extends State<ProfileScreen>
                         isMine: false,
                       ),
                       ProfileReplies(replyInfo: profilesReplies[index].reply!),
-                      // Row(
-                      //   children: [
-                      //     PostCardUserAvatar(
-                      //       avatarImg:
-                      //           profilesReplies[index].reply!["avatarImg"]!,
-                      //       isMine: true,
-                      //     ),
-                      //     Gaps.h18,
-                      //     Expanded(
-                      //       child: Column(
-                      //         crossAxisAlignment: CrossAxisAlignment.start,
-                      //         children: [
-                      //           Row(
-                      //             children: [
-                      //               Text(
-                      //                 profilesReplies[index].reply!["account"]!,
-                      //                 style: const TextStyle(
-                      //                   fontSize: Sizes.size16,
-                      //                   fontWeight: FontWeight.w600,
-                      //                 ),
-                      //               ),
-                      //               const Spacer(),
-                      //               Text(
-                      //                 profilesReplies[index].reply!["time"]!,
-                      //                 style: const TextStyle(
-                      //                   color: Color(
-                      //                     ThemeColors.darkGray,
-                      //                   ),
-                      //                 ),
-                      //               ),
-                      //               Gaps.h14,
-                      //               const FaIcon(
-                      //                 FontAwesomeIcons.ellipsis,
-                      //                 size: Sizes.size18,
-                      //               ),
-                      //               Gaps.h6,
-                      //             ],
-                      //           ),
-                      //           Gaps.v6,
-                      //           Text(
-                      //             profilesReplies[index].reply!["text"]!,
-                      //             style: const TextStyle(
-                      //               fontSize: Sizes.size16,
-                      //             ),
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
                     ],
                   );
                 },

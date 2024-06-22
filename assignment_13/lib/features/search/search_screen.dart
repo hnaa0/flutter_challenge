@@ -2,6 +2,7 @@ import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/search/users.dart';
 import 'package:assignment_13/features/search/widgets/search_user.dart';
+import 'package:assignment_13/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,6 @@ class SearchScreen extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             const SliverAppBar(
-              backgroundColor: Colors.white,
               pinned: true,
               title: Text(
                 "Search",
@@ -45,10 +45,12 @@ class SearchScreen extends StatelessWidget {
                   isCertified: user.isCertified,
                 );
               },
-              separatorBuilder: (context, index) => const Divider(
-                color: Color(
-                  ThemeColors.extraLightGray,
-                ),
+              separatorBuilder: (context, index) => Divider(
+                color: isDarkMode(context)
+                    ? const Color(ThemeColors.darkGray)
+                    : const Color(
+                        ThemeColors.extraLightGray,
+                      ),
               ),
             ),
           ],
@@ -70,7 +72,8 @@ class SliverUserSearchTextField extends SliverPersistentHeaderDelegate {
         horizontal: Sizes.size4,
         vertical: Sizes.size10,
       ),
-      color: Colors.white,
+      color:
+          isDarkMode(context) ? const Color(ThemeColors.black) : Colors.white,
       child: const CupertinoSearchTextField(),
     );
   }

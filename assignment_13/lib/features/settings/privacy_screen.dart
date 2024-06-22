@@ -1,6 +1,7 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -23,9 +24,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
         title: const Text(
           "Privacy",
           style: TextStyle(
@@ -56,11 +55,13 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
           ),
         ),
         leadingWidth: 80,
-        shape: const Border(
+        shape: Border(
           bottom: BorderSide(
-            color: Color(
-              ThemeColors.extraLightGray,
-            ),
+            color: isDarkMode(context)
+                ? const Color(ThemeColors.darkGray)
+                : const Color(
+                    ThemeColors.extraLightGray,
+                  ),
             width: 1,
           ),
         ),
@@ -71,31 +72,35 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
             splashRadius: 0,
             value: _isPrivacy,
             onChanged: (value) => _onPrivacyTap(value),
-            title: const Row(
+            title: Row(
               children: [
                 FaIcon(
                   FontAwesomeIcons.lock,
                   size: Sizes.size20,
-                  color: Color(ThemeColors.black),
+                  color: isDarkMode(context)
+                      ? const Color(ThemeColors.extraExtraLightGray)
+                      : const Color(ThemeColors.black),
                 ),
                 Gaps.h24,
-                Text(
+                const Text(
                   "Privacy",
                 ),
               ],
             ),
           ),
-          const ListTile(
+          ListTile(
             minLeadingWidth: 25,
             leading: FaIcon(
               FontAwesomeIcons.threads,
               size: Sizes.size20,
-              color: Color(ThemeColors.black),
+              color: isDarkMode(context)
+                  ? const Color(ThemeColors.extraExtraLightGray)
+                  : const Color(ThemeColors.black),
             ),
-            title: Text(
+            title: const Text(
               "Mentions",
             ),
-            trailing: Row(
+            trailing: const Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
@@ -119,16 +124,18 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
               ],
             ),
           ),
-          const ListTile(
+          ListTile(
             leading: FaIcon(
               FontAwesomeIcons.bellSlash,
               size: Sizes.size20,
-              color: Color(ThemeColors.black),
+              color: isDarkMode(context)
+                  ? const Color(ThemeColors.extraExtraLightGray)
+                  : const Color(ThemeColors.black),
             ),
-            title: Text(
+            title: const Text(
               "Muted",
             ),
-            trailing: FaIcon(
+            trailing: const FaIcon(
               FontAwesomeIcons.angleRight,
               size: Sizes.size20,
               color: Color(
@@ -136,16 +143,18 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
               ),
             ),
           ),
-          const ListTile(
+          ListTile(
             leading: FaIcon(
               FontAwesomeIcons.eyeSlash,
               size: Sizes.size20,
-              color: Color(ThemeColors.black),
+              color: isDarkMode(context)
+                  ? const Color(ThemeColors.extraExtraLightGray)
+                  : const Color(ThemeColors.black),
             ),
-            title: Text(
+            title: const Text(
               "Hidden Words",
             ),
-            trailing: FaIcon(
+            trailing: const FaIcon(
               FontAwesomeIcons.angleRight,
               size: Sizes.size20,
               color: Color(
@@ -153,16 +162,18 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
               ),
             ),
           ),
-          const ListTile(
+          ListTile(
             leading: FaIcon(
               FontAwesomeIcons.userGroup,
               size: Sizes.size20,
-              color: Color(ThemeColors.black),
+              color: isDarkMode(context)
+                  ? const Color(ThemeColors.extraExtraLightGray)
+                  : const Color(ThemeColors.black),
             ),
-            title: Text(
+            title: const Text(
               "Profiles you follow",
             ),
-            trailing: FaIcon(
+            trailing: const FaIcon(
               FontAwesomeIcons.angleRight,
               size: Sizes.size20,
               color: Color(
@@ -197,16 +208,18 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
               ),
             ),
           ),
-          const ListTile(
+          ListTile(
             leading: FaIcon(
               FontAwesomeIcons.circleXmark,
               size: Sizes.size20,
-              color: Color(ThemeColors.black),
+              color: isDarkMode(context)
+                  ? const Color(ThemeColors.extraExtraLightGray)
+                  : const Color(ThemeColors.black),
             ),
-            title: Text(
+            title: const Text(
               "Blocked profiles",
             ),
-            trailing: FaIcon(
+            trailing: const FaIcon(
               FontAwesomeIcons.arrowUpRightFromSquare,
               size: Sizes.size18,
               color: Color(
@@ -214,16 +227,18 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
               ),
             ),
           ),
-          const ListTile(
+          ListTile(
             leading: FaIcon(
               FontAwesomeIcons.heartCircleXmark,
               size: Sizes.size20,
-              color: Color(ThemeColors.black),
+              color: isDarkMode(context)
+                  ? const Color(ThemeColors.extraExtraLightGray)
+                  : const Color(ThemeColors.black),
             ),
-            title: Text(
+            title: const Text(
               "Hide likes",
             ),
-            trailing: FaIcon(
+            trailing: const FaIcon(
               FontAwesomeIcons.arrowUpRightFromSquare,
               size: Sizes.size18,
               color: Color(

@@ -18,12 +18,10 @@ class PersistentTabBar extends SliverPersistentHeaderDelegate {
       padding: const EdgeInsets.symmetric(
         vertical: Sizes.size4,
       ),
-      color: Colors.white,
       child: TabBar(
         controller: controller,
         isScrollable: true,
         tabAlignment: TabAlignment.center,
-        splashFactory: NoSplash.splashFactory,
         dividerHeight: 0,
         labelPadding: const EdgeInsets.symmetric(horizontal: Sizes.size4),
         indicatorColor: Colors.transparent,

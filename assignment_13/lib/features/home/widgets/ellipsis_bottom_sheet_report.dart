@@ -1,5 +1,6 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -54,9 +55,7 @@ class EllipsisBottomSheetReport extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
         title: const Text(
           "Report",
           style: TextStyle(
@@ -122,11 +121,13 @@ class EllipsisBottomSheetReport extends StatelessWidget {
                   ),
           );
         },
-        separatorBuilder: (context, index) => const Divider(
+        separatorBuilder: (context, index) => Divider(
           thickness: Sizes.size1,
-          color: Color(
-            ThemeColors.extraLightGray,
-          ),
+          color: isDarkMode(context)
+              ? const Color(ThemeColors.darkGray)
+              : const Color(
+                  ThemeColors.extraLightGray,
+                ),
         ),
       ),
     );

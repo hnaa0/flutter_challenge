@@ -2,6 +2,7 @@ import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/settings/privacy_screen.dart';
+import 'package:assignment_13/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -21,9 +22,7 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
         title: const Text(
           "Settings",
           style: TextStyle(
@@ -54,11 +53,13 @@ class SettingsScreen extends StatelessWidget {
           ),
         ),
         leadingWidth: 80,
-        shape: const Border(
+        shape: Border(
           bottom: BorderSide(
-            color: Color(
-              ThemeColors.extraLightGray,
-            ),
+            color: isDarkMode(context)
+                ? const Color(ThemeColors.darkGray)
+                : const Color(
+                    ThemeColors.extraLightGray,
+                  ),
             width: 1,
           ),
         ),
@@ -66,64 +67,76 @@ class SettingsScreen extends StatelessWidget {
       body: SafeArea(
         child: ListView(
           children: [
-            const ListTile(
+            ListTile(
               leading: FaIcon(
                 FontAwesomeIcons.userPlus,
                 size: Sizes.size20,
-                color: Color(ThemeColors.black),
+                color: isDarkMode(context)
+                    ? const Color(ThemeColors.extraExtraLightGray)
+                    : const Color(ThemeColors.black),
               ),
-              title: Text(
+              title: const Text(
                 "Follow and invite friends",
               ),
             ),
-            const ListTile(
+            ListTile(
               leading: FaIcon(
                 FontAwesomeIcons.bell,
                 size: Sizes.size20,
-                color: Color(ThemeColors.black),
+                color: isDarkMode(context)
+                    ? const Color(ThemeColors.extraExtraLightGray)
+                    : const Color(ThemeColors.black),
               ),
-              title: Text(
+              title: const Text(
                 "Notifications",
               ),
             ),
             ListTile(
               onTap: () => _onPrivacyTap(context),
-              leading: const FaIcon(
+              leading: FaIcon(
                 FontAwesomeIcons.lock,
                 size: Sizes.size20,
-                color: Color(ThemeColors.black),
+                color: isDarkMode(context)
+                    ? const Color(ThemeColors.extraExtraLightGray)
+                    : const Color(ThemeColors.black),
               ),
               title: const Text(
                 "Privacy",
               ),
             ),
-            const ListTile(
+            ListTile(
               leading: Icon(
                 FontAwesomeIcons.user,
                 size: Sizes.size20,
-                color: Color(ThemeColors.black),
+                color: isDarkMode(context)
+                    ? const Color(ThemeColors.extraExtraLightGray)
+                    : const Color(ThemeColors.black),
               ),
-              title: Text(
+              title: const Text(
                 "Account",
               ),
             ),
-            const ListTile(
+            ListTile(
               leading: FaIcon(
                 FontAwesomeIcons.hand,
                 size: Sizes.size20,
-                color: Color(ThemeColors.black),
+                color: isDarkMode(context)
+                    ? const Color(ThemeColors.extraExtraLightGray)
+                    : const Color(ThemeColors.black),
               ),
-              title: Text(
+              title: const Text(
                 "Help",
               ),
             ),
-            const ListTile(
+            ListTile(
               leading: FaIcon(
                 FontAwesomeIcons.circleInfo,
                 size: Sizes.size20,
-                color: Color(ThemeColors.black),
+                color: isDarkMode(context)
+                    ? const Color(ThemeColors.extraExtraLightGray)
+                    : const Color(ThemeColors.black),
               ),
-              title: Text(
+              title: const Text(
                 "About",
               ),
             ),
@@ -134,9 +147,6 @@ class SettingsScreen extends StatelessWidget {
                   builder: (context) {
                     return AlertDialog.adaptive(
                       elevation: 0,
-                      backgroundColor: const Color(
-                        ThemeColors.extraExtraLightGray,
-                      ),
                       title: const Text(
                         "Would you like to log out of the Threads?",
                         style: TextStyle(
@@ -170,7 +180,6 @@ class SettingsScreen extends StatelessWidget {
                                 child: const Text(
                                   "Cancel",
                                   style: TextStyle(
-                                    color: Colors.black,
                                     fontSize: Sizes.size16,
                                   ),
                                 ),
@@ -224,7 +233,6 @@ class SettingsScreen extends StatelessWidget {
                           child: const Text(
                             "Cancel",
                             style: TextStyle(
-                              color: Colors.black,
                               fontSize: Sizes.size16,
                             ),
                           ),

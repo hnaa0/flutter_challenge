@@ -7,6 +7,7 @@ import 'package:assignment_13/common/widgets/post_card_img_slider.dart';
 import 'package:assignment_13/features/home/widgets/post_card_reply_users.dart';
 import 'package:assignment_13/common/widgets/post_card_user_avatar.dart';
 import 'package:assignment_13/models/posts.dart';
+import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
@@ -54,8 +55,6 @@ class _PostCardState extends State<PostCard> {
 
   void _onEllipsisTap(BuildContext context) {
     showModalBottomSheet(
-      backgroundColor: Colors.white,
-      elevation: 0,
       isScrollControlled: true,
       context: context,
       builder: (context) => const EllipsisBottomSheet(),
@@ -145,9 +144,12 @@ class _PostCardState extends State<PostCard> {
                         onTap: widget.isMine
                             ? () {}
                             : () => _onEllipsisTap(context),
-                        child: const FaIcon(
+                        child: FaIcon(
                           FontAwesomeIcons.ellipsis,
                           size: Sizes.size18,
+                          color: isDarkMode(context)
+                              ? const Color(ThemeColors.lightGray)
+                              : Colors.black,
                         ),
                       ),
                       Gaps.h6,
@@ -255,13 +257,20 @@ class _PostCardState extends State<PostCard> {
                                 ? FontAwesomeIcons.solidHeart
                                 : FontAwesomeIcons.heart,
                             size: Sizes.size20 + Sizes.size2,
-                            color: _isLiked ? Colors.red : null,
+                            color: _isLiked
+                                ? Colors.red
+                                : isDarkMode(context)
+                                    ? const Color(ThemeColors.lightGray)
+                                    : null,
                           ),
                         ),
                         Gaps.h20,
-                        const FaIcon(
+                        FaIcon(
                           FontAwesomeIcons.comment,
                           size: Sizes.size20 + Sizes.size2,
+                          color: isDarkMode(context)
+                              ? const Color(ThemeColors.lightGray)
+                              : null,
                         ),
                         Gaps.h20,
                         GestureDetector(
@@ -269,13 +278,20 @@ class _PostCardState extends State<PostCard> {
                           child: FaIcon(
                             FontAwesomeIcons.retweet,
                             size: Sizes.size20 + Sizes.size2,
-                            color: _isRetweet ? Colors.green : null,
+                            color: _isRetweet
+                                ? Colors.green
+                                : isDarkMode(context)
+                                    ? const Color(ThemeColors.lightGray)
+                                    : null,
                           ),
                         ),
                         Gaps.h20,
-                        const FaIcon(
+                        FaIcon(
                           FontAwesomeIcons.paperPlane,
                           size: Sizes.size20,
+                          color: isDarkMode(context)
+                              ? const Color(ThemeColors.lightGray)
+                              : null,
                         ),
                       ],
                     ),

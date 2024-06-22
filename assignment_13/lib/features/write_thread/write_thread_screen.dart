@@ -5,6 +5,7 @@ import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/write_thread/camera_screen.dart';
+import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -17,7 +18,6 @@ class WriteThreadScreen extends StatefulWidget {
 
 class _WriteThreadScreenState extends State<WriteThreadScreen> {
   final TextEditingController _textController = TextEditingController();
-
   final FocusNode _focusNode = FocusNode();
   String _text = "";
   final List<String> _selectedList = [];
@@ -81,7 +81,6 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
         child: Scaffold(
           appBar: AppBar(
             elevation: 0,
-            backgroundColor: Colors.white,
             title: const Text(
               "New thread",
               style: TextStyle(
@@ -93,6 +92,7 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
             leading: GestureDetector(
               behavior: HitTestBehavior.translucent,
               onTap: () {
+                _focusNode.unfocus();
                 Navigator.pop(context);
               },
               child: Container(
@@ -109,11 +109,13 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
               ),
             ),
             leadingWidth: 80,
-            shape: const Border(
+            shape: Border(
               bottom: BorderSide(
-                color: Color(
-                  ThemeColors.extraLightGray,
-                ),
+                color: isDarkMode(context)
+                    ? const Color(ThemeColors.darkGray)
+                    : const Color(
+                        ThemeColors.extraLightGray,
+                      ),
                 width: 1,
               ),
             ),
@@ -124,7 +126,9 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
               horizontal: Sizes.size20,
               vertical: Sizes.size16,
             ),
-            color: Colors.white,
+            color: isDarkMode(context)
+                ? const Color(ThemeColors.black)
+                : Colors.white,
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -302,7 +306,9 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
           bottomSheet: BottomAppBar(
             height: 50,
             elevation: 0,
-            color: Colors.white,
+            color: isDarkMode(context)
+                ? const Color(ThemeColors.black)
+                : Colors.white,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

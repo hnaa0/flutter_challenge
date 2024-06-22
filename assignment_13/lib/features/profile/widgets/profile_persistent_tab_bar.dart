@@ -1,5 +1,6 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePersistentTabBar extends SliverPersistentHeaderDelegate {
@@ -16,22 +17,12 @@ class ProfilePersistentTabBar extends SliverPersistentHeaderDelegate {
     bool overlapsContent,
   ) {
     return Container(
-      color: Colors.white,
+      color:
+          isDarkMode(context) ? const Color(ThemeColors.black) : Colors.white,
       child: TabBar(
         controller: controller,
-        splashFactory: NoSplash.splashFactory,
-        dividerColor: const Color(
-          ThemeColors.extraLightGray,
-        ),
         indicatorWeight: 1.2,
         indicatorSize: TabBarIndicatorSize.tab,
-        indicatorColor: const Color(
-          ThemeColors.black,
-        ).withOpacity(0.8),
-        labelColor: Colors.black,
-        unselectedLabelColor: const Color(
-          ThemeColors.darkGray,
-        ),
         tabs: const [
           Tab(
             child: Text(
