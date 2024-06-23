@@ -5,6 +5,7 @@ import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/write_thread/camera_screen.dart';
+import 'package:assignment_13/features/write_thread/widgets/write_thread_bottom_app_bar.dart';
 import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -60,6 +61,7 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
   @override
   void dispose() {
     _textController.dispose();
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -154,16 +156,18 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
                                     AssetImage("assets/images/avatar.jpg"),
                               ),
                             ),
-                            const Expanded(
+                            Expanded(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                   vertical: Sizes.size6,
                                 ),
                                 child: VerticalDivider(
                                   thickness: Sizes.size2,
-                                  color: Color(
-                                    ThemeColors.extraLightGray,
-                                  ),
+                                  color: isDarkMode(context)
+                                      ? const Color(ThemeColors.darkGray)
+                                      : const Color(
+                                          ThemeColors.extraLightGray,
+                                        ),
                                 ),
                               ),
                             ),
@@ -303,39 +307,7 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
               ),
             ),
           ),
-          bottomSheet: BottomAppBar(
-            height: 50,
-            elevation: 0,
-            color: isDarkMode(context)
-                ? const Color(ThemeColors.black)
-                : Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  "Anyone can reply",
-                  style: TextStyle(
-                    color: Color(
-                      ThemeColors.lightGray,
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Text(
-                    "Post",
-                    style: TextStyle(
-                      color: const Color(
-                        ThemeColors.twitterBlue,
-                      ).withOpacity(_text != "" ? 1 : 0.5),
-                      fontSize: Sizes.size18,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          bottomSheet: WriteThreadBottomAppBar(text: _text),
         ),
       ),
     );

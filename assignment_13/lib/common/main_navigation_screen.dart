@@ -25,6 +25,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   }
 
   void _onWriteTap(BuildContext context) {
+    FocusScope.of(context).unfocus();
     showModalBottomSheet(
         isScrollControlled: true,
         context: context,
@@ -44,10 +45,6 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             offstage: _selectedIdx != 1,
             child: const SearchScreen(),
           ),
-          // Offstage(
-          //   offstage: _selectedIdx != 2,
-          //   child: const WriteThreadScreen(),
-          // ),
           Offstage(
             offstage: _selectedIdx != 3,
             child: const NotificationsScreen(),

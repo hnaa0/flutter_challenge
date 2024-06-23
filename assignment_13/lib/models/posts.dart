@@ -102,7 +102,7 @@ final posts = [
   Post(
       userName: "nala_cat",
       avatarImg:
-          "https://scontent.cdninstagram.com/v/t51.2885-19/358017564_619125516679487_2823203487940479365_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent.cdninstagram.com&_nc_cat=111&_nc_ohc=F3oGGNgbIdMQ7kNvgE4CsFg&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYC2s_UXDIpG2u4mLui-AXyc0b6IXDs8Jw2Uwt0hvin_3A&oe=66732D5B&_nc_sid=10d13b",
+          "https://images.pexels.com/photos/1276553/pexels-photo-1276553.jpeg?auto=compress&cs=tinysrgb&w=800",
       isCertified: true,
       postTime: "38m",
       likes: 631,
@@ -115,12 +115,12 @@ final posts = [
       text:
           "I had to say goodbye to my sister Stella earlier this week. I miss you so much Stella Bella. Rest in paradise my sister ❤️🌈",
       postImg: [
-        "https://scontent.cdninstagram.com/v/t51.29350-15/375884146_1463558161135763_2484874533823325265_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMTcweDEzNjkuc2RyLmYyOTM1MCJ9&_nc_ht=scontent.cdninstagram.com&_nc_cat=111&_nc_ohc=PoK99YB5QfkQ7kNvgFja141&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzE4NjkyNjU5ODgzMzk4MTg3Mg%3D%3D.2-ccb7-5&oh=00_AYDQuN_Cqsf1dFj6vIUz_gDVwqNcFP-lAvpVHz9p_BMsIg&oe=66713BEF&_nc_sid=10d13b",
+        "https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg?auto=compress&cs=tinysrgb&w=800",
       ]),
   Post(
     userName: "_plantswithkrystal_",
     avatarImg:
-        "https://scontent.cdninstagram.com/v/t51.2885-19/343564605_626154996028024_3429561118814250608_n.jpg?stp=dst-jpg_s640x640&_nc_ht=scontent.cdninstagram.com&_nc_cat=1&_nc_ohc=pRkiuu2fztMQ7kNvgGNEz50&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYAzil5ZMlGJoFlwsO-2mMNGWDRtZdqyclrGluwdDY0u-g&oe=66733481&_nc_sid=10d13b",
+        "https://images.pexels.com/photos/6912795/pexels-photo-6912795.jpeg?auto=compress&cs=tinysrgb&w=800",
     isCertified: true,
     postTime: "1h",
     likes: 74,

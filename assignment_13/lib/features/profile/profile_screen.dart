@@ -24,6 +24,7 @@ class _ProfileScreenState extends State<ProfileScreen>
       TabController(length: 2, vsync: this);
 
   void _onMenuTap() {
+    FocusScope.of(context).unfocus();
     Navigator.push(
       context,
       MaterialPageRoute(

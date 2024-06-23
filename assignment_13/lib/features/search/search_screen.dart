@@ -6,8 +6,28 @@ import 'package:assignment_13/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
+
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  final TextEditingController _controller = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,44 +36,52 @@ class SearchScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
           horizontal: Sizes.size12,
         ),
-        child: CustomScrollView(
-          slivers: [
-            const SliverAppBar(
-              pinned: true,
-              title: Text(
-                "Search",
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: Sizes.size32,
+        child: GestureDetector(
+          onTap: () {
+            _focusNode.unfocus();
+          },
+          child: CustomScrollView(
+            slivers: [
+              const SliverAppBar(
+                pinned: true,
+                title: Text(
+                  "Search",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: Sizes.size32,
+                  ),
+                ),
+                centerTitle: false,
+              ),
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: SliverUserSearchTextField(
+                  controller: _controller,
+                  focusNode: _focusNode,
                 ),
               ),
-              centerTitle: false,
-            ),
-            SliverPersistentHeader(
-              pinned: true,
-              delegate: SliverUserSearchTextField(),
-            ),
-            SliverList.separated(
-              itemCount: users.length,
-              itemBuilder: (context, index) {
-                var user = users[index];
-                return SearchUser(
-                  avatar: user.profileImg,
-                  account: user.userAccount,
-                  name: user.userName,
-                  follower: user.followerCount,
-                  isCertified: user.isCertified,
-                );
-              },
-              separatorBuilder: (context, index) => Divider(
-                color: isDarkMode(context)
-                    ? const Color(ThemeColors.darkGray)
-                    : const Color(
-                        ThemeColors.extraLightGray,
-                      ),
+              SliverList.separated(
+                itemCount: users.length,
+                itemBuilder: (context, index) {
+                  var user = users[index];
+                  return SearchUser(
+                    avatar: user.profileImg,
+                    account: user.userAccount,
+                    name: user.userName,
+                    follower: user.followerCount,
+                    isCertified: user.isCertified,
+                  );
+                },
+                separatorBuilder: (context, index) => Divider(
+                  color: isDarkMode(context)
+                      ? const Color(ThemeColors.darkGray)
+                      : const Color(
+                          ThemeColors.extraLightGray,
+                        ),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -61,6 +89,12 @@ class SearchScreen extends StatelessWidget {
 }
 
 class SliverUserSearchTextField extends SliverPersistentHeaderDelegate {
+  final FocusNode focusNode;
+  final TextEditingController controller;
+
+  SliverUserSearchTextField(
+      {required this.focusNode, required this.controller});
+
   @override
   Widget build(
     BuildContext context,
@@ -74,7 +108,13 @@ class SliverUserSearchTextField extends SliverPersistentHeaderDelegate {
       ),
       color:
           isDarkMode(context) ? const Color(ThemeColors.black) : Colors.white,
-      child: const CupertinoSearchTextField(),
+      child: CupertinoSearchTextField(
+        controller: controller,
+        focusNode: focusNode,
+        autofocus: false,
+        style:
+            TextStyle(color: isDarkMode(context) ? Colors.white : Colors.black),
+      ),
     );
   }
 

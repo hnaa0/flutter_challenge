@@ -94,12 +94,14 @@ class _PostCardState extends State<PostCard> {
                 ),
                 Gaps.v10,
                 if (!widget.isMine) ...[
-                  const Expanded(
+                  Expanded(
                     child: VerticalDivider(
                       thickness: Sizes.size2,
-                      color: Color(
-                        ThemeColors.extraLightGray,
-                      ),
+                      color: isDarkMode(context)
+                          ? const Color(ThemeColors.darkGray)
+                          : const Color(
+                              ThemeColors.extraLightGray,
+                            ),
                     ),
                   ),
                   if (widget.item.replyUsersImg.isNotEmpty) ...[
