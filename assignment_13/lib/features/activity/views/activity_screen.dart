@@ -5,14 +5,17 @@ import 'package:assignment_13/features/activity/widgets/activity_list_view.dart'
 import 'package:assignment_13/features/activity/widgets/persistent_tab_bar.dart';
 import 'package:flutter/material.dart';
 
-class NotificationsScreen extends StatefulWidget {
-  const NotificationsScreen({super.key});
+class ActivityScreen extends StatefulWidget {
+  static const routeUrl = "/activity";
+  static const routeName = "activity";
+
+  const ActivityScreen({super.key});
 
   @override
-  State<NotificationsScreen> createState() => _NotificationsScreenState();
+  State<ActivityScreen> createState() => _ActivityScreenState();
 }
 
-class _NotificationsScreenState extends State<NotificationsScreen>
+class _ActivityScreenState extends State<ActivityScreen>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController = TabController(
     length: 5,

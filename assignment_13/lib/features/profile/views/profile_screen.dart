@@ -3,15 +3,20 @@ import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/common/widgets/post_card.dart';
 import 'package:assignment_13/features/profile/widgets/profile_replies.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:assignment_13/features/settings/views/settings_screen.dart';
 import 'package:assignment_13/models/profiles.dart';
 import 'package:assignment_13/features/profile/widgets/profile_persistent_tab_bar.dart';
 import 'package:assignment_13/features/profile/widgets/profile_button.dart';
-import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
+  static const routeUrl = "/profile";
+  static const routeName = "profile";
+
   const ProfileScreen({super.key});
 
   @override
@@ -25,16 +30,12 @@ class _ProfileScreenState extends State<ProfileScreen>
 
   void _onMenuTap() {
     FocusScope.of(context).unfocus();
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const SettingsScreen(),
-      ),
-    );
+    context.pushNamed(SettingsScreen.routeName);
   }
 
   @override
   Widget build(BuildContext context) {
+    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
     return SafeArea(
       child: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -78,17 +79,13 @@ class _ProfileScreenState extends State<ProfileScreen>
                             Container(
                               height: Sizes.size2,
                               width: Sizes.size24,
-                              color: isDarkMode(context)
-                                  ? Colors.white
-                                  : Colors.black,
+                              color: isDark ? Colors.white : Colors.black,
                             ),
                             Gaps.v8,
                             Container(
                               height: Sizes.size2,
                               width: Sizes.size14,
-                              color: isDarkMode(context)
-                                  ? Colors.white
-                                  : Colors.black,
+                              color: isDark ? Colors.white : Colors.black,
                             ),
                           ],
                         ),
@@ -280,7 +277,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                 },
                 separatorBuilder: (context, index) => Divider(
                   thickness: Sizes.size1,
-                  color: isDarkMode(context)
+                  color: isDark
                       ? const Color(ThemeColors.darkGray)
                       : const Color(
                           ThemeColors.extraLightGray,

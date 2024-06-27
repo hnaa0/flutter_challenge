@@ -1,8 +1,9 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
-import 'package:assignment_13/utils.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 const List<Map<String, String>> reports = [
   {
@@ -123,7 +124,7 @@ class EllipsisBottomSheetReport extends StatelessWidget {
         },
         separatorBuilder: (context, index) => Divider(
           thickness: Sizes.size1,
-          color: isDarkMode(context)
+          color: context.watch<SettingsThemeModeViewModel>().darkMode
               ? const Color(ThemeColors.darkGray)
               : const Color(
                   ThemeColors.extraLightGray,

@@ -1,26 +1,27 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:assignment_13/features/settings/views/privacy_screen.dart';
-import 'package:assignment_13/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatelessWidget {
+  static const routeUrl = "/settings";
+  static const routeName = "settings";
+
   const SettingsScreen({super.key});
 
   void _onPrivacyTap(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const PrivacyScreen(),
-      ),
-    );
+    context.pushNamed(PrivacyScreen.routeName);
   }
 
   @override
   Widget build(BuildContext context) {
+    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -55,7 +56,7 @@ class SettingsScreen extends StatelessWidget {
         leadingWidth: 80,
         shape: Border(
           bottom: BorderSide(
-            color: isDarkMode(context)
+            color: isDark
                 ? const Color(ThemeColors.darkGray)
                 : const Color(
                     ThemeColors.extraLightGray,
@@ -67,11 +68,35 @@ class SettingsScreen extends StatelessWidget {
       body: SafeArea(
         child: ListView(
           children: [
+            SwitchListTile.adaptive(
+              splashRadius: 0,
+              value: isDark,
+              onChanged: (value) {
+                context
+                    .read<SettingsThemeModeViewModel>()
+                    .toggleThemeMode(value);
+              },
+              title: Row(
+                children: [
+                  FaIcon(
+                    FontAwesomeIcons.moon,
+                    size: Sizes.size20,
+                    color: isDark
+                        ? const Color(ThemeColors.extraExtraLightGray)
+                        : const Color(ThemeColors.black),
+                  ),
+                  Gaps.h24,
+                  const Text(
+                    "Dark mode",
+                  ),
+                ],
+              ),
+            ),
             ListTile(
               leading: FaIcon(
                 FontAwesomeIcons.userPlus,
                 size: Sizes.size20,
-                color: isDarkMode(context)
+                color: isDark
                     ? const Color(ThemeColors.extraExtraLightGray)
                     : const Color(ThemeColors.black),
               ),
@@ -83,7 +108,7 @@ class SettingsScreen extends StatelessWidget {
               leading: FaIcon(
                 FontAwesomeIcons.bell,
                 size: Sizes.size20,
-                color: isDarkMode(context)
+                color: isDark
                     ? const Color(ThemeColors.extraExtraLightGray)
                     : const Color(ThemeColors.black),
               ),
@@ -96,7 +121,7 @@ class SettingsScreen extends StatelessWidget {
               leading: FaIcon(
                 FontAwesomeIcons.lock,
                 size: Sizes.size20,
-                color: isDarkMode(context)
+                color: isDark
                     ? const Color(ThemeColors.extraExtraLightGray)
                     : const Color(ThemeColors.black),
               ),
@@ -108,7 +133,7 @@ class SettingsScreen extends StatelessWidget {
               leading: Icon(
                 FontAwesomeIcons.user,
                 size: Sizes.size20,
-                color: isDarkMode(context)
+                color: isDark
                     ? const Color(ThemeColors.extraExtraLightGray)
                     : const Color(ThemeColors.black),
               ),
@@ -120,7 +145,7 @@ class SettingsScreen extends StatelessWidget {
               leading: FaIcon(
                 FontAwesomeIcons.hand,
                 size: Sizes.size20,
-                color: isDarkMode(context)
+                color: isDark
                     ? const Color(ThemeColors.extraExtraLightGray)
                     : const Color(ThemeColors.black),
               ),
@@ -132,7 +157,7 @@ class SettingsScreen extends StatelessWidget {
               leading: FaIcon(
                 FontAwesomeIcons.circleInfo,
                 size: Sizes.size20,
-                color: isDarkMode(context)
+                color: isDark
                     ? const Color(ThemeColors.extraExtraLightGray)
                     : const Color(ThemeColors.black),
               ),

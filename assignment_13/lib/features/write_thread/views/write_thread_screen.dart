@@ -4,11 +4,12 @@ import 'dart:io';
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:assignment_13/features/write_thread/views/camera_screen.dart';
 import 'package:assignment_13/features/write_thread/widgets/write_thread_bottom_app_bar.dart';
-import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class WriteThreadScreen extends StatefulWidget {
   const WriteThreadScreen({super.key});
@@ -67,6 +68,7 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
     return GestureDetector(
       onTap: () {
         _focusNode.unfocus();
@@ -113,7 +115,7 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
             leadingWidth: 80,
             shape: Border(
               bottom: BorderSide(
-                color: isDarkMode(context)
+                color: isDark
                     ? const Color(ThemeColors.darkGray)
                     : const Color(
                         ThemeColors.extraLightGray,
@@ -128,9 +130,7 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
               horizontal: Sizes.size20,
               vertical: Sizes.size16,
             ),
-            color: isDarkMode(context)
-                ? const Color(ThemeColors.black)
-                : Colors.white,
+            color: isDark ? const Color(ThemeColors.black) : Colors.white,
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -163,7 +163,7 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
                                 ),
                                 child: VerticalDivider(
                                   thickness: Sizes.size2,
-                                  color: isDarkMode(context)
+                                  color: isDark
                                       ? const Color(ThemeColors.darkGray)
                                       : const Color(
                                           ThemeColors.extraLightGray,

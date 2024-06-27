@@ -1,8 +1,9 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/activity/widgets/activity_tab.dart';
-import 'package:assignment_13/utils.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PersistentTabBar extends SliverPersistentHeaderDelegate {
   PersistentTabBar({
@@ -16,12 +17,12 @@ class PersistentTabBar extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
+    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
     return Container(
       padding: const EdgeInsets.symmetric(
         vertical: Sizes.size4,
       ),
-      color:
-          isDarkMode(context) ? const Color(ThemeColors.black) : Colors.white,
+      color: isDark ? const Color(ThemeColors.black) : Colors.white,
       child: TabBar(
         controller: controller,
         isScrollable: true,

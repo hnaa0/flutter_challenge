@@ -1,7 +1,8 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
-import 'package:assignment_13/utils.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePersistentTabBar extends SliverPersistentHeaderDelegate {
   ProfilePersistentTabBar({
@@ -17,8 +18,9 @@ class ProfilePersistentTabBar extends SliverPersistentHeaderDelegate {
     bool overlapsContent,
   ) {
     return Container(
-      color:
-          isDarkMode(context) ? const Color(ThemeColors.black) : Colors.white,
+      color: context.watch<SettingsThemeModeViewModel>().darkMode
+          ? const Color(ThemeColors.black)
+          : Colors.white,
       child: TabBar(
         controller: controller,
         indicatorWeight: 1.2,

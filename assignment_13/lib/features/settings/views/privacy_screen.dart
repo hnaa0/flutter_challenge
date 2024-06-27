@@ -1,11 +1,16 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class PrivacyScreen extends StatefulWidget {
+  static const routeUrl = "privacy";
+  static const routeName = "privacy";
+
   const PrivacyScreen({super.key});
 
   @override
@@ -23,6 +28,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -57,7 +63,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
         leadingWidth: 80,
         shape: Border(
           bottom: BorderSide(
-            color: isDarkMode(context)
+            color: isDark
                 ? const Color(ThemeColors.darkGray)
                 : const Color(
                     ThemeColors.extraLightGray,
@@ -77,7 +83,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                 FaIcon(
                   FontAwesomeIcons.lock,
                   size: Sizes.size20,
-                  color: isDarkMode(context)
+                  color: isDark
                       ? const Color(ThemeColors.extraExtraLightGray)
                       : const Color(ThemeColors.black),
                 ),
@@ -93,7 +99,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
             leading: FaIcon(
               FontAwesomeIcons.threads,
               size: Sizes.size20,
-              color: isDarkMode(context)
+              color: isDark
                   ? const Color(ThemeColors.extraExtraLightGray)
                   : const Color(ThemeColors.black),
             ),
@@ -128,7 +134,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
             leading: FaIcon(
               FontAwesomeIcons.bellSlash,
               size: Sizes.size20,
-              color: isDarkMode(context)
+              color: isDark
                   ? const Color(ThemeColors.extraExtraLightGray)
                   : const Color(ThemeColors.black),
             ),
@@ -147,7 +153,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
             leading: FaIcon(
               FontAwesomeIcons.eyeSlash,
               size: Sizes.size20,
-              color: isDarkMode(context)
+              color: isDark
                   ? const Color(ThemeColors.extraExtraLightGray)
                   : const Color(ThemeColors.black),
             ),
@@ -166,7 +172,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
             leading: FaIcon(
               FontAwesomeIcons.userGroup,
               size: Sizes.size20,
-              color: isDarkMode(context)
+              color: isDark
                   ? const Color(ThemeColors.extraExtraLightGray)
                   : const Color(ThemeColors.black),
             ),
@@ -212,7 +218,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
             leading: FaIcon(
               FontAwesomeIcons.circleXmark,
               size: Sizes.size20,
-              color: isDarkMode(context)
+              color: isDark
                   ? const Color(ThemeColors.extraExtraLightGray)
                   : const Color(ThemeColors.black),
             ),

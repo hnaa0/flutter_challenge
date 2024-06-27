@@ -1,8 +1,9 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
-import 'package:assignment_13/utils.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class PostCardUserAvatar extends StatelessWidget {
   const PostCardUserAvatar({
@@ -16,6 +17,7 @@ class PostCardUserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -50,17 +52,16 @@ class PostCardUserAvatar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
                     width: Sizes.size2,
-                    color: isDarkMode(context)
-                        ? const Color(ThemeColors.black)
-                        : Colors.white),
-                color: isDarkMode(context)
+                    color:
+                        isDark ? const Color(ThemeColors.black) : Colors.white),
+                color: isDark
                     ? const Color(ThemeColors.extraLightGray)
                     : const Color(ThemeColors.black),
               ),
               child: FaIcon(
                 FontAwesomeIcons.plus,
                 size: Sizes.size10,
-                color: isDarkMode(context) ? Colors.black : Colors.white,
+                color: isDark ? Colors.black : Colors.white,
               ),
             ),
           ),

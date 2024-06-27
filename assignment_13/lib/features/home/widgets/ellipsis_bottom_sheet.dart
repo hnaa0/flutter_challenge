@@ -2,8 +2,9 @@ import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/home/widgets/ellipsis_bottom_sheet_report.dart';
-import 'package:assignment_13/utils.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class EllipsisBottomSheet extends StatefulWidget {
   const EllipsisBottomSheet({super.key});
@@ -46,6 +47,7 @@ class _EllipsisBottomSheetState extends State<EllipsisBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
     return Padding(
       padding: const EdgeInsets.only(
         left: Sizes.size20,
@@ -69,7 +71,7 @@ class _EllipsisBottomSheetState extends State<EllipsisBottomSheet> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: isDarkMode(context)
+                      color: isDark
                           ? const Color(0xFF2F363D)
                           : const Color(0xffF2F2F2),
                       borderRadius: BorderRadius.circular(Sizes.size20),
@@ -102,7 +104,7 @@ class _EllipsisBottomSheetState extends State<EllipsisBottomSheet> {
                   Gaps.v16,
                   Container(
                     decoration: BoxDecoration(
-                      color: isDarkMode(context)
+                      color: isDark
                           ? const Color(0xFF2F363D)
                           : const Color(0xffF2F2F2),
                       borderRadius: BorderRadius.circular(Sizes.size20),

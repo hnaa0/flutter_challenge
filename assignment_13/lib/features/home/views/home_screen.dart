@@ -1,12 +1,16 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:assignment_13/models/posts.dart';
 import 'package:assignment_13/common/widgets/post_card.dart';
-import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const routeUrl = "/home";
+  static const routeName = "home";
+
   const HomeScreen({super.key});
 
   @override
@@ -58,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 separatorBuilder: (context, index) => Divider(
                   thickness: Sizes.size1,
-                  color: isDarkMode(context)
+                  color: context.watch<SettingsThemeModeViewModel>().darkMode
                       ? const Color(ThemeColors.darkGray)
                       : const Color(
                           ThemeColors.extraLightGray,

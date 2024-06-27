@@ -1,8 +1,9 @@
 import 'package:assignment_13/constants/colors.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:assignment_13/models/activities.dart';
 import 'package:assignment_13/features/activity/widgets/activity_user_list_tile.dart';
-import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ActivityListView extends StatelessWidget {
   const ActivityListView({
@@ -22,7 +23,7 @@ class ActivityListView extends StatelessWidget {
         );
       },
       separatorBuilder: (context, index) => Divider(
-        color: isDarkMode(context)
+        color: context.watch<SettingsThemeModeViewModel>().darkMode
             ? const Color(ThemeColors.darkGray)
             : const Color(
                 ThemeColors.extraLightGray,

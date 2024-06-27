@@ -1,7 +1,8 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
-import 'package:assignment_13/utils.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ActivityTab extends StatelessWidget {
   const ActivityTab({
@@ -15,25 +16,31 @@ class ActivityTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 250),
       alignment: Alignment.center,
       width: 110,
       decoration: BoxDecoration(
-        // color: isSelected ? const Color(ThemeColors.black) : Colors.white,
-        color: isDarkMode(context)
+        color: isDark
             ? isSelected
-                ? const Color(ThemeColors.darkGray)
-                : const Color(ThemeColors.extraLightGray)
+                ? const Color(ThemeColors.extraExtraLightGray)
+                : const Color(0xFF2F363D)
             : isSelected
                 ? Colors.black
                 : Colors.white,
         border: !isSelected
-            ? Border.all(
-                color: const Color(
-                  ThemeColors.extraLightGray,
-                ),
-              )
+            ? isDark
+                ? Border.all(
+                    color: const Color(
+                      ThemeColors.darkGray,
+                    ),
+                  )
+                : Border.all(
+                    color: const Color(
+                      ThemeColors.extraLightGray,
+                    ),
+                  )
             : null,
         borderRadius: BorderRadius.circular(
           Sizes.size10,
@@ -42,7 +49,13 @@ class ActivityTab extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          color: isSelected ? Colors.white : Colors.black,
+          color: isDark
+              ? isSelected
+                  ? Colors.black
+                  : Colors.white
+              : isSelected
+                  ? Colors.white
+                  : Colors.black,
           fontWeight: FontWeight.w600,
           fontSize: Sizes.size16,
         ),

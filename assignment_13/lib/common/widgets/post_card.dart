@@ -6,11 +6,12 @@ import 'package:assignment_13/features/home/widgets/ellipsis_bottom_sheet.dart';
 import 'package:assignment_13/common/widgets/post_card_img_slider.dart';
 import 'package:assignment_13/features/home/widgets/post_card_reply_users.dart';
 import 'package:assignment_13/common/widgets/post_card_user_avatar.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:assignment_13/models/posts.dart';
-import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class PostCard extends StatefulWidget {
   const PostCard({
@@ -76,6 +77,7 @@ class _PostCardState extends State<PostCard> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: Sizes.size12,
@@ -97,7 +99,7 @@ class _PostCardState extends State<PostCard> {
                   Expanded(
                     child: VerticalDivider(
                       thickness: Sizes.size2,
-                      color: isDarkMode(context)
+                      color: isDark
                           ? const Color(ThemeColors.darkGray)
                           : const Color(
                               ThemeColors.extraLightGray,
@@ -149,7 +151,7 @@ class _PostCardState extends State<PostCard> {
                         child: FaIcon(
                           FontAwesomeIcons.ellipsis,
                           size: Sizes.size18,
-                          color: isDarkMode(context)
+                          color: isDark
                               ? const Color(ThemeColors.lightGray)
                               : Colors.black,
                         ),
@@ -261,7 +263,7 @@ class _PostCardState extends State<PostCard> {
                             size: Sizes.size20 + Sizes.size2,
                             color: _isLiked
                                 ? Colors.red
-                                : isDarkMode(context)
+                                : isDark
                                     ? const Color(ThemeColors.lightGray)
                                     : null,
                           ),
@@ -270,7 +272,7 @@ class _PostCardState extends State<PostCard> {
                         FaIcon(
                           FontAwesomeIcons.comment,
                           size: Sizes.size20 + Sizes.size2,
-                          color: isDarkMode(context)
+                          color: isDark
                               ? const Color(ThemeColors.lightGray)
                               : null,
                         ),
@@ -282,7 +284,7 @@ class _PostCardState extends State<PostCard> {
                             size: Sizes.size20 + Sizes.size2,
                             color: _isRetweet
                                 ? Colors.green
-                                : isDarkMode(context)
+                                : isDark
                                     ? const Color(ThemeColors.lightGray)
                                     : null,
                           ),
@@ -291,7 +293,7 @@ class _PostCardState extends State<PostCard> {
                         FaIcon(
                           FontAwesomeIcons.paperPlane,
                           size: Sizes.size20,
-                          color: isDarkMode(context)
+                          color: isDark
                               ? const Color(ThemeColors.lightGray)
                               : null,
                         ),

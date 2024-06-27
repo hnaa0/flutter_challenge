@@ -1,7 +1,8 @@
 import 'package:assignment_13/constants/colors.dart';
-import 'package:assignment_13/utils.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class NavTab extends StatelessWidget {
   const NavTab({
@@ -31,7 +32,7 @@ class NavTab extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 4),
                 child: FaIcon(
                   icon,
-                  color: isDarkMode(context)
+                  color: context.watch<SettingsThemeModeViewModel>().darkMode
                       ? const Color(ThemeColors.extraLightGray)
                       : Colors.black,
                   size: 26,

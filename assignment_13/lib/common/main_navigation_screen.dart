@@ -7,21 +7,35 @@ import 'package:assignment_13/features/write_thread/views/write_thread_screen.da
 import 'package:flutter/material.dart';
 import 'package:assignment_13/common/widgets/nav_tab.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class MainNavigationScreen extends StatefulWidget {
-  const MainNavigationScreen({super.key});
+  static const routeName = "mainNav";
+  static const tabs = [
+    HomeScreen.routeName,
+    SearchScreen.routeName,
+    "write_thread",
+    ActivityScreen.routeName,
+    ProfileScreen.routeName,
+  ];
+
+  const MainNavigationScreen({super.key, required this.tab});
+
+  final String tab;
 
   @override
   State<MainNavigationScreen> createState() => _MainNavigationScreenState();
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int _selectedIdx = 0;
+  late int _selectedIdx = MainNavigationScreen.tabs.indexOf(widget.tab);
 
   void _onNavTap(int idx) {
     setState(() {
       _selectedIdx = idx;
     });
+
+    context.go("/${MainNavigationScreen.tabs[idx]}");
   }
 
   void _onWriteTap(BuildContext context) {
@@ -47,7 +61,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           ),
           Offstage(
             offstage: _selectedIdx != 3,
-            child: const NotificationsScreen(),
+            child: const ActivityScreen(),
           ),
           Offstage(
             offstage: _selectedIdx != 4,
