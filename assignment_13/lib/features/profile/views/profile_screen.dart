@@ -3,7 +3,7 @@ import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/common/widgets/post_card.dart';
 import 'package:assignment_13/features/profile/widgets/profile_replies.dart';
-import 'package:assignment_13/features/settings/settings_screen.dart';
+import 'package:assignment_13/features/settings/views/settings_screen.dart';
 import 'package:assignment_13/models/profiles.dart';
 import 'package:assignment_13/features/profile/widgets/profile_persistent_tab_bar.dart';
 import 'package:assignment_13/features/profile/widgets/profile_button.dart';

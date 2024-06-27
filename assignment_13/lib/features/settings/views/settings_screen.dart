@@ -1,7 +1,7 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
-import 'package:assignment_13/features/settings/privacy_screen.dart';
+import 'package:assignment_13/features/settings/views/privacy_screen.dart';
 import 'package:assignment_13/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

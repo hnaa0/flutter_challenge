@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
-import 'package:assignment_13/features/write_thread/camera_screen.dart';
+import 'package:assignment_13/features/write_thread/views/camera_screen.dart';
 import 'package:assignment_13/features/write_thread/widgets/write_thread_bottom_app_bar.dart';
 import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';

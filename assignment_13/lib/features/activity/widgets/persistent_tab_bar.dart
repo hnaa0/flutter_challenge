@@ -1,5 +1,7 @@
+import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/activity/widgets/activity_tab.dart';
+import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 
 class PersistentTabBar extends SliverPersistentHeaderDelegate {
@@ -18,6 +20,8 @@ class PersistentTabBar extends SliverPersistentHeaderDelegate {
       padding: const EdgeInsets.symmetric(
         vertical: Sizes.size4,
       ),
+      color:
+          isDarkMode(context) ? const Color(ThemeColors.black) : Colors.white,
       child: TabBar(
         controller: controller,
         isScrollable: true,
