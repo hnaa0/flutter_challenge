@@ -2,8 +2,8 @@ import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 
 const List<Map<String, String>> reports = [
   {
@@ -45,7 +45,7 @@ const List<Map<String, String>> reports = [
   },
 ];
 
-class EllipsisBottomSheetReport extends StatelessWidget {
+class EllipsisBottomSheetReport extends ConsumerWidget {
   const EllipsisBottomSheetReport({
     super.key,
     required this.onBackTap,
@@ -54,7 +54,8 @@ class EllipsisBottomSheetReport extends StatelessWidget {
   final Function onBackTap;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDark = ref.watch(settingsThemeModeProvider).darkMode;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -124,7 +125,7 @@ class EllipsisBottomSheetReport extends StatelessWidget {
         },
         separatorBuilder: (context, index) => Divider(
           thickness: Sizes.size1,
-          color: context.watch<SettingsThemeModeViewModel>().darkMode
+          color: isDark
               ? const Color(ThemeColors.darkGray)
               : const Color(
                   ThemeColors.extraLightGray,

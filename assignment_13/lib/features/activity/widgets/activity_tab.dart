@@ -2,9 +2,9 @@ import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ActivityTab extends StatelessWidget {
+class ActivityTab extends ConsumerWidget {
   const ActivityTab({
     super.key,
     required this.text,
@@ -15,8 +15,8 @@ class ActivityTab extends StatelessWidget {
   final bool isSelected;
 
   @override
-  Widget build(BuildContext context) {
-    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDark = ref.watch(settingsThemeModeProvider).darkMode;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 250),
       alignment: Alignment.center,

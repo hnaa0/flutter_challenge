@@ -8,17 +8,17 @@ import 'package:assignment_13/features/settings/view_models/theme_mode_view_mode
 import 'package:assignment_13/features/write_thread/views/camera_screen.dart';
 import 'package:assignment_13/features/write_thread/widgets/write_thread_bottom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 
-class WriteThreadScreen extends StatefulWidget {
+class WriteThreadScreen extends ConsumerStatefulWidget {
   const WriteThreadScreen({super.key});
 
   @override
-  State<WriteThreadScreen> createState() => _WriteThreadScreenState();
+  ConsumerState<WriteThreadScreen> createState() => _WriteThreadScreenState();
 }
 
-class _WriteThreadScreenState extends State<WriteThreadScreen> {
+class _WriteThreadScreenState extends ConsumerState<WriteThreadScreen> {
   final TextEditingController _textController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   String _text = "";
@@ -68,7 +68,7 @@ class _WriteThreadScreenState extends State<WriteThreadScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
+    final isDark = ref.watch(settingsThemeModeProvider).darkMode;
     return GestureDetector(
       onTap: () {
         _focusNode.unfocus();

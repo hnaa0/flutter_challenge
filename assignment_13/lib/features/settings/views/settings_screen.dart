@@ -5,11 +5,11 @@ import 'package:assignment_13/features/settings/view_models/theme_mode_view_mode
 import 'package:assignment_13/features/settings/views/privacy_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends ConsumerWidget {
   static const routeUrl = "/settings";
   static const routeName = "settings";
 
@@ -20,8 +20,8 @@ class SettingsScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDark = ref.watch(settingsThemeModeProvider).darkMode;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -72,8 +72,8 @@ class SettingsScreen extends StatelessWidget {
               splashRadius: 0,
               value: isDark,
               onChanged: (value) {
-                context
-                    .read<SettingsThemeModeViewModel>()
+                ref
+                    .read(settingsThemeModeProvider.notifier)
                     .toggleThemeMode(value);
               },
               title: Row(

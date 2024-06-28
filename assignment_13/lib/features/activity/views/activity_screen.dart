@@ -1,21 +1,23 @@
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:assignment_13/models/activities.dart';
 import 'package:assignment_13/features/activity/activity_type.dart';
 import 'package:assignment_13/features/activity/widgets/activity_list_view.dart';
 import 'package:assignment_13/features/activity/widgets/persistent_tab_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ActivityScreen extends StatefulWidget {
+class ActivityScreen extends ConsumerStatefulWidget {
   static const routeUrl = "/activity";
   static const routeName = "activity";
 
   const ActivityScreen({super.key});
 
   @override
-  State<ActivityScreen> createState() => _ActivityScreenState();
+  ConsumerState<ActivityScreen> createState() => _ActivityScreenState();
 }
 
-class _ActivityScreenState extends State<ActivityScreen>
+class _ActivityScreenState extends ConsumerState<ActivityScreen>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController = TabController(
     length: 5,
@@ -56,6 +58,8 @@ class _ActivityScreenState extends State<ActivityScreen>
         .where((element) => element.type == ActivityType.like)
         .toList();
 
+    final isDark = ref.watch(settingsThemeModeProvider).darkMode;
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -79,6 +83,7 @@ class _ActivityScreenState extends State<ActivityScreen>
                 delegate: PersistentTabBar(
                   controller: _tabController,
                   tabs: activitiesTab,
+                  isDark: isDark,
                 ),
               ),
             ];

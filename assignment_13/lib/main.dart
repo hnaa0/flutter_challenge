@@ -3,7 +3,7 @@ import 'package:assignment_13/features/settings/view_models/theme_mode_view_mode
 import 'package:assignment_13/router.dart';
 import 'package:assignment_13/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -12,19 +12,23 @@ void main() async {
   final repository = SettingsThemeModeRepository(preferences);
 
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => SettingsThemeModeViewModel(repository),
+    ProviderScope(
+      overrides: [
+        settingsThemeModeProvider.overrideWith(
+          () => SettingsThemeModeViewModel(repository),
+        ),
+      ],
       child: const MyApp(),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDark = ref.watch(settingsThemeModeProvider).darkMode;
     return MaterialApp.router(
       routerConfig: router,
       title: 'Assignment 13',

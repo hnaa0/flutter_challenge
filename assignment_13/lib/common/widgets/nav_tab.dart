@@ -1,10 +1,10 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 
-class NavTab extends StatelessWidget {
+class NavTab extends ConsumerWidget {
   const NavTab({
     super.key,
     required this.icon,
@@ -17,7 +17,8 @@ class NavTab extends StatelessWidget {
   final Function onTap;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDark = ref.watch(settingsThemeModeProvider).darkMode;
     return Expanded(
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
@@ -32,7 +33,7 @@ class NavTab extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 4),
                 child: FaIcon(
                   icon,
-                  color: context.watch<SettingsThemeModeViewModel>().darkMode
+                  color: isDark
                       ? const Color(ThemeColors.extraLightGray)
                       : Colors.black,
                   size: 26,

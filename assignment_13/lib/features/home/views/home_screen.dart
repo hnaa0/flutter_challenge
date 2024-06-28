@@ -4,20 +4,20 @@ import 'package:assignment_13/features/settings/view_models/theme_mode_view_mode
 import 'package:assignment_13/models/posts.dart';
 import 'package:assignment_13/common/widgets/post_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   static const routeUrl = "/home";
   static const routeName = "home";
 
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   final ScrollController _scrollController = ScrollController();
 
   void _scrollToTop() {
@@ -30,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = ref.watch(settingsThemeModeProvider).darkMode;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -62,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 separatorBuilder: (context, index) => Divider(
                   thickness: Sizes.size1,
-                  color: context.watch<SettingsThemeModeViewModel>().darkMode
+                  color: isDark
                       ? const Color(ThemeColors.darkGray)
                       : const Color(
                           ThemeColors.extraLightGray,

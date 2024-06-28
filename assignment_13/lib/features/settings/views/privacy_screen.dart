@@ -4,20 +4,20 @@ import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 
-class PrivacyScreen extends StatefulWidget {
+class PrivacyScreen extends ConsumerStatefulWidget {
   static const routeUrl = "privacy";
   static const routeName = "privacy";
 
   const PrivacyScreen({super.key});
 
   @override
-  State<PrivacyScreen> createState() => _PrivacyScreenState();
+  ConsumerState<PrivacyScreen> createState() => _PrivacyScreenState();
 }
 
-class _PrivacyScreenState extends State<PrivacyScreen> {
+class _PrivacyScreenState extends ConsumerState<PrivacyScreen> {
   bool _isPrivacy = false;
 
   void _onPrivacyTap(bool value) {
@@ -28,7 +28,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
+    final isDark = ref.watch(settingsThemeModeProvider).darkMode;
     return Scaffold(
       appBar: AppBar(
         title: const Text(

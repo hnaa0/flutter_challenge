@@ -9,11 +9,11 @@ import 'package:assignment_13/common/widgets/post_card_user_avatar.dart';
 import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:assignment_13/models/posts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 
-class PostCard extends StatefulWidget {
+class PostCard extends ConsumerStatefulWidget {
   const PostCard({
     super.key,
     required this.item,
@@ -24,10 +24,10 @@ class PostCard extends StatefulWidget {
   final bool isMine;
 
   @override
-  State<PostCard> createState() => _PostCardState();
+  ConsumerState<PostCard> createState() => _PostCardState();
 }
 
-class _PostCardState extends State<PostCard> {
+class _PostCardState extends ConsumerState<PostCard> {
   late PageController _pageController;
   bool _isLiked = false;
   bool _isRetweet = false;
@@ -77,7 +77,7 @@ class _PostCardState extends State<PostCard> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
+    final isDark = ref.watch(settingsThemeModeProvider).darkMode;
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: Sizes.size12,

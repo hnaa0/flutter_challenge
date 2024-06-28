@@ -2,10 +2,10 @@ import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 
-class PostCardUserAvatar extends StatelessWidget {
+class PostCardUserAvatar extends ConsumerWidget {
   const PostCardUserAvatar({
     super.key,
     required this.avatarImg,
@@ -16,8 +16,8 @@ class PostCardUserAvatar extends StatelessWidget {
   final bool isMine;
 
   @override
-  Widget build(BuildContext context) {
-    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDark = ref.watch(settingsThemeModeProvider).darkMode;
     return Stack(
       clipBehavior: Clip.none,
       children: [

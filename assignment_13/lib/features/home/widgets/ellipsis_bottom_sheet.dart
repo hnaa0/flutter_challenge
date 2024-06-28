@@ -4,16 +4,17 @@ import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/home/widgets/ellipsis_bottom_sheet_report.dart';
 import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class EllipsisBottomSheet extends StatefulWidget {
+class EllipsisBottomSheet extends ConsumerStatefulWidget {
   const EllipsisBottomSheet({super.key});
 
   @override
-  State<EllipsisBottomSheet> createState() => _EllipsisBottomSheetState();
+  ConsumerState<EllipsisBottomSheet> createState() =>
+      _EllipsisBottomSheetState();
 }
 
-class _EllipsisBottomSheetState extends State<EllipsisBottomSheet> {
+class _EllipsisBottomSheetState extends ConsumerState<EllipsisBottomSheet> {
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
 
@@ -47,7 +48,7 @@ class _EllipsisBottomSheetState extends State<EllipsisBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
+    final isDark = ref.watch(settingsThemeModeProvider).darkMode;
     return Padding(
       padding: const EdgeInsets.only(
         left: Sizes.size20,

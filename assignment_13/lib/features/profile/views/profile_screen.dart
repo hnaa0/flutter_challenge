@@ -9,21 +9,21 @@ import 'package:assignment_13/models/profiles.dart';
 import 'package:assignment_13/features/profile/widgets/profile_persistent_tab_bar.dart';
 import 'package:assignment_13/features/profile/widgets/profile_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends ConsumerStatefulWidget {
   static const routeUrl = "/profile";
   static const routeName = "profile";
 
   const ProfileScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  ConsumerState<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen>
+class _ProfileScreenState extends ConsumerState<ProfileScreen>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController =
       TabController(length: 2, vsync: this);
@@ -35,7 +35,7 @@ class _ProfileScreenState extends State<ProfileScreen>
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.watch<SettingsThemeModeViewModel>().darkMode;
+    final isDark = ref.watch(settingsThemeModeProvider).darkMode;
     return SafeArea(
       child: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -256,6 +256,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               pinned: true,
               delegate: ProfilePersistentTabBar(
                 controller: _tabController,
+                isDark: isDark,
               ),
             ),
           ];
