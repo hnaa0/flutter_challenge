@@ -1,5 +1,6 @@
 class ThemeColors {
-  static const twitterBlue = 0xff1DA1F2;
+  static const lightBlue = 0xff1DA1F2;
+  static const deepBlue = 0xff0C64E0;
   static const black = 0xff14171A;
   static const darkGray = 0xff657786;
   static const lightGray = 0xffAAB8C2;

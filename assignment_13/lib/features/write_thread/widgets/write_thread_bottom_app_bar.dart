@@ -35,7 +35,7 @@ class WriteThreadBottomAppBar extends StatelessWidget {
               "Post",
               style: TextStyle(
                 color: const Color(
-                  ThemeColors.twitterBlue,
+                  ThemeColors.lightBlue,
                 ).withOpacity(text != "" ? 1 : 0.5),
                 fontSize: Sizes.size18,
                 fontWeight: FontWeight.w600,

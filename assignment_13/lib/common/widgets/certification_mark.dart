@@ -14,7 +14,7 @@ class CertificationMark extends StatelessWidget {
       height: Sizes.size14,
       decoration: BoxDecoration(
         color: const Color(
-          ThemeColors.twitterBlue,
+          ThemeColors.lightBlue,
         ),
         borderRadius: BorderRadius.circular(
           Sizes.size20,

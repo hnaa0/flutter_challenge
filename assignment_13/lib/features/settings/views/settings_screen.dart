@@ -221,7 +221,7 @@ class SettingsScreen extends ConsumerWidget {
                 "Log out",
                 style: TextStyle(
                   color: Color(
-                    ThemeColors.twitterBlue,
+                    ThemeColors.lightBlue,
                   ),
                 ),
               ),
@@ -271,7 +271,7 @@ class SettingsScreen extends ConsumerWidget {
                 "Log out (IOS)",
                 style: TextStyle(
                   color: Color(
-                    ThemeColors.twitterBlue,
+                    ThemeColors.lightBlue,
                   ),
                 ),
               ),

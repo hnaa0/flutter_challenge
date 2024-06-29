@@ -1,12 +1,17 @@
 import 'package:assignment_13/common/main_navigation_screen.dart';
-import 'package:assignment_13/features/home/views/home_screen.dart';
+import 'package:assignment_13/features/authentication/views/login_screen.dart';
 import 'package:assignment_13/features/settings/views/privacy_screen.dart';
 import 'package:assignment_13/features/settings/views/settings_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
-  initialLocation: HomeScreen.routeUrl,
+  initialLocation: LoginScreen.routeUrl,
   routes: [
+    GoRoute(
+      path: LoginScreen.routeUrl,
+      name: LoginScreen.routeName,
+      builder: (context, state) => const LoginScreen(),
+    ),
     GoRoute(
       path: "/:tab(home|search|activity|profile)",
       name: MainNavigationScreen.routeName,

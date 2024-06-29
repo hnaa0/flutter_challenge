@@ -34,6 +34,9 @@ abstract class ThreadsTheme {
       backgroundColor: Colors.white,
       elevation: 0,
     ),
+    bottomAppBarTheme: const BottomAppBarTheme(
+      elevation: 0,
+    ),
   );
   static ThemeData dark = ThemeData(
     useMaterial3: true,
@@ -64,6 +67,9 @@ abstract class ThreadsTheme {
     ),
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: Color(ThemeColors.black),
+      elevation: 0,
+    ),
+    bottomAppBarTheme: const BottomAppBarTheme(
       elevation: 0,
     ),
   );
