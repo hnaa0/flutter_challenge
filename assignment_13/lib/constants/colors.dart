@@ -6,4 +6,5 @@ class ThemeColors {
   static const lightGray = 0xffAAB8C2;
   static const extraLightGray = 0xffE1E8ED;
   static const extraExtraLightGray = 0xffF5F8FA;
+  static const red = 0xffE72929;
 }

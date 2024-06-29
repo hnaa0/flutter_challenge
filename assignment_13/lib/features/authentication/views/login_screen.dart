@@ -1,7 +1,9 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/features/authentication/views/signup_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatefulWidget {
   static const routeUrl = "/";
@@ -14,7 +16,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final GlobalKey _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Map<String, String> formData = {};
 
@@ -56,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   fillColor: Colors.white,
                                   contentPadding: EdgeInsets.symmetric(
                                     horizontal: Sizes.size10,
-                                    vertical: Sizes.size18,
+                                    vertical: Sizes.size16,
                                   ),
                                   hintText: "Mobile number or email",
                                   hintStyle: TextStyle(
@@ -158,25 +160,31 @@ class _LoginScreenState extends State<LoginScreen> {
           color: const Color(ThemeColors.extraExtraLightGray),
           child: Column(
             children: [
-              Container(
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: const Color(ThemeColors.extraExtraLightGray),
-                  borderRadius: BorderRadius.circular(Sizes.size4),
-                  border: Border.all(
-                    color: const Color(ThemeColors.lightGray),
+              GestureDetector(
+                onTap: () {
+                  FocusScope.of(context).unfocus();
+                  context.pushNamed(SignupScreen.routeName);
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: const Color(ThemeColors.extraExtraLightGray),
+                    borderRadius: BorderRadius.circular(Sizes.size4),
+                    border: Border.all(
+                      color: const Color(ThemeColors.lightGray),
+                    ),
                   ),
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: Sizes.size6,
-                  ),
-                  child: Text(
-                    "Create new account",
-                    style: TextStyle(
-                      fontSize: Sizes.size16,
-                      fontWeight: FontWeight.w600,
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: Sizes.size6,
+                    ),
+                    child: Text(
+                      "Create new account",
+                      style: TextStyle(
+                        fontSize: Sizes.size16,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
