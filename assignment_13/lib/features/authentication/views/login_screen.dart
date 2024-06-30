@@ -1,29 +1,45 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/features/authentication/view_models/login_view_model.dart';
+import 'package:assignment_13/features/authentication/view_models/signup_view_model.dart';
 import 'package:assignment_13/features/authentication/views/signup_screen.dart';
 import 'package:assignment_13/features/authentication/widgets/login_signup_bottom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatefulWidget {
-  static const routeUrl = "/";
+class LoginScreen extends ConsumerStatefulWidget {
+  static const routeUrl = "/login";
   static const routeName = "login";
 
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  Map<String, String> formData = {};
+  final Map<String, String> _formData = {};
 
   void _onNewAccountTap() {
     FocusScope.of(context).unfocus();
     context.pushNamed(SignupScreen.routeName);
+  }
+
+  void _onLoginTap() {
+    if (_formKey.currentState != null && _formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+
+      ref.read(loginProvider.notifier).login(
+            contact: _formData["contact"]!,
+            password: _formData["password"]!,
+            context: context,
+          );
+    }
   }
 
   @override
@@ -88,9 +104,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                       ),
                                     ),
                                   ),
+                                  onSaved: (newValue) {
+                                    if (newValue != null) {
+                                      _formData["contact"] = newValue;
+                                    }
+                                  },
                                 ),
                                 Gaps.v14,
                                 TextFormField(
+                                  obscureText: true,
                                   decoration: const InputDecoration(
                                     filled: true,
                                     fillColor: Colors.white,
@@ -119,28 +141,39 @@ class _LoginScreenState extends State<LoginScreen> {
                                       ),
                                     ),
                                   ),
+                                  onSaved: (newValue) {
+                                    if (newValue != null) {
+                                      _formData["password"] = newValue;
+                                    }
+                                  },
                                 ),
                               ],
                             ),
                           ),
                           Gaps.v14,
-                          Container(
-                            alignment: Alignment.center,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              color: const Color(ThemeColors.deepBlue),
-                              borderRadius: BorderRadius.circular(Sizes.size4),
-                            ),
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(
-                                vertical: Sizes.size14,
+                          GestureDetector(
+                            onTap: _onLoginTap,
+                            child: Container(
+                              alignment: Alignment.center,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                color: ref.watch(signupProvider).isLoading
+                                    ? const Color(ThemeColors.lightGray)
+                                    : const Color(ThemeColors.deepBlue),
+                                borderRadius:
+                                    BorderRadius.circular(Sizes.size4),
                               ),
-                              child: Text(
-                                "Log in",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: Sizes.size18,
-                                  fontWeight: FontWeight.w500,
+                              child: const Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: Sizes.size14,
+                                ),
+                                child: Text(
+                                  "Log in",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: Sizes.size18,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
                             ),

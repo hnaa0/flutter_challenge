@@ -1,6 +1,8 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/features/authentication/repos/authentication_repo.dart';
+import 'package:assignment_13/features/authentication/views/login_screen.dart';
 import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:assignment_13/features/settings/views/privacy_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -185,7 +187,8 @@ class SettingsScreen extends ConsumerWidget {
                               widthFactor: 1,
                               child: TextButton(
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  ref.watch(authRepo).signOut();
+                                  context.goNamed(LoginScreen.routeName);
                                 },
                                 child: const Text(
                                   "Log out",
@@ -241,7 +244,8 @@ class SettingsScreen extends ConsumerWidget {
                       actions: [
                         CupertinoDialogAction(
                           onPressed: () {
-                            Navigator.pop(context);
+                            ref.watch(authRepo).signOut();
+                            context.goNamed(LoginScreen.routeName);
                           },
                           child: const Text(
                             "Log out",

@@ -1,22 +1,24 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/features/authentication/view_models/signup_view_model.dart';
 import 'package:assignment_13/features/authentication/widgets/login_signup_bottom_app_bar.dart';
 import 'package:assignment_13/features/authentication/widgets/signup_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class SignupScreen extends StatefulWidget {
+class SignupScreen extends ConsumerStatefulWidget {
   static const routeUrl = "/signup";
   static const routeName = "signup";
 
   const SignupScreen({super.key});
 
   @override
-  State<SignupScreen> createState() => _SignupScreenState();
+  ConsumerState<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _SignupScreenState extends State<SignupScreen> {
+class _SignupScreenState extends ConsumerState<SignupScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _contactController = TextEditingController();
@@ -47,10 +49,18 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   void _onSignupTap() {
-    if (_formKey.currentState!.validate()) {}
+    if (_formKey.currentState != null && _formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+
+      ref.read(signupProvider.notifier).signup(
+            contact: _formData["contact"]!,
+            password: _formData["password"]!,
+            context: context,
+          );
+    }
   }
 
-  void _onHaveAccount() {
+  void _onHaveAccountTap() {
     FocusScope.of(context).unfocus();
     context.pop();
   }
@@ -132,7 +142,9 @@ class _SignupScreenState extends State<SignupScreen> {
                               alignment: Alignment.center,
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                color: const Color(ThemeColors.deepBlue),
+                                color: ref.watch(signupProvider).isLoading
+                                    ? const Color(ThemeColors.lightGray)
+                                    : const Color(ThemeColors.deepBlue),
                                 borderRadius:
                                     BorderRadius.circular(Sizes.size4),
                               ),
@@ -161,7 +173,7 @@ class _SignupScreenState extends State<SignupScreen> {
           ),
         ),
         bottomNavigationBar: LoginSignupBottomAppBar(
-          onTapFunc: _onHaveAccount,
+          onTapFunc: _onHaveAccountTap,
           buttonText: "Already have an account",
         ),
       ),

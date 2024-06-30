@@ -45,7 +45,7 @@ class _SignupFormFieldState extends State<SignupFormField> {
 
           return RegExp(pattern).hasMatch(value);
         } else {
-          var pattern = r'^[0-9]+$';
+          var pattern = r'^[0-9]{11}$';
 
           return RegExp(pattern).hasMatch(value);
         }
