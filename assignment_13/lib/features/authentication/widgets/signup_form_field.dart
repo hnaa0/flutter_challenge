@@ -64,6 +64,9 @@ class _SignupFormFieldState extends State<SignupFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textInputAction: widget.filedType == "password"
+          ? TextInputAction.done
+          : TextInputAction.next,
       obscureText:
           _passwordHidden && widget.filedType == "password" ? true : false,
       controller: widget.controller,
