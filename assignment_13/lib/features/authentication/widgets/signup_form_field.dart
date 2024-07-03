@@ -10,12 +10,14 @@ class SignupFormField extends StatefulWidget {
     required this.fieldValue,
     required this.formData,
     required this.filedType,
+    required this.isDark,
   });
 
   final TextEditingController controller;
   final String fieldValue;
   final String filedType;
   final Map<String, String> formData;
+  final bool isDark;
 
   @override
   State<SignupFormField> createState() => _SignupFormFieldState();
@@ -72,7 +74,7 @@ class _SignupFormFieldState extends State<SignupFormField> {
       controller: widget.controller,
       decoration: InputDecoration(
         filled: true,
-        fillColor: Colors.white,
+        fillColor: widget.isDark ? Colors.black : Colors.white,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: Sizes.size10,
           vertical: Sizes.size16,

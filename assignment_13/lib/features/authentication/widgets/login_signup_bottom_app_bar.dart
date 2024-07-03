@@ -8,16 +8,20 @@ class LoginSignupBottomAppBar extends StatelessWidget {
     super.key,
     required this.onTapFunc,
     required this.buttonText,
+    required this.isDark,
   });
 
   final Function onTapFunc;
   final String buttonText;
+  final bool isDark;
 
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
       height: 90,
-      color: const Color(ThemeColors.extraExtraLightGray),
+      color: isDark
+          ? const Color(ThemeColors.black)
+          : const Color(ThemeColors.extraExtraLightGray),
       child: Column(
         children: [
           GestureDetector(
@@ -26,7 +30,9 @@ class LoginSignupBottomAppBar extends StatelessWidget {
               alignment: Alignment.center,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                color: const Color(ThemeColors.extraExtraLightGray),
+                color: isDark
+                    ? const Color(ThemeColors.black)
+                    : const Color(ThemeColors.extraExtraLightGray),
                 borderRadius: BorderRadius.circular(Sizes.size4),
                 border: Border.all(
                   color: const Color(ThemeColors.lightGray),

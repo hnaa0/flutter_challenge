@@ -4,6 +4,7 @@ import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/authentication/view_models/signup_view_model.dart';
 import 'package:assignment_13/features/authentication/widgets/login_signup_bottom_app_bar.dart';
 import 'package:assignment_13/features/authentication/widgets/signup_form_field.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -53,8 +54,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
       _formKey.currentState!.save();
 
       ref.read(signupProvider.notifier).signup(
-            contact: _formData["contact"]!,
-            password: _formData["password"]!,
+            data: _formData,
             context: context,
           );
     }
@@ -81,12 +81,16 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = ref.watch(settingsThemeModeProvider).darkMode;
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: const Color(ThemeColors.extraExtraLightGray),
+        backgroundColor: isDark
+            ? const Color(ThemeColors.black)
+            : const Color(ThemeColors.extraExtraLightGray),
         body: SingleChildScrollView(
           child: SafeArea(
             child: Padding(
@@ -117,6 +121,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                                   fieldValue: _name,
                                   formData: _formData,
                                   filedType: "name",
+                                  isDark: isDark,
                                 ),
                                 Gaps.v14,
                                 SignupFormField(
@@ -124,6 +129,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                                   fieldValue: _contact,
                                   formData: _formData,
                                   filedType: "contact",
+                                  isDark: isDark,
                                 ),
                                 Gaps.v14,
                                 SignupFormField(
@@ -131,6 +137,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                                   fieldValue: _password,
                                   formData: _formData,
                                   filedType: "password",
+                                  isDark: isDark,
                                 ),
                               ],
                             ),
@@ -175,6 +182,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
         bottomNavigationBar: LoginSignupBottomAppBar(
           onTapFunc: _onHaveAccountTap,
           buttonText: "Already have an account",
+          isDark: isDark,
         ),
       ),
     );

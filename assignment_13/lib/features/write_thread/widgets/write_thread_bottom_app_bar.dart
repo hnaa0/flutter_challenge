@@ -7,9 +7,11 @@ class WriteThreadBottomAppBar extends StatelessWidget {
   const WriteThreadBottomAppBar({
     super.key,
     required this.text,
+    required this.postfunc,
   });
 
   final String text;
+  final Function postfunc;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,8 @@ class WriteThreadBottomAppBar extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            behavior: HitTestBehavior.translucent,
+            onTap: () => postfunc(),
             child: Text(
               "Post",
               style: TextStyle(

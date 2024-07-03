@@ -27,9 +27,12 @@ class LoginViewModel extends AsyncNotifier<void> {
         password: password,
       );
     });
+
     if (state.hasError) {
+      if (!context.mounted) return;
       showFirbaseErrorSnack(context, state.error);
     } else {
+      if (!context.mounted) return;
       context.go(HomeScreen.routeUrl);
     }
   }

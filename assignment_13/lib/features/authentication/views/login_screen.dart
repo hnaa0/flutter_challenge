@@ -5,8 +5,8 @@ import 'package:assignment_13/features/authentication/view_models/login_view_mod
 import 'package:assignment_13/features/authentication/view_models/signup_view_model.dart';
 import 'package:assignment_13/features/authentication/views/signup_screen.dart';
 import 'package:assignment_13/features/authentication/widgets/login_signup_bottom_app_bar.dart';
+import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -44,12 +44,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = ref.watch(settingsThemeModeProvider).darkMode;
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: const Color(ThemeColors.extraExtraLightGray),
+        backgroundColor: isDark
+            ? const Color(ThemeColors.black)
+            : const Color(ThemeColors.extraExtraLightGray),
         body: SingleChildScrollView(
           child: SafeArea(
             child: Padding(
@@ -76,27 +80,28 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             child: Column(
                               children: [
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     filled: true,
-                                    fillColor: Colors.white,
-                                    contentPadding: EdgeInsets.symmetric(
+                                    fillColor:
+                                        isDark ? Colors.black : Colors.white,
+                                    contentPadding: const EdgeInsets.symmetric(
                                       horizontal: Sizes.size10,
                                       vertical: Sizes.size16,
                                     ),
                                     hintText: "Mobile number or email",
-                                    hintStyle: TextStyle(
+                                    hintStyle: const TextStyle(
                                       color: Color(
                                         ThemeColors.lightGray,
                                       ),
                                     ),
-                                    enabledBorder: OutlineInputBorder(
+                                    enabledBorder: const OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(
                                           ThemeColors.lightGray,
                                         ),
                                       ),
                                     ),
-                                    focusedBorder: OutlineInputBorder(
+                                    focusedBorder: const OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(
                                           ThemeColors.lightBlue,
@@ -113,27 +118,28 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                 Gaps.v14,
                                 TextFormField(
                                   obscureText: true,
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     filled: true,
-                                    fillColor: Colors.white,
-                                    contentPadding: EdgeInsets.symmetric(
+                                    fillColor:
+                                        isDark ? Colors.black : Colors.white,
+                                    contentPadding: const EdgeInsets.symmetric(
                                       horizontal: Sizes.size10,
                                       vertical: Sizes.size18,
                                     ),
                                     hintText: "Password",
-                                    hintStyle: TextStyle(
+                                    hintStyle: const TextStyle(
                                       color: Color(
                                         ThemeColors.lightGray,
                                       ),
                                     ),
-                                    enabledBorder: OutlineInputBorder(
+                                    enabledBorder: const OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(
                                           ThemeColors.lightGray,
                                         ),
                                       ),
                                     ),
-                                    focusedBorder: OutlineInputBorder(
+                                    focusedBorder: const OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(
                                           ThemeColors.lightBlue,
@@ -199,6 +205,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         bottomNavigationBar: LoginSignupBottomAppBar(
           onTapFunc: _onNewAccountTap,
           buttonText: "Create new account",
+          isDark: isDark,
         ),
       ),
     );

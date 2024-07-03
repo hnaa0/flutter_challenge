@@ -4,12 +4,16 @@ import 'dart:io';
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
+import 'package:assignment_13/features/home/view_models/home_timeline_view_model.dart';
+import 'package:assignment_13/features/home/views/home_screen.dart';
 import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
+import 'package:assignment_13/features/write_thread/view_models/upload_thread_view_model.dart';
 import 'package:assignment_13/features/write_thread/views/camera_screen.dart';
 import 'package:assignment_13/features/write_thread/widgets/write_thread_bottom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class WriteThreadScreen extends ConsumerStatefulWidget {
   const WriteThreadScreen({super.key});
@@ -22,7 +26,7 @@ class _WriteThreadScreenState extends ConsumerState<WriteThreadScreen> {
   final TextEditingController _textController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   String _text = "";
-  final List<String> _selectedList = [];
+  final List<File> _selectedList = [];
 
   Future<void> _onCameraTap() async {
     Navigator.push(
@@ -34,7 +38,7 @@ class _WriteThreadScreenState extends ConsumerState<WriteThreadScreen> {
       (value) {
         if (value != null && mounted) {
           for (var item in value) {
-            _selectedList.add(item.path);
+            _selectedList.add(File(item.path));
           }
 
           setState(() {});
@@ -43,10 +47,23 @@ class _WriteThreadScreenState extends ConsumerState<WriteThreadScreen> {
     );
   }
 
-  void _onDeletePhotoTap(String file) {
+  void _onDeletePhotoTap(File file) {
     setState(() {
       _selectedList.remove(file);
     });
+  }
+
+  void _onPostTap() {
+    if (_text == "") return;
+
+    ref.read(uploadThreadProvider.notifier).uploadThread(
+          images: _selectedList,
+          content: _textController.text,
+          context: context,
+        );
+
+    context.pushReplacement(HomeScreen.routeUrl);
+    ref.watch(homeTimelineProvider.notifier).refresh();
   }
 
   @override
@@ -199,7 +216,7 @@ class _WriteThreadScreenState extends ConsumerState<WriteThreadScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Text(
-                                "gnar_",
+                                "gnar",
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: Sizes.size16,
@@ -244,7 +261,7 @@ class _WriteThreadScreenState extends ConsumerState<WriteThreadScreen> {
                                             ),
                                             child: Image.file(
                                               File(
-                                                _selectedList[index],
+                                                _selectedList[index].path,
                                               ),
                                               fit: BoxFit.cover,
                                             ),
@@ -307,7 +324,8 @@ class _WriteThreadScreenState extends ConsumerState<WriteThreadScreen> {
               ),
             ),
           ),
-          bottomSheet: WriteThreadBottomAppBar(text: _text),
+          bottomSheet:
+              WriteThreadBottomAppBar(text: _text, postfunc: _onPostTap),
         ),
       ),
     );

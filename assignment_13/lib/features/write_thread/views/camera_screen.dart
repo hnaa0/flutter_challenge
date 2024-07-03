@@ -34,15 +34,11 @@ class _CameraScreenState extends State<CameraScreen>
 
   Future<void> initPermissions() async {
     final cameraPermission = await Permission.camera.request();
-    final audioPermission = await Permission.audio.request();
 
     final cameraDenied =
         cameraPermission.isDenied || cameraPermission.isPermanentlyDenied;
 
-    final audioDenied =
-        audioPermission.isDenied || audioPermission.isPermanentlyDenied;
-
-    if (!cameraDenied || !audioDenied) {
+    if (!cameraDenied) {
       _hasPermission = true;
       await initCamera();
       setState(() {});

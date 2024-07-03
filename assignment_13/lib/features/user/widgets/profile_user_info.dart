@@ -1,11 +1,17 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
-import 'package:assignment_13/features/profile/widgets/profile_button.dart';
+import 'package:assignment_13/features/user/models/user_profile_model.dart';
+import 'package:assignment_13/features/user/widgets/profile_button.dart';
 import 'package:flutter/material.dart';
 
 class ProfileUserInfo extends StatelessWidget {
-  const ProfileUserInfo({super.key});
+  const ProfileUserInfo({
+    super.key,
+    required this.userData,
+  });
+
+  final UserProfileModel userData;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +19,7 @@ class ProfileUserInfo extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(
           vertical: Sizes.size10,
-          horizontal: Sizes.size12,
+          horizontal: Sizes.size14,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -26,9 +32,9 @@ class ProfileUserInfo extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Gaps.v8,
-                    const Text(
-                      "GNAR",
-                      style: TextStyle(
+                    Text(
+                      userData.name,
+                      style: const TextStyle(
                         fontSize: Sizes.size24,
                         fontWeight: FontWeight.w800,
                       ),
@@ -36,9 +42,9 @@ class ProfileUserInfo extends StatelessWidget {
                     Gaps.v14,
                     Row(
                       children: [
-                        const Text(
-                          "gnar_",
-                          style: TextStyle(
+                        Text(
+                          userData.contact,
+                          style: const TextStyle(
                             fontSize: Sizes.size16,
                           ),
                         ),
@@ -69,9 +75,9 @@ class ProfileUserInfo extends StatelessWidget {
                       ],
                     ),
                     Gaps.v18,
-                    const Text(
-                      "I love treats💕",
-                      style: TextStyle(
+                    Text(
+                      userData.bio,
+                      style: const TextStyle(
                         fontSize: Sizes.size16,
                       ),
                     ),

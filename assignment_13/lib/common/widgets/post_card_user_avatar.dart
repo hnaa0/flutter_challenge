@@ -22,23 +22,21 @@ class PostCardUserAvatar extends ConsumerWidget {
       clipBehavior: Clip.none,
       children: [
         isMine
-            ? CircleAvatar(
-                foregroundImage: AssetImage(
-                  avatarImg,
-                ),
-                backgroundColor: const Color(
-                  ThemeColors.black,
-                ),
+            ? const CircleAvatar(
+                // foregroundImage: AssetImage(
+                //   avatarImg,
+                // ),
+                backgroundColor: Colors.amber,
                 radius: Sizes.size24,
+                child: Text("it's mine"),
               )
-            : CircleAvatar(
-                foregroundImage: NetworkImage(
-                  avatarImg,
-                ),
-                backgroundColor: const Color(
-                  ThemeColors.black,
-                ),
+            : const CircleAvatar(
+                // foregroundImage: NetworkImage(
+                //   avatarImg,
+                // ),
+                backgroundColor: Colors.blue,
                 radius: Sizes.size24,
+                child: Text("it's not mine"),
               ),
         if (!isMine)
           Positioned(

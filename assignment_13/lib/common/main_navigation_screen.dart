@@ -1,7 +1,7 @@
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/home/views/home_screen.dart';
 import 'package:assignment_13/features/activity/views/activity_screen.dart';
-import 'package:assignment_13/features/profile/views/profile_screen.dart';
+import 'package:assignment_13/features/user/views/profile_screen.dart';
 import 'package:assignment_13/features/search/views/search_screen.dart';
 import 'package:assignment_13/features/write_thread/views/write_thread_screen.dart';
 import 'package:flutter/material.dart';
