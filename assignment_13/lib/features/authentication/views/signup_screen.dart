@@ -155,18 +155,20 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                                 borderRadius:
                                     BorderRadius.circular(Sizes.size4),
                               ),
-                              child: const Padding(
-                                padding: EdgeInsets.symmetric(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
                                   vertical: Sizes.size14,
                                 ),
-                                child: Text(
-                                  "Sign up",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: Sizes.size18,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
+                                child: ref.watch(signupProvider).isLoading
+                                    ? const CircularProgressIndicator.adaptive()
+                                    : const Text(
+                                        "Sign up",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: Sizes.size18,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
                               ),
                             ),
                           ),

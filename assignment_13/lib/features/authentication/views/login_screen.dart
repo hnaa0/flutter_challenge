@@ -2,7 +2,6 @@ import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/gaps.dart';
 import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/authentication/view_models/login_view_model.dart';
-import 'package:assignment_13/features/authentication/view_models/signup_view_model.dart';
 import 'package:assignment_13/features/authentication/views/signup_screen.dart';
 import 'package:assignment_13/features/authentication/widgets/login_signup_bottom_app_bar.dart';
 import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
@@ -163,24 +162,26 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               alignment: Alignment.center,
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                color: ref.watch(signupProvider).isLoading
+                                color: ref.watch(loginProvider).isLoading
                                     ? const Color(ThemeColors.lightGray)
                                     : const Color(ThemeColors.deepBlue),
                                 borderRadius:
                                     BorderRadius.circular(Sizes.size4),
                               ),
-                              child: const Padding(
-                                padding: EdgeInsets.symmetric(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
                                   vertical: Sizes.size14,
                                 ),
-                                child: Text(
-                                  "Log in",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: Sizes.size18,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
+                                child: ref.watch(loginProvider).isLoading
+                                    ? const CircularProgressIndicator.adaptive()
+                                    : const Text(
+                                        "Log in",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: Sizes.size18,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
                               ),
                             ),
                           ),

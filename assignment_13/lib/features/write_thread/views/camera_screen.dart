@@ -24,8 +24,15 @@ class _CameraScreenState extends State<CameraScreen>
     with SingleTickerProviderStateMixin {
   bool _hasPermission = false;
   bool _isSelfieMode = false;
+  bool _isLibraryLoading = false;
 
-  late CameraController _cameraController;
+  late CameraController _cameraController = CameraController(
+    const CameraDescription(
+        sensorOrientation: 0,
+        name: "",
+        lensDirection: CameraLensDirection.front),
+    ResolutionPreset.low,
+  );
   late final TabController _tabController = TabController(
     length: 2,
     vsync: this,
@@ -35,10 +42,10 @@ class _CameraScreenState extends State<CameraScreen>
   Future<void> initPermissions() async {
     final cameraPermission = await Permission.camera.request();
 
-    final cameraDenied =
-        cameraPermission.isDenied || cameraPermission.isPermanentlyDenied;
+    final cameraGranted =
+        !cameraPermission.isDenied && !cameraPermission.isPermanentlyDenied;
 
-    if (!cameraDenied) {
+    if (cameraGranted) {
       _hasPermission = true;
       await initCamera();
       setState(() {});
@@ -55,6 +62,7 @@ class _CameraScreenState extends State<CameraScreen>
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
+                retryPermissionRequest();
               },
               child: const Text("Check"),
             ),
@@ -64,13 +72,29 @@ class _CameraScreenState extends State<CameraScreen>
     }
   }
 
+  Future<void> retryPermissionRequest() async {
+    final cameraPermission = await Permission.camera.request();
+
+    final cameraGranted =
+        !cameraPermission.isDenied && !cameraPermission.isPermanentlyDenied;
+
+    if (cameraGranted) {
+      _hasPermission = true;
+      await initCamera();
+      setState(() {});
+    }
+  }
+
   Future<void> initCamera() async {
     final cameras = await availableCameras();
 
     if (cameras.isEmpty) return;
 
     _cameraController = CameraController(
-        cameras[_isSelfieMode ? 1 : 0], ResolutionPreset.ultraHigh);
+      cameras[_isSelfieMode ? 1 : 0],
+      ResolutionPreset.ultraHigh,
+      enableAudio: false,
+    );
 
     await _cameraController.initialize();
 
@@ -97,6 +121,9 @@ class _CameraScreenState extends State<CameraScreen>
   }
 
   Future<void> _onLibraryTap() async {
+    setState(() {
+      _isLibraryLoading = true;
+    });
     final List<XFile> files = await ImagePicker().pickMultiImage();
 
     if (files.isEmpty) return;
@@ -246,6 +273,11 @@ class _CameraScreenState extends State<CameraScreen>
                         ),
                         Container(
                           color: Colors.black,
+                          child: Center(
+                            child: _isLibraryLoading
+                                ? const CircularProgressIndicator.adaptive()
+                                : null,
+                          ),
                         ),
                       ],
                     ),

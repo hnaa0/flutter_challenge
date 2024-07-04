@@ -7,6 +7,7 @@ import 'package:assignment_13/constants/sizes.dart';
 import 'package:assignment_13/features/home/view_models/home_timeline_view_model.dart';
 import 'package:assignment_13/features/home/views/home_screen.dart';
 import 'package:assignment_13/features/settings/view_models/theme_mode_view_model.dart';
+import 'package:assignment_13/features/user/view_models/user_profile_view_model.dart';
 import 'package:assignment_13/features/write_thread/view_models/upload_thread_view_model.dart';
 import 'package:assignment_13/features/write_thread/views/camera_screen.dart';
 import 'package:assignment_13/features/write_thread/widgets/write_thread_bottom_app_bar.dart';
@@ -56,14 +57,17 @@ class _WriteThreadScreenState extends ConsumerState<WriteThreadScreen> {
   void _onPostTap() {
     if (_text == "") return;
 
-    ref.read(uploadThreadProvider.notifier).uploadThread(
+    ref
+        .read(uploadThreadProvider.notifier)
+        .uploadThread(
           images: _selectedList,
           content: _textController.text,
           context: context,
-        );
-
-    context.pushReplacement(HomeScreen.routeUrl);
-    ref.watch(homeTimelineProvider.notifier).refresh();
+        )
+        .then((value) {
+      context.pushReplacement(HomeScreen.routeUrl);
+      ref.watch(homeTimelineProvider.notifier).refresh();
+    });
   }
 
   @override
@@ -86,6 +90,7 @@ class _WriteThreadScreenState extends ConsumerState<WriteThreadScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = ref.watch(settingsThemeModeProvider).darkMode;
+
     return GestureDetector(
       onTap: () {
         _focusNode.unfocus();
@@ -215,9 +220,9 @@ class _WriteThreadScreenState extends ConsumerState<WriteThreadScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                "gnar",
-                                style: TextStyle(
+                              Text(
+                                ref.read(userProvider).value!.name,
+                                style: const TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: Sizes.size16,
                                 ),
@@ -244,7 +249,7 @@ class _WriteThreadScreenState extends ConsumerState<WriteThreadScreen> {
                               ),
                               if (_selectedList.isNotEmpty) ...[
                                 SizedBox(
-                                  height: 200,
+                                  height: 180,
                                   child: ListView.separated(
                                     scrollDirection: Axis.horizontal,
                                     itemCount: _selectedList.length,
@@ -324,8 +329,8 @@ class _WriteThreadScreenState extends ConsumerState<WriteThreadScreen> {
               ),
             ),
           ),
-          bottomSheet:
-              WriteThreadBottomAppBar(text: _text, postfunc: _onPostTap),
+          bottomSheet: WriteThreadBottomAppBar(
+              text: _text, postfunc: _onPostTap, isDark: isDark),
         ),
       ),
     );

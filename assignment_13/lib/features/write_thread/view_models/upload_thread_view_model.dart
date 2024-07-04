@@ -22,6 +22,13 @@ class UploadThreadViewModel extends AsyncNotifier<void> {
   }) async {
     final user = ref.read(authRepo).user;
     state = const AsyncValue.loading();
+
+    if (state.isLoading) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Uploading thread...")),
+      );
+    }
+
     state = await AsyncValue.guard(() async {
       List<String> downloadUrls = [];
 

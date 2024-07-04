@@ -1,6 +1,5 @@
 import 'package:assignment_13/constants/colors.dart';
 import 'package:assignment_13/constants/sizes.dart';
-import 'package:assignment_13/utils.dart';
 import 'package:flutter/material.dart';
 
 class WriteThreadBottomAppBar extends StatelessWidget {
@@ -8,18 +7,19 @@ class WriteThreadBottomAppBar extends StatelessWidget {
     super.key,
     required this.text,
     required this.postfunc,
+    required this.isDark,
   });
 
   final String text;
   final Function postfunc;
+  final bool isDark;
 
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
       height: 50,
       elevation: 0,
-      color:
-          isDarkMode(context) ? const Color(ThemeColors.black) : Colors.white,
+      color: isDark ? const Color(ThemeColors.black) : Colors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

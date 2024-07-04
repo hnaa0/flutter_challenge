@@ -66,6 +66,16 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen>
                   children: [
                     ref.watch(profileTimelineProvider).when(
                           data: (threads) {
+                            if (threads.isEmpty) {
+                              return const Center(
+                                child: Text(
+                                  "It's empty! Share your story🧶",
+                                  style: TextStyle(
+                                    fontSize: Sizes.size18,
+                                  ),
+                                ),
+                              );
+                            }
                             return ListView.separated(
                               itemCount: threads.length,
                               itemBuilder: (context, index) {

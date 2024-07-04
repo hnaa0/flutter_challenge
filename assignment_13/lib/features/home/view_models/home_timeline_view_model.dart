@@ -26,6 +26,7 @@ class HomeTimelineViewModel extends AsyncNotifier<List<ThreadModel>> {
   }
 
   Future<void> refresh() async {
+    state = const AsyncValue.loading();
     final threads = await _fetchThreads(lastItemCreatedAt: null);
     _threadsList = threads;
     state = AsyncValue.data(threads);
