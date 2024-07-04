@@ -11,6 +11,7 @@ import 'package:assignment_13/features/user/view_models/user_profile_view_model.
 import 'package:assignment_13/features/write_thread/view_models/upload_thread_view_model.dart';
 import 'package:assignment_13/features/write_thread/views/camera_screen.dart';
 import 'package:assignment_13/features/write_thread/widgets/write_thread_bottom_app_bar.dart';
+import 'package:assignment_13/features/write_thread/widgets/write_thread_image_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -248,60 +249,9 @@ class _WriteThreadScreenState extends ConsumerState<WriteThreadScreen> {
                                 ),
                               ),
                               if (_selectedList.isNotEmpty) ...[
-                                SizedBox(
-                                  height: 180,
-                                  child: ListView.separated(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: _selectedList.length,
-                                    itemBuilder: (context, index) {
-                                      return Stack(
-                                        children: [
-                                          Container(
-                                            clipBehavior: Clip.hardEdge,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                Sizes.size12,
-                                              ),
-                                            ),
-                                            child: Image.file(
-                                              File(
-                                                _selectedList[index].path,
-                                              ),
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                          Positioned(
-                                            right: 8,
-                                            top: 6,
-                                            child: GestureDetector(
-                                              onTap: () => _onDeletePhotoTap(
-                                                  _selectedList[index]),
-                                              child: Container(
-                                                alignment: Alignment.center,
-                                                padding: const EdgeInsets.all(
-                                                  Sizes.size6,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: const Color(
-                                                          ThemeColors.darkGray)
-                                                      .withOpacity(0.5),
-                                                ),
-                                                child: const FaIcon(
-                                                  FontAwesomeIcons.xmark,
-                                                  color: Colors.white,
-                                                  size: Sizes.size16,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                    separatorBuilder: (context, index) =>
-                                        Gaps.h8,
-                                  ),
+                                WirteThreadImageListView(
+                                  selectedList: _selectedList,
+                                  deletePhoto: _onDeletePhotoTap,
                                 ),
                                 Gaps.v8,
                               ],
