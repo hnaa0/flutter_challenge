@@ -48,17 +48,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   void _swipeComplete() {
     final nextIdx = (_idx + 1) % quiz.length;
-
     _progress
-        .animateTo((_idx == quiz.length ? 1 : _idx + 1) / quiz.length,
-            curve: Curves.easeInOut)
+        .animateTo((nextIdx + 1) / quiz.length, curve: Curves.easeInOut)
         .then((value) {
+      _position.value = 0;
+
       setState(() {
         _idx = nextIdx;
         _isFront = true;
       });
-
-      _position.value = 0;
     });
   }
 
@@ -150,14 +148,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 Positioned(
                   top: 200,
                   child: AnimatedOpacity(
-                    duration: const Duration(milliseconds: 600),
+                    duration: const Duration(milliseconds: 400),
                     opacity: 1,
-                    child: Transform.scale(
-                      scale: min(scale, 1.0),
-                      child: Card(
-                        index: _idx == quiz.length - 1 ? 1 : _idx + 1,
-                        isFront: true,
-                        isFlipping: _isFlipping,
+                    child: AnimatedOpacity(
+                      duration: const Duration(milliseconds: 600),
+                      opacity: min(opaticy, 1.0),
+                      child: Transform.scale(
+                        scale: min(scale, 1.0),
+                        child: Card(
+                          index: _idx == quiz.length - 1 ? 0 : _idx + 1,
+                          isFront: true,
+                          isFlipping: _isFlipping,
+                        ),
                       ),
                     ),
                   ),
